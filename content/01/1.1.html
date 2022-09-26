@@ -90,11 +90,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">My sample book</h1>
@@ -135,11 +130,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../notebooks.html">
-   Content with notebooks
-  </a>
  </li>
 </ul>
 
@@ -431,7 +421,7 @@ title="Print to PDF"
 <p>The Chicago Police Department (CPD) increased traffic stops by seven folds to around 600 thousand from 2015 through 2019. While the CPD claims that the purpose of traffic stops is to detect crime in the city, especially the West and the South sides, there is skepticism in this. In recent years, jurisdictions around the country have taken steps to address racially disparate and ineffectual traffic stops; meanwhile, Chicago continues its heavy use of traffic stops with no clear traffic safety or public safety benefit.</p>
 <p>This has raised several concerns over the effectiveness of these stops as well as indicated racial profiling. Your job here is to think about what data can be collected and what sort of analysis can be done to either validate or invalidate both the idea that there is existence of racial profiling in the stops and that these increased stops are ineffective.</p>
 <p>Think about how can we define the problem? What data do we need to have and what contextual knowledge do we require. Also address what precise metric do we need to track in order to validate or nullify the objections raised on the CPD.</p>
-<img src="stop.webp" alt="drawing" width="600"/><p>One of the first question that we need to have a clear-cut answer for is, what is the social concern we’re trying to solve? A simple answer that we can come up based on the description provided is that our goal is to identify if police officers are involved in racial profiling. We have to answer if the police is being racist while making a traffic stop. Another goal that the project is trying to solve, apart from promoting racial justice, is to see if these stops are effective and improving public safety? Is the increase in number of stops any way reducing the crime in the city?<br></p>
+<img src="traffic_stop.png" alt="drawing" width="600"/><p>One of the first question that we need to have a clear-cut answer for is, what is the social concern we’re trying to solve? A simple answer that we can come up based on the description provided is that our goal is to identify if police officers are involved in racial profiling. We have to answer if the police is being racist while making a traffic stop. Another goal that the project is trying to solve, apart from promoting racial justice, is to see if these stops are effective and improving public safety? Is the increase in number of stops any way reducing the crime in the city?<br></p>
 <p>The next aspect we need to think about is how can we actually make sure that racial profiling is increasing or the effectiveness of stops is decreasing. For that we’ll select a metric for each case that we’ll track to reach to our hypothesis. If we’re considering to check the existence of racial profiling, we might want to have a look at the ratio of one particular race being stopped to other groups. For example, we can compare the ratio of black drivers stopped to the ratio of white drivers. Are they being stopped propotionately? If the ratios vary significanty, it probably hints to a problem which might need further investigation. Similarly, to account for the effectiveness of stops, we might check something as the hit rate. We will check if the percentage of those stopped were actually potential suspects? And has this number increased over time with increasing number of stops? We can also check how much the hit rates vary accross neighborhoods and race groups to identify any potential bias with search.<br></p>
 <p>We defined the problem and we know the set of metrics we need to look out for. Now its time to identify what data do we need to gather for this purpose. Here we have to clearly define what specific variables and data points might be required that can be related with the metrics we’re tracking and can help us in indentifying the patterns we’re in search for. In this case, one primary information that we need for each stop is to know the race of the driver stopped. Apart from this, it will be valuable to have the vehicle type, time and place of the stop made (the more granular the place details, the better we can segment by neighborhoods) and primarily the result of the search. With that it is important to identify where we’re required to collect this data from and how should the data be grouped. Do we need to get data for each individual stop for our analysis or is it sufficient to get aggregated data for a neighborhood to test our hypothesis.<br></p>
 <p>Finally, we need to mark down some important considerations and caveats that can affect are result. going back to what we mentioned in the beginning of this section, this requires contextual knowledge and it’ll be essential to discuss it with someone who knows the problem really well. In this case, we might need to consider if we can use data provided by Chicago Police Department or shall we look into some impartial source. Is it fine to have a survey data with an observer making notes of every stop? Additionally, we might also have to control for factors such as time of day. Is the dispropotion in the stops being made actually because of race or is it because of the time of day that is correlated to a race. For eg. there might be a high number of stops made around 8 pm where the driver is of hispanic origin, this could be because of a particular profession associated with this race that causes a large number of drivers from this race to be driving at that point of time.<br></p>
