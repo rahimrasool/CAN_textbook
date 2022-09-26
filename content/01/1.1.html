@@ -1,0 +1,544 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.1 Defining the problem &#8212; My sample book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.2 Gathering and Collecting Data" href="1.2.html" />
+    <link rel="prev" title="Chapter 1 - Dealing with Data" href="Chapter-1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Introduction.html">
+                    Data Science Course - Social Impact Track
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Chapter-1.html">
+   Chapter 1 - Dealing with Data
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.1 Defining the problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.2.html">
+     1.2 Gathering and Collecting Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/content/01/1.1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontent/01/1.1.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/content/01/1.1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guided-practice">
+   Guided Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1-1-property-tax-project-chicago">
+   Exercise 1.1: Property Tax project Chicago
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brief">
+     Brief
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#references">
+     References
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>1.1 Defining the problem</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guided-practice">
+   Guided Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1-1-property-tax-project-chicago">
+   Exercise 1.1: Property Tax project Chicago
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brief">
+     Brief
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#references">
+     References
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="defining-the-problem">
+<h1>1.1 Defining the problem<a class="headerlink" href="#defining-the-problem" title="Permalink to this headline">#</a></h1>
+<p>Before diving into any analysis work, it is really important to realize the value of defining and understanding the context of the problem. There’s tonnes of data being collected every moment we speak, in various forms. The influx of data is so high that we generated 79 zettabytes (That’s 79 followed by 21 zeros!) of data worldwide in 2021 as storage got cheaper and efficient. However, collecting, storing and assembling a team of data experts comes at a cost and therefore, it is important to realize what data needs to be collected in context of th organizational need and adherence to privacy laws.</p>
+<p>Note, that the purpose here is not to collect data for the sake of being a data savvy enterprise, but it is important to ensure that the collected data adds value to the organizations goals. Similarly, applying state-of-the-art learning algorithms only bear fruit if it creates an actionable outcome for the organization. However, it is also important to understand the pitfalls of incorrect interpretation due to bias and corruption in data.</p>
+<p>Data science project failure can often be attributed to poor problem definition, but early intervention can prevent it. An MIT Sloan study suggests that too often, teams skip right to analyzing the data before agreeing on the problem to be solved. This lack of initial understanding guarantees that many projects are doomed to fail from the very beginning. (REF: <span class="xref myst">MIT Sloan Review</span>) Therefore, it is highly essential to work on the problem statement before and then move forward to diving into data. Also, it is important to make sure the metric that your organization is tracking. Is your company seeking to improve customer retention? If so, what do they need to measure? Or if a non-profit project needs to evaluate the impact of their sanitation program on health outcomes, what should it collect and analyze? Certainly, answering these questions before in presence of people with contextual knowledge of the problem is crucial for the success of any data science project.</p>
+<section id="guided-practice">
+<h2>Guided Practice<a class="headerlink" href="#guided-practice" title="Permalink to this headline">#</a></h2>
+<p>We’ll now walk through a real-world project of Traffic Stops in Chicago. The purpose of this guided exercise is to make sure that you understand how can we assess a problem, clearly define it, understand what to measure and track the right metrics.</p>
+<p>The Chicago Police Department (CPD) increased traffic stops by seven folds to around 600 thousand from 2015 through 2019. While the CPD claims that the purpose of traffic stops is to detect crime in the city, especially the West and the South sides, there is skepticism in this. In recent years, jurisdictions around the country have taken steps to address racially disparate and ineffectual traffic stops; meanwhile, Chicago continues its heavy use of traffic stops with no clear traffic safety or public safety benefit.</p>
+<p>This has raised several concerns over the effectiveness of these stops as well as indicated racial profiling. Your job here is to think about what data can be collected and what sort of analysis can be done to either validate or invalidate both the idea that there is existence of racial profiling in the stops and that these increased stops are ineffective.</p>
+<p>Think about how can we define the problem? What data do we need to have and what contextual knowledge do we require. Also address what precise metric do we need to track in order to validate or nullify the objections raised on the CPD.</p>
+<img src="stop.webp" alt="drawing" width="600"/><p>One of the first question that we need to have a clear-cut answer for is, what is the social concern we’re trying to solve? A simple answer that we can come up based on the description provided is that our goal is to identify if police officers are involved in racial profiling. We have to answer if the police is being racist while making a traffic stop. Another goal that the project is trying to solve, apart from promoting racial justice, is to see if these stops are effective and improving public safety? Is the increase in number of stops any way reducing the crime in the city?<br></p>
+<p>The next aspect we need to think about is how can we actually make sure that racial profiling is increasing or the effectiveness of stops is decreasing. For that we’ll select a metric for each case that we’ll track to reach to our hypothesis. If we’re considering to check the existence of racial profiling, we might want to have a look at the ratio of one particular race being stopped to other groups. For example, we can compare the ratio of black drivers stopped to the ratio of white drivers. Are they being stopped propotionately? If the ratios vary significanty, it probably hints to a problem which might need further investigation. Similarly, to account for the effectiveness of stops, we might check something as the hit rate. We will check if the percentage of those stopped were actually potential suspects? And has this number increased over time with increasing number of stops? We can also check how much the hit rates vary accross neighborhoods and race groups to identify any potential bias with search.<br></p>
+<p>We defined the problem and we know the set of metrics we need to look out for. Now its time to identify what data do we need to gather for this purpose. Here we have to clearly define what specific variables and data points might be required that can be related with the metrics we’re tracking and can help us in indentifying the patterns we’re in search for. In this case, one primary information that we need for each stop is to know the race of the driver stopped. Apart from this, it will be valuable to have the vehicle type, time and place of the stop made (the more granular the place details, the better we can segment by neighborhoods) and primarily the result of the search. With that it is important to identify where we’re required to collect this data from and how should the data be grouped. Do we need to get data for each individual stop for our analysis or is it sufficient to get aggregated data for a neighborhood to test our hypothesis.<br></p>
+<p>Finally, we need to mark down some important considerations and caveats that can affect are result. going back to what we mentioned in the beginning of this section, this requires contextual knowledge and it’ll be essential to discuss it with someone who knows the problem really well. In this case, we might need to consider if we can use data provided by Chicago Police Department or shall we look into some impartial source. Is it fine to have a survey data with an observer making notes of every stop? Additionally, we might also have to control for factors such as time of day. Is the dispropotion in the stops being made actually because of race or is it because of the time of day that is correlated to a race. For eg. there might be a high number of stops made around 8 pm where the driver is of hispanic origin, this could be because of a particular profession associated with this race that causes a large number of drivers from this race to be driving at that point of time.<br></p>
+</section>
+<section id="exercise-1-1-property-tax-project-chicago">
+<h2>Exercise 1.1: Property Tax project Chicago<a class="headerlink" href="#exercise-1-1-property-tax-project-chicago" title="Permalink to this headline">#</a></h2>
+<p>Let’s apply the principles we learnt regarding data science problem definition to Property Tax Fairness project</p>
+<section id="brief">
+<h3>Brief<a class="headerlink" href="#brief" title="Permalink to this headline">#</a></h3>
+<p>Property taxes represent the single largest source of own-source revenue for America’s local governments. Cities, counties, school districts, and special districts raise roughly $500 billion per year in property taxes, roughly 70 percent of local taxes. Whether residents rent or own, property taxes impact everyone.</p>
+<p>In many cities, however, property taxes are also inequitable: low-value properties face higher tax assessments, relative to their actual market values, than do high-value properties. This tax regressivity disproportionately burdens lower-income residents. The relationship between assessments and sale prices is regressive if less valuable homes are assessed at higher rates (relative to the value of the home) than more valuable homes.</p>
+<p>The plot below shows the share of properties in each decile that were overassessed or underassessed, relative to the median rate of assessment. That is, a property is classified as overassessed if its sales ratio is above the median sales ratio for the jurisdiction, and classified as underassessed if its sales ratio is below the median. If errors were made randomly, each decile would have 50% of properties overassessed and 50% underassessed. When lower value homes are more likely to be overassessed than higher value homes, it is evidence of regressivity. In Cook County, Illinois, 70% of the lowest value homes are overassessed and 29% of the highest value homes are overassessed.</p>
+<p><img alt="" src="../../_images/2.2.png" /></p>
+<p><strong>What’s the social concern here that we’re trying to solve?</strong></p>
+<ul class="simple">
+<li><p>Unfair assessments of property</p></li>
+<li><p>Discrimination resulting in widening of wealth inequality</p></li>
+<li><p>Targeting neighborhoods with minority populations primariy resulting into evictions and homelessness</p></li>
+</ul>
+<p><strong>What’s the impact/metric we’re using to measure this?</strong></p>
+<p>In short: Trying to measure the difference between Sale price (Market value) and assessed value of a property by the assessors office.</p>
+<p>The standard approach for evaluating the quality and fairness of assessments is through a sales ratio study (International Association of Assessing Officers 2013). A property’s sales ratio is defined as the assessed value divided by the sale price. A sales ratio study evaluates the extent of regressivity in a jurisdiction, along with other aspects of assessment performance, by studying sales ratios for properties that sold within a specific time period. A system in which less expensive homes are systematically assessed at higher sales ratios than more expensive homes is regressive.</p>
+<p><strong>Can data help us to solve this problem? And how?</strong></p>
+<ul class="simple">
+<li><p>Collect data for sales value of a house in an assessment year and the corresponding assessment value.</p></li>
+<li><p>If there’s no sale price, use previous years sale or features of the house to estimate the market value.</p></li>
+<li><p>Compare the assessed value with the original or the estimated sales value</p></li>
+</ul>
+<p><strong>What do we need to consider while collecting this data?</strong></p>
+<ul class="simple">
+<li><p>Verify if a sale price is legitimate (not gift or mortgage payment)</p></li>
+<li><p>Make sure its an “Arm’s length” sale</p></li>
+<li><p>Controls for factors such as new developments and neighborhood median price</p></li>
+</ul>
+</section>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h3>
+<p>ref: <a class="reference external" href="https://sloanreview.mit.edu/article/framing-data-science-problems-the-right-way-from-the-start/">https://sloanreview.mit.edu/article/framing-data-science-problems-the-right-way-from-the-start/</a> <br>
+<a class="reference external" href="https://online.datasciencedojo.com/blogs/covid19-dunning-kruger-effect/">https://online.datasciencedojo.com/blogs/covid19-dunning-kruger-effect/</a></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Chapter-1.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chapter 1 - Dealing with Data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="1.2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">1.2 Gathering and Collecting Data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
