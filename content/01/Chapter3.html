@@ -1,0 +1,938 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 3: Cleaning Data &#8212; My sample book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chapter 4: Finding Hidden Insights" href="Chapter4.html" />
+    <link rel="prev" title="Chapter 2: Gathering and Collecting Data" href="Chapter2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Introduction.html">
+                    Data Science Course - Social Impact Track
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Chapter-1.html">
+   Section 1: - Dealing with Data
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter1.html">
+     Chapter 1: Defining the problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter2.html">
+     Chapter 2: Gathering and Collecting Data
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Chapter 3: Cleaning Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter4.html">
+     Chapter 4: Finding Hidden Insights
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/content/01/Chapter3.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontent/01/Chapter3.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/content/01/Chapter3.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guided-practice">
+   Guided Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Chapter 3: Cleaning Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guided-practice">
+   Guided Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-cleaning-data">
+<h1>Chapter 3: Cleaning Data<a class="headerlink" href="#chapter-3-cleaning-data" title="Permalink to this headline">#</a></h1>
+<p>We will carry on the discussion regarding the significance of clean data since this is a crucial component of the data analysis pipeline. <a class="reference external" href="https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/?sh=5f5082a26f63">Data scientists spend 60% of their time on cleaning and organizing data.</a>. While this may seem to be the least enjoyable component of this pipeline, it also the most crucial and has the utmost impact on the results. Moreover, data cleaning skills are highly valued and again requires knowledge of the context as do most of the components of this data life cycle need.</p>
+<p>Errors in data can occur in several ways and it is important to identify and differentiate between each type of error. Firstly, one of the major problems in data can be <strong>missing data</strong>. This can result from some system error resulting in deletion of some data cells or a candidate missing out some fields in a survey the candidate was required to fill. In such cases, it is important to be mindful of what resulted in that data getting missed. It could either be systematic where some data types couldn’t be stored as a result of some logic for eg. a field requiring data and time didn’t take entries that were in the wrong format. Another reason for missing data can also be the type of question asked might impact one’s privacy and could restrict people from filling out that field for eg. a survey requiring household income has missing data in a few records as candidates didn’t want to submit income details to prevent any tax scrutiny.</p>
+<p>After identifying and categorizing what caused the data to be missing, it is important to know how to deal with it. The immediate naive approach taken is to remove the rows containing missing values or to remove an entire column if it contains several missing cells. Similarly, missing values can be imputed with statistical average of other available values in the column or imputed using a more sophisticated algorithm. However, which approach to use depends entirely on the context of the problem. It may not be a good idea to remove rows or columns since they may contain some valueable insights that we’ll miss and also reduce the statistical power of our analysis due to reduction in the data size. Therefore, as mentioned above, it is important to categorize the reason behind what led to the missing values. It might be that the missing values themselves indicate a pattern that needs to be picked up by the analyst. Similarly, it may not always be a good idea to impute those missing values with an average or algorithm-generated values. This might result into certain bias and affect the integrity of the data as we are artificially inflating certain values and assuming them rather than filling them in with real observations.</p>
+<p>Secondly, <strong>outliers</strong> in data can be a significant concern in the data cleaning process. Outliers are data points that are abnormally off from other values in a column. For eg. a Year of Birth column might have values before 1800 in a survey of current residents or the income of a couple of households in a zip code can be a few billions, way above the median income of the households in that zip code. It is common to have this and can be caused by an error or could reflect an actual observation. In either case, it is important to identify what caused this outlier and how to deal with it. Their presence can bias the results and lead to erroneous results. For eg. a new business trying to identify opportunites for nearby residents might want to consider the mean age of residents, hoewever, due to erroroneous input in the records with a few residents getting a Year of Birth before 1800s can inflate the mean estimate giving a wrong sense of average to the business owners.</p>
+<p><img alt="" src="https://datascience.foundation/img/pdf_images/knowing_all_about_outliers_in_machine_learning_sample_points_in_green_are_near_to_each_other.jpg" /></p>
+<p>Outliers can be dealt with by either removing those values from the dataset or by using models that are immune to any outliers. Some of the baseline models to minimize the impact of outliers could be to use median instead of mean or use density based algorithms rather than ones based on distance when making predictions (to be discussed later). However, it is still important to understand the context as these outliers can again offer some significant insights. For eg. an outlying purchase value of a credit card transaction might hint a fraudulent activity and in such a case that outlier must be highlighted and reviewed. Similalry, outliers in heart-rate metrics from a wearable device can indicate an anomaly that requires immediate medical attention.</p>
+<p>Other forms of errors in data that are a critical part of the cleaning process include misspelled and incorrectly measured data. For eg. In a survey of residents filling out their city of origin name, many residents can spell the same city in multiple ways. A data analytics software would most probably consider them different cities. In another data collection process of oxygen level data, the data of a few subjects was misreported as they wore the tracking device on their non-dominant hand. Errors like these are hard to solve but essential to be dealt with and can take most of the data scientist’s time. There is a surge of tools and packages that may help in dealing with them, for eg. some matching algorithms can assist with matching cells with similar spellings and combine them to one category.</p>
+<p>Another important category that is part of untidy data is irregular units and scale. It might the case that you users for a health equity venture are submitting their body mass in two different units and your system doesn’t know that. Similarly, modeling data can be hard if your data is not in a linear scale i.e. your data has a pattern that is difficult to capture with a stright formula. One such example can be having a non-linear data of user time for your app. This might make it difficult to decide which features you want to release to improve the experience of your users. Some techniques such as feature scaling can be used (again with caution!) to convert the data in a column to a linear trend.</p>
+<section id="guided-practice">
+<h2>Guided Practice<a class="headerlink" href="#guided-practice" title="Permalink to this headline">#</a></h2>
+<p>In this practice, we’ll continue with the traffic stops data that we worked on in the last chapter and continue with performing data cleaning and manipulation operations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import data</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># Note: we can import packages and alias them</span>
+
+<span class="n">stops_sliced</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;stops_data_sliced.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ignore these lines</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_columns</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># ignore these lines</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">pandas</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_columns</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">pandas</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="ne">NameError</span>: name &#39;pandas&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s check the data types again</span>
+<span class="n">stops_sliced</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unnamed: 0       int64
+DATESTOP        object
+TIMESTOP        object
+DURATION         int64
+CITY_I          object
+STATE           object
+DRRACE         float64
+RESSTOP          int64
+TYPEMOV        float64
+BEAT_I           int64
+VEHSRCHCOND      int64
+VEHCONTRA        int64
+VEHDRUGS         int64
+VEHWEAP          int64
+VEHSTOLPROP      int64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>The read process above added an extra column to the dataset labelled ‘0’. We can drop it using the drop() method</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_sliced</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Note: By setting inplace=True, the method applies on the dataframe</span>
+<span class="c1"># We don&#39;t need to create a copy and assign to a new variable</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can notice above, both DATESTOP and TIMESTOP are interpreted as object data types. Objects in pandas are a mix of text and numbers and treated differently by various models and packages. Therefore, it is useful to convert these temporal features to data types them recorgnizes them. We will see how this benefits us ahead. Pandas has a datetime object and a function to convert an entire Series to datetime format. This will enable us to perform a set of operations that are available for pandas datetime objects. We will use the <a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">strftime</a> to parse date and time by providng the format as an argument to the function.</p>
+<p>We are also interested in analyzing the data for first 3 months only, therefore, following the conversion step, we’ll filter dates only between 1st Jan and 31st March of the year.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check current Data and time formats</span>
+<span class="n">stops_sliced</span><span class="p">[[</span><span class="s1">&#39;DATESTOP&#39;</span><span class="p">,</span><span class="s1">&#39;TIMESTOP&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATESTOP</th>
+      <th>TIMESTOP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>377896</th>
+      <td>12/31/21</td>
+      <td>20:31</td>
+    </tr>
+    <tr>
+      <th>377897</th>
+      <td>12/31/21</td>
+      <td>21:33</td>
+    </tr>
+    <tr>
+      <th>377898</th>
+      <td>12/31/21</td>
+      <td>21:20</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert Data and time stamps using strftime format</span>
+<span class="n">stops_sliced</span><span class="p">[</span><span class="s1">&#39;DATESTOP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stops_sliced</span><span class="p">[</span><span class="s1">&#39;DATESTOP&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%m/</span><span class="si">%d</span><span class="s1">/%y&#39;</span><span class="p">)</span>
+<span class="n">stops_sliced</span><span class="p">[</span><span class="s1">&#39;DATESTOP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>377897   2021-12-31
+377898   2021-12-31
+Name: DATESTOP, dtype: datetime64[ns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter date</span>
+<span class="n">stops_filtered</span> <span class="o">=</span> <span class="n">stops_sliced</span><span class="p">[</span><span class="n">stops_sliced</span><span class="p">[</span><span class="s1">&#39;DATESTOP&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="s1">&#39;2021-04-01&#39;</span><span class="p">]</span>
+<span class="n">stops_filtered</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATESTOP</th>
+      <th>TIMESTOP</th>
+      <th>DURATION</th>
+      <th>CITY_I</th>
+      <th>STATE</th>
+      <th>DRRACE</th>
+      <th>RESSTOP</th>
+      <th>TYPEMOV</th>
+      <th>BEAT_I</th>
+      <th>VEHSRCHCOND</th>
+      <th>VEHCONTRA</th>
+      <th>VEHDRUGS</th>
+      <th>VEHWEAP</th>
+      <th>VEHSTOLPROP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>349193</th>
+      <td>2021-03-31</td>
+      <td>21:16</td>
+      <td>3</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>726</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>349194</th>
+      <td>2021-03-31</td>
+      <td>21:40</td>
+      <td>5</td>
+      <td>SAUKE VILLAGE</td>
+      <td>IL</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>2.0</td>
+      <td>231</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>349195</th>
+      <td>2021-03-31</td>
+      <td>21:04</td>
+      <td>6</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>6.0</td>
+      <td>1132</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>349196</th>
+      <td>2021-03-31</td>
+      <td>22:16</td>
+      <td>3</td>
+      <td>NORRIDGE</td>
+      <td>IL</td>
+      <td>1.0</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>1712</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>349197</th>
+      <td>2021-03-31</td>
+      <td>23:16</td>
+      <td>3</td>
+      <td>NAPERVILLE</td>
+      <td>IL</td>
+      <td>5.0</td>
+      <td>3</td>
+      <td>4.0</td>
+      <td>1934</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As you can see above, we have filtered the dataframe and created a copy which only includes data before 1st April 2021. We now just have 3 months of data.</p>
+<p>Is there anything else that you notice from the datatypes that we printed above? If you see the column DRRACE, you can see that it has a float64 data type which is a numeric data type for floating numbers as the name suggests. However, we realize that Race should be a categorical value. Keeping it to float would be infered by some models as a continuous variable and therefore will be treated as such. We will convert DRRACE to categorical data type. We will do this in 2 ways. At first we’ll convert it to simple integer This is referred to as ordinal encoding where each value is mapped to a number. One key benefit of using this format is that it is an optimal way of storing values since mapped numbers will occupy less disk space. However, a caveat here is that some models will take them in an ordinal manner and consider the race mappings to be a numberical ranking. To avoid this, we would usually perform a one-hot encoding (to be discussed in chapter 5). For now, we’ll just convert it to categorical format (this format is not processed by some models).</p>
+<p>Another way to map these values would be to convert to actual string defining the race. This is not the best approach to be taken as this might take a lot of disk space. However, we’ll do this as a demonstration exercise to practice mapping if we need to in some other case.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Race to integers/categories</span>
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;DRRACE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;DRRACE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;Int64&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;DRRACE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="c1"># Notice what the unique method does</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4, 2, 5, 3, 1, 6, NaN]
+Categories (6, Int64): [1, 2, 3, 4, 5, 6]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapping race (Refer to the dictionary to get the mapping)</span>
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;DRRACE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;DRRACE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;White&#39;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;Black or African American&#39;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;American Indian ot Alaska Native&#39;</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;Hispanic or Latino&#39;</span><span class="p">,</span>
+    <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;Asian&#39;</span><span class="p">,</span>
+    <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;Native Hawaiian or Other Pacific Islander&#39;</span>
+<span class="p">})</span>
+
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;DRRACE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Hispanic or Latino&#39;, &#39;Black or African American&#39;, &#39;Asian&#39;, &#39;American Indian ot Alaska Native&#39;, &#39;White&#39;, &#39;Native Hawaiian or Other Pacific Islander&#39;, NaN]
+Categories (6, object): [&#39;White&#39;, &#39;Black or African American&#39;, &#39;American Indian ot Alaska Native&#39;, &#39;Hispanic or Latino&#39;, &#39;Asian&#39;, &#39;Native Hawaiian or Other Pacific Islander&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another important component of the data cleaning process is dealing with missing values. We will check all the coluns to see the collective missing values they contain and think of ways to deal with such values. We can use pandas isna() function which returns True for every missing vaue in the dataframe. Following it with a sum() method enables us to get the count for each column as shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_filtered</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATESTOP           0
+TIMESTOP           0
+DURATION           0
+CITY_I             0
+STATE              0
+DRRACE             4
+RESSTOP            0
+TYPEMOV        80196
+BEAT_I             0
+VEHSRCHCOND        0
+VEHCONTRA          0
+VEHDRUGS           0
+VEHWEAP            0
+VEHSTOLPROP        0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The TYPEMOV column, which indicates the type of moving violation, has around 80K missing values, nearly 70% of the values are missing. We cannot remove all the 80K rows or impute them with an average. Another wy could be to remove the entire column by knowing the type of moving violation is a key variable that we cannot miss from our data. The data Dictionary tells us that TYPEMOV would be un applicable for those who weren’t involved in any moving violation. This is another insight that we can get from these missing values that only 30% people were invovlved in violation. We can create a new indicator variable to mark this. We will perform this step ahead.</p>
+<p>But now, we’ll move ahead and check for outliers in our data for continuous variables such as DURATION. The best way to check for outliers is to visualize. We will cover visualization properly in the next chapter. However, for now, just see what results do the density and boxplots produce.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">stops_filtered</span><span class="p">[</span><span class="s2">&quot;DURATION&quot;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7facb204fc10&gt;
+</pre></div>
+</div>
+<img alt="../../_images/Chapter3_18_1.png" src="../../_images/Chapter3_18_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_filtered</span><span class="p">[</span><span class="s2">&quot;DURATION&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    116841.000000
+mean          7.791640
+std          25.903847
+min           0.000000
+25%           3.000000
+50%           4.000000
+75%           6.000000
+max         719.000000
+Name: DURATION, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The plot above and the summary stats show us that most of the values are centered around 4 minutes with a few values going way beyond this number. the highest number we can see is around 12 hours! Depending on the situation these values might not be an error and could indicated something important about the stop made. However, while modeling, such a distribution could skew our results. You can notice the large difference between the mean and the median (50% quartile) which show the extent of the skewness.</p>
+<p>We can view the distribution of again but this time we’ll set the bounds to only 2 standard deviations beyond the median (don’t worry if you don’t know the term). In other words, we’ll plot a graph without the extreme values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">duration_sd</span> <span class="o">=</span> <span class="n">stops_filtered</span><span class="p">[</span><span class="s2">&quot;DURATION&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">duration_median</span> <span class="o">=</span> <span class="n">stops_filtered</span><span class="p">[</span><span class="s2">&quot;DURATION&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_duration_2SD</span> <span class="o">=</span> <span class="n">stops_filtered</span><span class="p">[</span><span class="s2">&quot;DURATION&quot;</span><span class="p">][</span><span class="n">stops_filtered</span><span class="p">[</span><span class="s2">&quot;DURATION&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">duration_median</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">duration_sd</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">stops_duration_2SD</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fac33399220&gt;
+</pre></div>
+</div>
+<img alt="../../_images/Chapter3_23_1.png" src="../../_images/Chapter3_23_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_filtered</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;stops_filtered.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<p>In this exercise you are required to complete the remaining steps of the data cleaning process by following the prompts provided below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert to TIMESTOP to datetime stamp</span>
+<span class="c1"># Hint: have a look at pandas datetime dt.time </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check all the unique cities in the datafram</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter out any other city apart from Chicago</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert TYPEMOV to Category</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove rows with missing value in DRRACE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Chapter2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chapter 2: Gathering and Collecting Data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Chapter4.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 4: Finding Hidden Insights</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

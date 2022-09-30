@@ -1,0 +1,2179 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 2: Gathering and Collecting Data &#8212; My sample book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chapter 3: Cleaning Data" href="Chapter3.html" />
+    <link rel="prev" title="Chapter 1: Defining the problem" href="Chapter1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Introduction.html">
+                    Data Science Course - Social Impact Track
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Chapter-1.html">
+   Section 1: - Dealing with Data
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter1.html">
+     Chapter 1: Defining the problem
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Chapter 2: Gathering and Collecting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter3.html">
+     Chapter 3: Cleaning Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter4.html">
+     Chapter 4: Finding Hidden Insights
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/content/01/Chapter2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontent/01/Chapter2.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/content/01/Chapter2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guided-practice">
+   Guided Practice
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#working-with-traffic-stops-data">
+     Working with traffic stops data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1-2">
+   Exercise 1.2
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Chapter 2: Gathering and Collecting Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guided-practice">
+   Guided Practice
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#working-with-traffic-stops-data">
+     Working with traffic stops data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1-2">
+   Exercise 1.2
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-gathering-and-collecting-data">
+<h1>Chapter 2: Gathering and Collecting Data<a class="headerlink" href="#chapter-2-gathering-and-collecting-data" title="Permalink to this headline">#</a></h1>
+<p>Data collection and gathering is a key component of the data science pipeline. Based on the principle of garbage-in garbage-out, this step might probably have the most relevance out of all. Data collection can be done in various ways ranging from a social non-profit conducting a survey in the neighborhood by interveiwing people of a specific income group, a cellular network like Verizon taking in real-time call logs from its millions of users or an online retailer tracking their customer’s demographics and purchases to have better targeted ads. Data, therefore, can be collected with varying volumes, flow and variety.</p>
+<p>A critical element in this step is to decide what data to collect and with what flow and granurality. Is it fine to get real-time aggregate data and process it immediately for taking time-sensitive decision or can we store all the incoming data for every single user in a large data dump and process it at our convenience. Decisions like these have an impact on the results we get and this brings us back to the importance of contextual knowledge regarding the business.</p>
+<p>For the purpose of making data-driven decisions and predictions critical for our organization, attaining a large volume of data covering large variety can have the variation that may help us build better learning models (to be covered up in the next section) and hence make better predictions. If you’ve ever heard of the term ‘Data beats Algorithm’ you might soon realize that effective predictions and analysis is not a function of how good the engineering or the learning model is, but is more a function of the quantity, quality and variety of data. There are huge profit making firms with the primary business of offering clean and labeled data. <a class="reference external" href="http://Scale.ai">Scale.ai</a> is one such venture that offers clean and labelled vision data that companies can use for computer vision. You might pay a lot to attain that data but it results in effective models for data science.</p>
+<p><strong>Traffic Stops Data</strong></p>
+<p>Going back to the Traffic stops case study that we worked on the previous sub-section, we are now going to discuss and evaluate the set of data sources that were collected for this study. We are going to discuss the merits and caveats of each approach and talk about how the integrity of the data can be maintained. Additionally, it will be useful to think about the ideal data set that we might require. We will also circle back on the discussion we previously had about the features and variables we might need for this study.</p>
+<p>[Needs an Update with responses to the prompts in the paragraph above]</p>
+<section id="guided-practice">
+<h2>Guided Practice<a class="headerlink" href="#guided-practice" title="Permalink to this headline">#</a></h2>
+<p>For this capstone, we are going to learn and use Pandas, an open-source Python library that has a great set of data structures and data analysis tools. In this entire book, we are primarily going to use Data Frames, a Pandas object, as the primary data structure to store and manipulate the datasets that are going to be used for this capstone. DataFrames are a 2 dimensional data structure with rows and columns, similar to a spreadsheet or a SQL table. Pandas provide all the functionality and methods to deal with data in the DataFrame.</p>
+<p>We will also work on Series, which is a one-dimensional data structure or a single labeled column. A DataFrame can be made of multiple series combined. Understanding the between Series and DataFrame difference can assist in knowing what methods work for a Series and what work for a DataFrame when refering to the documentation.</p>
+<p>We will now go ahead an import the Pandas library to the local python environment by simply using the <strong>import</strong> method used below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ignore these lines</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_columns</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following figures can give you a visual representation of a pandas DataFrame and Series. A series and every column in a DataFrame are labeled. Both Series and DataFrame also have an index that identifies each row. We will go through the following set of exercises on creating DataFrames and Series in order to understand the structure well.</p>
+<p><img alt="" src="https://pandas.pydata.org/docs/_images/01_table_dataframe.svg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create pandas dataframe using a 1D array in each column</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;q1&#39;</span><span class="p">:[</span><span class="mi">450</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">310</span><span class="p">],</span>
+    <span class="s1">&#39;q2&#39;</span><span class="p">:[</span><span class="mi">410</span><span class="p">,</span> <span class="mi">540</span><span class="p">,</span> <span class="mi">650</span><span class="p">],</span>
+    <span class="s1">&#39;q3&#39;</span><span class="p">:[</span><span class="mi">730</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span>
+    <span class="s1">&#39;q4&#39;</span><span class="p">:[</span><span class="mi">110</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">85</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>q1</th>
+      <th>q2</th>
+      <th>q3</th>
+      <th>q4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>450</td>
+      <td>410</td>
+      <td>730</td>
+      <td>110</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>200</td>
+      <td>540</td>
+      <td>800</td>
+      <td>350</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>310</td>
+      <td>650</td>
+      <td>90</td>
+      <td>85</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can also give a different label to each index of the dataframe</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">]</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>q1</th>
+      <th>q2</th>
+      <th>q3</th>
+      <th>q4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>450</td>
+      <td>410</td>
+      <td>730</td>
+      <td>110</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>200</td>
+      <td>540</td>
+      <td>800</td>
+      <td>350</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>310</td>
+      <td>650</td>
+      <td>90</td>
+      <td>85</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a pandas series object using a 1D array</span>
+<span class="n">ser</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">510</span><span class="p">,</span> <span class="mi">820</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">])</span>
+
+<span class="n">ser</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2018    510
+2019    820
+2020     90
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are several ways to create a Dataframe and a Series object. We will additionally try a few of them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create dataframe from multiple series</span>
+
+<span class="n">df_2</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;q1&#39;</span><span class="p">:</span><span class="n">ser</span><span class="p">,</span>
+    <span class="s1">&#39;q2&#39;</span><span class="p">:</span><span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">110</span><span class="p">,</span><span class="mi">450</span><span class="p">,</span><span class="mi">300</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">]),</span>
+    <span class="s1">&#39;q3&#39;</span><span class="p">:</span><span class="n">ser</span><span class="p">,</span>
+    <span class="s1">&#39;q4&#39;</span><span class="p">:</span><span class="n">ser</span><span class="o">*</span><span class="mi">2</span>
+<span class="p">})</span>
+
+<span class="n">df_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>q1</th>
+      <th>q2</th>
+      <th>q3</th>
+      <th>q4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>510</td>
+      <td>110</td>
+      <td>510</td>
+      <td>1020</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>820</td>
+      <td>450</td>
+      <td>820</td>
+      <td>1640</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>90</td>
+      <td>300</td>
+      <td>90</td>
+      <td>180</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As you can see above, we were also able to use arithmetic operations on each series and apply it to every element of the series.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create dataframe from a dictionary</span>
+
+<span class="n">dictionary</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;q1&#39;</span><span class="p">:[</span><span class="mi">190</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">440</span><span class="p">],</span>
+    <span class="s1">&#39;q2&#39;</span><span class="p">:[</span><span class="mi">390</span><span class="p">,</span> <span class="mi">430</span><span class="p">,</span> <span class="mi">230</span><span class="p">],</span>
+    <span class="s1">&#39;q3&#39;</span><span class="p">:[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span>
+    <span class="s1">&#39;q4&#39;</span><span class="p">:[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">440</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">]</span>
+
+<span class="n">df_3</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">years</span><span class="p">)</span>
+
+
+<span class="n">df_3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>q1</th>
+      <th>q2</th>
+      <th>q3</th>
+      <th>q4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>190</td>
+      <td>390</td>
+      <td>400</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>35</td>
+      <td>430</td>
+      <td>250</td>
+      <td>350</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>440</td>
+      <td>230</td>
+      <td>70</td>
+      <td>440</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In the methods below, we will see how to subset pandas DataFrames.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selecting a single column</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;q2&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2018    410
+2019    540
+2020    650
+Name: q2, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selecting a set of columns</span>
+<span class="n">df</span><span class="p">[[</span><span class="s1">&#39;q2&#39;</span><span class="p">,</span><span class="s1">&#39;q3&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Why double brackets?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>q2</th>
+      <th>q3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>410</td>
+      <td>730</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>540</td>
+      <td>800</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>650</td>
+      <td>90</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>It is important to consider the data type of each column since this can have a major impact on our analysis and can optimize the way we store and process data in a dataframe. By running the cell below, you’ll find that all columns have int64 data type, which refers to a 64 bit integer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View data type of each column</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>q1    int64
+q2    int64
+q3    int64
+q4    int64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also check the labels for each column and index by calling the methods of the dataframe index and columns respectively as shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View index</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Int64Index([2018, 2019, 2020], dtype=&#39;int64&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You can also change the index values</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2014&#39;</span><span class="p">,</span> <span class="s1">&#39;2015&#39;</span><span class="p">,</span><span class="s1">&#39;2016&#39;</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>q1</th>
+      <th>q2</th>
+      <th>q3</th>
+      <th>q4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014</th>
+      <td>450</td>
+      <td>410</td>
+      <td>730</td>
+      <td>110</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>200</td>
+      <td>540</td>
+      <td>800</td>
+      <td>350</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>310</td>
+      <td>650</td>
+      <td>90</td>
+      <td>85</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View column labels</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+<span class="c1"># These can be changed too</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;q1&#39;, &#39;q2&#39;, &#39;q3&#39;, &#39;q4&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="working-with-traffic-stops-data">
+<h3>Working with traffic stops data<a class="headerlink" href="#working-with-traffic-stops-data" title="Permalink to this headline">#</a></h3>
+<p>We’ll move this guided practice by working on the traffic stops data for the City of Chicago collected from Illinois Department of Transportation (IDOT). By now, you might be familiar with the methods and functions that we are going to use below to fetch and view the dataset. We’ll introduce a few more.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;idot/IDOT_2021.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shapes gives you the dimensions of the dataframe</span>
+<span class="n">stops</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="c1"># How many rows and columns do we have?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(377899, 55)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Its a huge dataset! The head method enables you to view the first set of rows specified in the brackets</span>
+<span class="n">stops</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATESTOP</th>
+      <th>TIMESTOP</th>
+      <th>DURATION</th>
+      <th>OFFNAME</th>
+      <th>OFFBDGE</th>
+      <th>CITY_I</th>
+      <th>STATE</th>
+      <th>VEHMAKE</th>
+      <th>VEHYEAR</th>
+      <th>YRBIRTH</th>
+      <th>DRSEX</th>
+      <th>DRRACE</th>
+      <th>REASSTOP</th>
+      <th>TYPEMOV</th>
+      <th>RESSTOP</th>
+      <th>BEAT_I</th>
+      <th>VEHCONSREQ</th>
+      <th>VEHCONSGIV</th>
+      <th>VEHSRCHCOND</th>
+      <th>VEHSRCHCONDBY</th>
+      <th>VEHCONTRA</th>
+      <th>VEHDRUGS</th>
+      <th>VEHPARA</th>
+      <th>VEHALC</th>
+      <th>VEHWEAP</th>
+      <th>VEHSTOLPROP</th>
+      <th>VEHOTHER</th>
+      <th>VEHDRAMT</th>
+      <th>DRCONSREQ</th>
+      <th>DRCONSGIV</th>
+      <th>DRVSRCHCOND</th>
+      <th>DRVSRCHCONDBY</th>
+      <th>PASSCONSREQ</th>
+      <th>PASSCONSGIV</th>
+      <th>PASSSRCHCOND</th>
+      <th>PASSSRCHCONDBY</th>
+      <th>PASSDRVCONTRA</th>
+      <th>PASSDRVDRUGS</th>
+      <th>PASSDRVPARA</th>
+      <th>PASSDRVALC</th>
+      <th>PASSDRVWEAP</th>
+      <th>PASSDRVSTOLPROP</th>
+      <th>PASSDRVOTHER</th>
+      <th>PASSDRVDRAMT</th>
+      <th>DOGPERFSNIFF</th>
+      <th>DOGALERT</th>
+      <th>DOGALERTSRCH</th>
+      <th>DOGALERTSRCHCONTRA</th>
+      <th>DOGDRUG</th>
+      <th>DOGPARA</th>
+      <th>DOGALC</th>
+      <th>DOGWEAP</th>
+      <th>DOGSTOLPROP</th>
+      <th>DOGOTHER</th>
+      <th>DOGDRAMT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1/1/21</td>
+      <td>0:33</td>
+      <td>5</td>
+      <td>FIDEL LEGORRETA</td>
+      <td>5902.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>CHEVROLET</td>
+      <td>2017.0</td>
+      <td>1993</td>
+      <td>1</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1234</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1/1/21</td>
+      <td>1:50</td>
+      <td>4</td>
+      <td>VICTOR PEREZ</td>
+      <td>7383.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>FORD</td>
+      <td>2012.0</td>
+      <td>1957</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1122</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1/1/21</td>
+      <td>8:50</td>
+      <td>4</td>
+      <td>STEPHANIE ORTIGARA</td>
+      <td>18302.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>FORD</td>
+      <td>2007.0</td>
+      <td>1967</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>332</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tail let&#39;s you view the specified number of rows at the end. Default for both methods is 5</span>
+<span class="n">stops</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATESTOP</th>
+      <th>TIMESTOP</th>
+      <th>DURATION</th>
+      <th>OFFNAME</th>
+      <th>OFFBDGE</th>
+      <th>CITY_I</th>
+      <th>STATE</th>
+      <th>VEHMAKE</th>
+      <th>VEHYEAR</th>
+      <th>YRBIRTH</th>
+      <th>DRSEX</th>
+      <th>DRRACE</th>
+      <th>REASSTOP</th>
+      <th>TYPEMOV</th>
+      <th>RESSTOP</th>
+      <th>BEAT_I</th>
+      <th>VEHCONSREQ</th>
+      <th>VEHCONSGIV</th>
+      <th>VEHSRCHCOND</th>
+      <th>VEHSRCHCONDBY</th>
+      <th>VEHCONTRA</th>
+      <th>VEHDRUGS</th>
+      <th>VEHPARA</th>
+      <th>VEHALC</th>
+      <th>VEHWEAP</th>
+      <th>VEHSTOLPROP</th>
+      <th>VEHOTHER</th>
+      <th>VEHDRAMT</th>
+      <th>DRCONSREQ</th>
+      <th>DRCONSGIV</th>
+      <th>DRVSRCHCOND</th>
+      <th>DRVSRCHCONDBY</th>
+      <th>PASSCONSREQ</th>
+      <th>PASSCONSGIV</th>
+      <th>PASSSRCHCOND</th>
+      <th>PASSSRCHCONDBY</th>
+      <th>PASSDRVCONTRA</th>
+      <th>PASSDRVDRUGS</th>
+      <th>PASSDRVPARA</th>
+      <th>PASSDRVALC</th>
+      <th>PASSDRVWEAP</th>
+      <th>PASSDRVSTOLPROP</th>
+      <th>PASSDRVOTHER</th>
+      <th>PASSDRVDRAMT</th>
+      <th>DOGPERFSNIFF</th>
+      <th>DOGALERT</th>
+      <th>DOGALERTSRCH</th>
+      <th>DOGALERTSRCHCONTRA</th>
+      <th>DOGDRUG</th>
+      <th>DOGPARA</th>
+      <th>DOGALC</th>
+      <th>DOGWEAP</th>
+      <th>DOGSTOLPROP</th>
+      <th>DOGOTHER</th>
+      <th>DOGDRAMT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>377894</th>
+      <td>12/30/21</td>
+      <td>23:40</td>
+      <td>2</td>
+      <td>MATTHEW DRINNAN</td>
+      <td>13585.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>HYUNDAI</td>
+      <td>2020.0</td>
+      <td>1964</td>
+      <td>2</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>711</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>377895</th>
+      <td>12/31/21</td>
+      <td>20:35</td>
+      <td>5</td>
+      <td>EMMANUEL GARCIA</td>
+      <td>19038.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>NISSAN</td>
+      <td>2007.0</td>
+      <td>1973</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>522</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>377896</th>
+      <td>12/31/21</td>
+      <td>20:31</td>
+      <td>21</td>
+      <td>LUIS NUNEZ</td>
+      <td>18229.0</td>
+      <td>CHICAGO HEIGHTS</td>
+      <td>IL</td>
+      <td>HONDA</td>
+      <td>2007.0</td>
+      <td>1980</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>2232</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>377897</th>
+      <td>12/31/21</td>
+      <td>21:33</td>
+      <td>2</td>
+      <td>GUSTAVO DOMINGUEZ</td>
+      <td>15235.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>KIA</td>
+      <td>2014.0</td>
+      <td>1982</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1113</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>377898</th>
+      <td>12/31/21</td>
+      <td>21:20</td>
+      <td>4</td>
+      <td>FRANK GIANAKAKIS</td>
+      <td>6934.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>TOYOTA</td>
+      <td>2015.0</td>
+      <td>1987</td>
+      <td>1</td>
+      <td>5.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1831</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can select to view just one column</span>
+<span class="n">stops</span><span class="p">[</span><span class="s1">&#39;VEHMAKE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># If you may notice, this returns a Series</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    CHEVROLET
+1         FORD
+2         FORD
+3          BMW
+4       TOYOTA
+Name: VEHMAKE, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Or select a subset of columns</span>
+<span class="n">stops</span><span class="p">[[</span><span class="s1">&#39;VEHMAKE&#39;</span><span class="p">,</span> <span class="s1">&#39;VEHYEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;STATE&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># The interior brackets are for list, and the outside brackets are indexing operator</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>VEHMAKE</th>
+      <th>VEHYEAR</th>
+      <th>STATE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CHEVROLET</td>
+      <td>2017.0</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>FORD</td>
+      <td>2012.0</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>FORD</td>
+      <td>2007.0</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>BMW</td>
+      <td>1998.0</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>TOYOTA</td>
+      <td>2002.0</td>
+      <td>IL</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can use this method to slice the dataframe and only keep the columns we need</span>
+<span class="c1"># We&#39;ll copy it to a new dataframe and call it stops_sliced</span>
+
+<span class="n">stops_sliced</span> <span class="o">=</span> <span class="n">stops</span><span class="p">[[</span><span class="s1">&#39;DATESTOP&#39;</span><span class="p">,</span><span class="s1">&#39;TIMESTOP&#39;</span><span class="p">,</span><span class="s1">&#39;DURATION&#39;</span><span class="p">,</span><span class="s1">&#39;CITY_I&#39;</span><span class="p">,</span> <span class="s1">&#39;STATE&#39;</span><span class="p">,</span> <span class="s1">&#39;DRRACE&#39;</span><span class="p">,</span><span class="s1">&#39;RESSTOP&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;TYPEMOV&#39;</span><span class="p">,</span><span class="s1">&#39;BEAT_I&#39;</span><span class="p">,</span><span class="s1">&#39;VEHSRCHCOND&#39;</span><span class="p">,</span><span class="s1">&#39;VEHCONTRA&#39;</span><span class="p">,</span><span class="s1">&#39;VEHDRUGS&#39;</span><span class="p">,</span><span class="s1">&#39;VEHWEAP&#39;</span><span class="p">,</span><span class="s1">&#39;VEHSTOLPROP&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pandas also offers a range of ways to select or slice a portion of the dataframe. Using a dataframe’s .loc and .iloc methods, we can select cells by label and position, respectively.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selecting by label</span>
+<span class="n">stops</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;OFFNAME&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OFFNAME    MONTY OWENS
+Name: 5, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_sliced</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;CITY_I&#39;</span><span class="p">,</span> <span class="s1">&#39;STATE&#39;</span><span class="p">]]</span>
+<span class="c1"># Notice something peculiar below?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CITY_I</th>
+      <th>STATE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>GLENDALE HEIGHTS</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selecting by position</span>
+<span class="n">stops_sliced</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;8:50&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_sliced</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CITY_I</th>
+      <th>STATE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>GLENDALE HEIGHTS</td>
+      <td>IL</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>CHICAGO</td>
+      <td>IL</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can also use an additional set of pandas operations to get the summary statistics of the dataframe and do a quick analysis of every column we have. The describe() method offers us that power. Additionally we can also get specific stats for a Series or for the entire dataframe using methods like mean() or median().</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># summary stats</span>
+<span class="n">stops_sliced</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DURATION</th>
+      <th>DRRACE</th>
+      <th>RESSTOP</th>
+      <th>TYPEMOV</th>
+      <th>BEAT_I</th>
+      <th>VEHSRCHCOND</th>
+      <th>VEHCONTRA</th>
+      <th>VEHDRUGS</th>
+      <th>VEHWEAP</th>
+      <th>VEHSTOLPROP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>377899.000000</td>
+      <td>377870.000000</td>
+      <td>377899.000000</td>
+      <td>123306.000000</td>
+      <td>377899.000000</td>
+      <td>377899.000000</td>
+      <td>377899.000000</td>
+      <td>377899.000000</td>
+      <td>377899.000000</td>
+      <td>377899.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>7.940148</td>
+      <td>2.421145</td>
+      <td>2.914686</td>
+      <td>4.102006</td>
+      <td>1144.907007</td>
+      <td>1.985427</td>
+      <td>0.024694</td>
+      <td>0.026044</td>
+      <td>0.028415</td>
+      <td>0.029137</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>25.584249</td>
+      <td>1.051478</td>
+      <td>0.404165</td>
+      <td>1.425366</td>
+      <td>644.821167</td>
+      <td>0.119835</td>
+      <td>0.210543</td>
+      <td>0.219792</td>
+      <td>0.235143</td>
+      <td>0.239621</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>111.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>3.000000</td>
+      <td>2.000000</td>
+      <td>3.000000</td>
+      <td>4.000000</td>
+      <td>711.000000</td>
+      <td>2.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>4.000000</td>
+      <td>2.000000</td>
+      <td>3.000000</td>
+      <td>4.000000</td>
+      <td>1112.000000</td>
+      <td>2.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>6.000000</td>
+      <td>4.000000</td>
+      <td>3.000000</td>
+      <td>6.000000</td>
+      <td>1533.000000</td>
+      <td>2.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>719.000000</td>
+      <td>6.000000</td>
+      <td>3.000000</td>
+      <td>6.000000</td>
+      <td>6100.000000</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mean duration</span>
+<span class="n">stops_sliced</span><span class="p">[</span><span class="s1">&#39;DURATION&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c1"># Note: applying mean() to a dataframe will give you mean of every row</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.940148028970704
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is essential to know the data type for each column in our dataframe. Pandas offers the dtypes method to do that. Ensuring that the data types are interpreted correctly can significantly optimize our work and analysis. We’ll touch more on that. Think about the data types interpreted for each row, do you seen any problem here?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_sliced</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATESTOP        object
+TIMESTOP        object
+DURATION         int64
+CITY_I          object
+STATE           object
+DRRACE         float64
+RESSTOP          int64
+TYPEMOV        float64
+BEAT_I           int64
+VEHSRCHCOND      int64
+VEHCONTRA        int64
+VEHDRUGS         int64
+VEHWEAP          int64
+VEHSTOLPROP      int64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save a dataframe as a csv (Can also be converted to other formats)</span>
+<span class="c1"># Format: df.to_csv(filepath)</span>
+<span class="n">stops_sliced</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;stops_data_sliced.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we discussed, gathering relevant meta data will help strenghten our analysis of traffic stops in Chicago. Another important component to measure whether there were disciminatory practices is that we should also know the proportion of each race in the every beat. That way, we can measure police activities targetted towards a race by taking the proportion of population into account as well.</p>
+<p>We will take you through the steps of getting and downloading demographics data of Police beats in Chicago which will enable us to find the proportion of a race targeted.</p>
+</section>
+</section>
+<section id="exercise-1-2">
+<h2>Exercise 1.2<a class="headerlink" href="#exercise-1-2" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Donwload beatrace data from Kaggle</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the data as csv</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check out the shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the first 5 rows</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the data types</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the summary statistics</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Chapter1.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chapter 1: Defining the problem</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Chapter3.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 3: Cleaning Data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
