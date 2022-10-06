@@ -52,6 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Chapter 4: Finding Hidden Insights" href="Chapter4.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -106,7 +107,46 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Section1.html">
+   Section 1: - Dealing with Data
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter1.html">
+     Chapter 1: Defining the problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter2.html">
+     Chapter 2: Gathering and Collecting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter3.html">
+     Chapter 3: Cleaning Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter4.html">
+     Chapter 4: Finding Hidden Insights
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Chapter 5: Wrangling and Feature Engineering
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
     </div>
 </nav></div>
         <div class="bd-sidebar__bottom">
@@ -312,10 +352,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-blue-wrangling-and-feature-engineering-span">
-   <span style="color:blue">
-    Wrangling and Feature Engineering
-   </span>
+  <a class="reference internal nav-link" href="#guided-practice">
+   Guided Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
   </a>
  </li>
 </ul>
@@ -338,10 +381,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-blue-wrangling-and-feature-engineering-span">
-   <span style="color:blue">
-    Wrangling and Feature Engineering
-   </span>
+  <a class="reference internal nav-link" href="#guided-practice">
+   Guided Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
   </a>
  </li>
 </ul>
@@ -356,29 +402,681 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-wrangling-and-feature-engineering">
 <h1>Chapter 5: Wrangling and Feature Engineering<a class="headerlink" href="#chapter-5-wrangling-and-feature-engineering" title="Permalink to this headline">#</a></h1>
-<p>Feature Engineering is that one component of the data science pipeline, that can offer a significant boost to the predictive abilities if the data is being fed to a machine learning algorithm for prediction task. It also strengthens the ability to see meaningful correlation of data points with each other. This may sound confusing for now but you’ll realize how significant and challenging this step is.</p>
-<p>Feature Engineering is the step of manipulating existing featues or creating new ones out of the existing set of features. The raw data that we get, after clean up, has to be prepared in a form that is is ready for statistical analysis and prediction. It also enables understanding the complex relation between features. To illustrate how this creates value, suppose we have a computer-generated alpha-numeric customer ID for every customer who buys from an online store. If you were given record of every customer purchase along with that customer ID field, without any further details, this column would just be a set of strings that won’t make any sense to people interpreting this data or to any algorithm no matter how powerful they are for prediction. But if you later figure out, that the first 5 digits in each customer is the Zipcode of the customer’s browsing address while making a purchase, you can create a new feature of current zipcode and probably start finding patterns of how location affects purchase on the online store.</p>
-<p>The point of going through the example above was to tell is that some columns might contain concealed information that if revealed in form of another feature can provide more predictive capability then just a set of strings that make no sense on its own. Similarly, feature engineering also involves creating combination of features into a new one. In a social impact analysis setting, as we will see in our guided practice ahead, it will make more sense to use hit-rate (created by dividing</p>
-<section id="span-style-color-blue-wrangling-and-feature-engineering-span">
-<h2><span style="color:blue">Wrangling and Feature Engineering</span><a class="headerlink" href="#span-style-color-blue-wrangling-and-feature-engineering-span" title="Permalink to this headline">#</a></h2>
-<p>Emphasis on:</p>
+<p>In this chapter we will cover:</p>
 <ul class="simple">
-<li><p>How data needs to be converted to a form that prepares it for statistical analysis eg. parsing and converting reference numbers into meaningful categories.</p></li>
-<li><p>Similarly, converting timestamp into various temporal features like Is weekend/weekday? Month/year</p></li>
-<li><p>How context specific feature formation is highly significant eg. boolean feature if stop made in intertwilight</p></li>
-<li><p>Categorical/String to Numeric conversion mandatory for R/Python ML functions</p></li>
+<li><p>Define feature engineering</p></li>
+<li><p>Feature extraction</p></li>
+<li><p>Combining multiple variables</p></li>
+<li><p>Temporal and Spatial feature creation</p></li>
+<li><p>Contexualizing feature engineering</p></li>
+<li><p>Numerical encoding</p></li>
 </ul>
-<p>BPI based illustration:</p>
-<ul class="simple">
-<li><p>As mentioned above, conversion to boolean feature if stop made in intertwilight</p></li>
-</ul>
-<p><strong>Exercise:</strong></p>
-<ul class="simple">
-<li><p>Creating intertwilight feature for BPI</p></li>
-<li><p>Learning how to play with date/time and conversion to various temp features</p></li>
-<li><p>(Optional) Use featuretools to see what combinations it creates - Careful about the automation!</p></li>
-</ul>
-<p>Comments: Replace Veil of darkness analysis with something shown in the plots</p>
+<p>Feature Engineering is that one component of the data science pipeline, which can offer a significant boost to the predictive abilities if the data is being fed to a machine learning algorithm for prediction task. It also strengthens the ability to see meaningful correlation of data points with each other. This may sound confusing for now but you’ll realize how significant and challenging this step is.</p>
+<p>Feature Engineering is the step of manipulating existing featues or creating new ones out of the existing set of features. The raw data that we get, after clean up, has to be prepared in a form that is ready for statistical analysis and prediction. It also enables understanding the complex relation between variables. To illustrate how this creates value, suppose we have a computer-generated alpha-numeric customer ID for every customer who buys from an online store. If you were given the record of every customer purchase along with that customer ID field, without any further details, this column would just be a set of strings that won’t make any sense to people interpreting this data or to any algorithm no matter how powerful it is for prediction. But if you later figure out, that the first 5 digits in each customer ID is the Zipcode of the customer’s browsing address while making a purchase, you can create a new feature of current zipcode and probably start finding patterns of how location affects purchase on the online store.</p>
+<p>The point of going through the example above was to tell that some columns might contain concealed information that, if revealed in form of another feature, can provide more predictive capability then just a set of strings that make no sense on its own. Similarly, feature engineering also involves creating combination of features into a new one. In a social impact analysis setting, as we will see in our guided practice ahead, it will make more sense to use hit-rate (created by dividing the sum of searches with contraband found for a race in a beat by the total population of a race in that beat) for analyzing presence of police discrimination than just using the sum of searches with contraband found alone.</p>
+<p><em>The image below shows how featurizing an image can make image segmentation simple</em></p>
+<p><img alt="An image" src="https://www.researchgate.net/profile/Bruno-Artacho/publication/337771814/figure/fig1/AS:832806989074433&#64;1575568067583/Semantic-segmentation-examples-using-WASPnet.ppm" /></p>
+<p>Some more examples of useful feature engineering practices include converting datetime stamps to a set of temporal features such as whether it was a weekend or a feature that indicates if a time is within commuting hours. As you can imagine that sometimes just datetime stamp might not be a good predictive feature but by understanding it with context to certain temporal features, we can get a more clear relation between data points. This also holds for geospatial features where latitude/longitude points can be converted to features like distance from the city center or distance from sea. In such example we are converting raw features to a set that has more relevance to our analysis.</p>
+<p>Additionally, as we have been discussing this throughout, the context of the problem can give us idea about what features we can think about creating from the existing set. One example related to our guiden project comes from a study that wanted to conduct the traffic stop analysis for cars during the intertwilight period (period around sunset). This means creating an indicator variable that searches for that period from the timestamp and set itself to True if it is in the intertwilight period. Therefore, enabling the researchers to contrast between the study for both intertwilight periods and ones beyond these times.</p>
+<p>Another set of feature engineering component is encoding. We already glimpsed through this topic in the previous chapter. Encoding referes to converting values in a column to numeric data type. A prime value of doing this operation is that most analytical tools and machine learning algorithms that would work with your data, perform with numbers (the inherent language that computers understand) and might not even work with strings or objects. As a result, it is useful to encode variables with string categories to numbers. However, another catch with that is that these algorithms could take the numerical encoding to their real values, for eg. a number assigned to model of the car can give the models’ ranking whereas these rankings have no impact on our analysis and can create a meaningless correlation. To deal with such a case, such values can be one-hot encoded, which refers to creating an indicator variable for each category of the column. We will see more examples of this in the guided practice ahead.</p>
+<section id="guided-practice">
+<h2>Guided Practice<a class="headerlink" href="#guided-practice" title="Permalink to this headline">#</a></h2>
+<p>In the following blocks, we are going to practice generation of new features. We will continue with the case study of traffic stops data in Chicago. Also notice that instead of importing a csv file, we will import a pickle object to keep the data types the dataframe had.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># replace csv and import pickle</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">stops_filtered</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;stops_filtered.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first task we are going to perform is to create a new variable called ‘ContraORDrugs’ which sets itself to True if either a contraband item or a weapon is found in the vehicle.</p>
+<p>We will use pandas <code class="docutils literal notranslate"><span class="pre">where</span></code> method which checks for a condition in the first argument and then uses the second argument to assign it to the vaariable in case it is false. The simplified structure therefore is:<br>
+<code class="docutils literal notranslate"><span class="pre">df.where(condition,</span> <span class="pre">B)</span></code>
+<br><code class="docutils literal notranslate"><span class="pre">B</span></code> above is the value if the condition is False</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Combine Contraband and weapon</span>
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;ContraORDrugs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;ContraORDrugs&#39;</span><span class="p">]</span> <span class="o">=</span> \
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;ContraORDrugs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;VEHCONTRA&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;VEHDRUGS&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checking proportion of a stop having either Contraband or Drugs </span>
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;ContraORDrugs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False    116396
+True        445
+Name: ContraORDrugs, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can verify if our function worked correctly by checking in a random sample of rows among all the rows where <strong>ContraORDrugs</strong> is true and compare if either ‘VEHCONTRA’ or ‘VEHDRUGS’ is 1. You don’t need to worry much about the code below. In case you’re curious, see the comments. You can run this cell multiple times to see if it holds true for every randomly generated set of indices.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="c1"># Generating a list of 15 randmonly selected row indices where &#39;ContraORDrugs&#39; is True</span>
+<span class="n">index_lst</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">stops_filtered</span><span class="p">[</span><span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;ContraORDrugs&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="mi">15</span><span class="p">)</span>
+<span class="c1"># Now pulling in all the rows that were selected by the line above and subsetting the dataframe to show 3 columns</span>
+<span class="n">stops_filtered</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index_lst</span><span class="p">][[</span><span class="s1">&#39;ContraORDrugs&#39;</span><span class="p">,</span><span class="s1">&#39;VEHCONTRA&#39;</span><span class="p">,</span><span class="s1">&#39;VEHDRUGS&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ContraORDrugs</th>
+      <th>VEHCONTRA</th>
+      <th>VEHDRUGS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2531</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>109373</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>295814</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>245202</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>244190</th>
+      <td>True</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>245834</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4927</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5095</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>341070</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>287125</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>424</th>
+      <td>True</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>148183</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>495</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>243596</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>292487</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Before moving to the next major task, we will produce a line-plot of the DATESTOP vaiable once again to observe the pattern of stops everyday. What do you notice from the plot below?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">stops_group</span> <span class="o">=</span> <span class="n">stops_filtered</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;DATESTOP&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">stops_group</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;DATESTOP&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;DURATION&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;DATESTOP&#39;, ylabel=&#39;DURATION&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/Chapter5_10_1.png" src="../../_images/Chapter5_10_1.png" />
+</div>
+</div>
+<p>As you can see, there is a cyclic pattern every week which seem to dip over weekends and rise again on weekdays. We will now create an indicator variable to mark if the stop happened during a weekday. Pandas offers us a function to do that which converts any pandas datetime datatype to the day of the week. This way we can take out weekday as a key variable to compare the occurence of a stop with.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create temporal weekend/weekday feature</span>
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;Weekday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;DATESTOP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use pandas where to classify if the day is a weekend</span>
+<span class="c1"># Note: According to the documentation, Monday = 0, Sunday = 6</span>
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;IsWeekend&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;IsWeekend&#39;</span><span class="p">]</span> <span class="o">=</span> \
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;IsWeekend&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;Weekday&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;Weekday&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">6</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;IsWeekend&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False    84182
+True     32659
+Name: IsWeekend, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add visual for the thing above (before &amp; after)</span>
+<span class="n">stops_group</span> <span class="o">=</span> <span class="n">stops_filtered</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;DATESTOP&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">stops_group</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;DATESTOP&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;DURATION&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;DATESTOP&#39;, ylabel=&#39;DURATION&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/Chapter5_15_1.png" src="../../_images/Chapter5_15_1.png" />
+</div>
+</div>
+<p>With the histogram above, we can see a clear pattern bewteend the weekend and weekdays an this gives us a predictible feature which can help us in estimate number of stops over a particular day.</p>
+<p>We discussed that statistical tools and plots usually deal with numerical categories as integers and treat such variables as they are ranked, unless those numbers are defined as strings (objects) or categories. Even in such a scenario, some models will give out an error when working with discrete categories as they only require numbers or booleans. For some variables in our dataset with categories set in the range from 0 till 2, we will convert them to indicator variables.</p>
+<p>Consider the catefory VEHDRUGS which has 0 if Search wasn’t conducted, 1 if Drugs were found and 2 if Drugs weren’t found. To convert them to features that are compatible with models, we will first create an indicator variable for if Search was conducted for Drugs (All rows will either 1 or 2 will be True) and then another indicator for stops where drugs were found (rows with value 1). This then also covers every possible case. For eg. if search was conducted but drugs weren’t found, the search column will be True and the Drugs column will be False. We will again use Pandas where method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setting default state</span>
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;DrugsFound&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="c1"># Remember, inplace=True performs the operation in place in data</span>
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;DrugsFound&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;VEHDRUGS&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Similarly we&#39;ll repeat the operation for if Weapons were found</span>
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;WeaponsFound&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;WeaponsFound&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;VEHWEAP&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View the head of the columns. Most the values are fault as we&#39;ll notice</span>
+<span class="n">stops_filtered</span><span class="p">[[</span><span class="s1">&#39;DrugsFound&#39;</span><span class="p">,</span><span class="s1">&#39;WeaponsFound&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DrugsFound</th>
+      <th>WeaponsFound</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In the part below we will look at an important function in Pandas that is used very frequently in data wrangling operations. Groupby allows us to create a Pandas Group DataFrame which, according to the documentation, involves some combination of splitting the object, applying a function, and combining the results. We will see how it works below.</p>
+<p>Our primary concer in this entire project is to see how police beahvious in stops differ for every race in order to identify existence of racial bias. For that it’ll be useful to have an aggregate look on all activities performed during a stop for each race. This won’t indicate a causal relation but will show us a pattern.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Group dataframe</span>
+<span class="n">stops_grouped</span> <span class="o">=</span> <span class="n">stops_filtered</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;DRRACE&#39;</span><span class="p">])</span>
+<span class="c1"># If you print it it will only show you the object type</span>
+<span class="n">stops_grouped</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7fec8336f790&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aggregate dataframe using mean and subset Duration </span>
+<span class="n">stops_grouped</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;DURATION&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DRRACE
+1    7.453721
+2    8.083024
+3    6.625835
+4    7.187564
+5    6.660507
+6    8.310714
+Name: DURATION, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aggregate dataframe using sum and subset WeaponsFound and DrugsFound</span>
+<span class="n">stops_grouped</span><span class="o">.</span><span class="n">sum</span><span class="p">()[[</span><span class="s1">&#39;WeaponsFound&#39;</span><span class="p">,</span> <span class="s1">&#39;DrugsFound&#39;</span><span class="p">]]</span>
+<span class="c1"># Notice, for boolean values you get a count of all rows that were True when you apply sum()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>WeaponsFound</th>
+      <th>DrugsFound</th>
+    </tr>
+    <tr>
+      <th>DRRACE</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>47</td>
+      <td>219</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>77</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Continuing from creation of indicator features, for variables with multiple categories, we would have to create a new column for each category in the variable. This is called one-hot encoding. To identify each race, we will have to create a variable indicating each race (or known as a dummy variable). To state it again, the reason for doing is that most models only accept integer or boolean. We don’t won’t integer here to prevent getting each category ranked and evaluated as so. Pandas get_dummies() will enable us to create these dummy variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># One-hot encode DRRACE</span>
+<span class="n">stops_filtered</span><span class="p">[</span><span class="s1">&#39;DRRACE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="n">stops_filtered</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">stops_filtered</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;DRRACE&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scroll to the end to view the newly created variables. </span>
+<span class="c1"># Also note that by default get_dummies() removes the original variable &#39;DRRACE&#39;</span>
+<span class="n">stops_filtered</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATESTOP</th>
+      <th>TIMESTOP</th>
+      <th>DURATION</th>
+      <th>CITY_I</th>
+      <th>STATE</th>
+      <th>RESSTOP</th>
+      <th>TYPEMOV</th>
+      <th>BEAT_I</th>
+      <th>VEHSRCHCOND</th>
+      <th>VEHCONTRA</th>
+      <th>...</th>
+      <th>Weekday</th>
+      <th>IsWeekend</th>
+      <th>DrugsFound</th>
+      <th>WeaponsFound</th>
+      <th>DRRACE_1</th>
+      <th>DRRACE_2</th>
+      <th>DRRACE_3</th>
+      <th>DRRACE_4</th>
+      <th>DRRACE_5</th>
+      <th>DRRACE_6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2021-01-01</td>
+      <td>0:33</td>
+      <td>5</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>1234</td>
+      <td>2</td>
+      <td>0</td>
+      <td>...</td>
+      <td>4</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2021-01-01</td>
+      <td>1:50</td>
+      <td>4</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>1122</td>
+      <td>2</td>
+      <td>0</td>
+      <td>...</td>
+      <td>4</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2021-01-01</td>
+      <td>8:50</td>
+      <td>4</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>332</td>
+      <td>2</td>
+      <td>0</td>
+      <td>...</td>
+      <td>4</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2021-01-01</td>
+      <td>12:41</td>
+      <td>6</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>1121</td>
+      <td>2</td>
+      <td>0</td>
+      <td>...</td>
+      <td>4</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2021-01-01</td>
+      <td>13:51</td>
+      <td>5</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>423</td>
+      <td>2</td>
+      <td>0</td>
+      <td>...</td>
+      <td>4</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 24 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a temporal feature for hour of the day from 0-23</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot a graph showing frequency of stops for each hour </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># One-hot-encode TypeMOV and RESTOP variables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Boolean feauures for &#39;VEHSTOLPROP&#39; and &#39;VEHSRCHCOND&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Groupby the dataframe by beat and display mean duration for first 10 beats</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot a graph showing boxplots of duration for these 10 beats</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -409,6 +1107,13 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Chapter4.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chapter 4: Finding Hidden Insights</p>
+        </div>
+    </a>
 </div>
             </footer>
         </div>
