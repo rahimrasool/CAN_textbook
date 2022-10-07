@@ -52,6 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chapter 6: Common Operations in Pandas" href="Chapter6.html" />
     <link rel="prev" title="Chapter 4: Finding Hidden Insights" href="Chapter4.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -141,6 +142,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Chapter 5: Wrangling and Feature Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter6.html">
+     Chapter 6: Common Operations in Pandas
     </a>
    </li>
   </ul>
@@ -411,6 +417,7 @@ title="Print to PDF"
 <li><p>Contexualizing feature engineering</p></li>
 <li><p>Numerical encoding</p></li>
 </ul>
+<hr class="docutils" />
 <p>Feature Engineering is that one component of the data science pipeline, which can offer a significant boost to the predictive abilities if the data is being fed to a machine learning algorithm for prediction task. It also strengthens the ability to see meaningful correlation of data points with each other. This may sound confusing for now but you’ll realize how significant and challenging this step is.</p>
 <p>Feature Engineering is the step of manipulating existing featues or creating new ones out of the existing set of features. The raw data that we get, after clean up, has to be prepared in a form that is ready for statistical analysis and prediction. It also enables understanding the complex relation between variables. To illustrate how this creates value, suppose we have a computer-generated alpha-numeric customer ID for every customer who buys from an online store. If you were given the record of every customer purchase along with that customer ID field, without any further details, this column would just be a set of strings that won’t make any sense to people interpreting this data or to any algorithm no matter how powerful it is for prediction. But if you later figure out, that the first 5 digits in each customer ID is the Zipcode of the customer’s browsing address while making a purchase, you can create a new feature of current zipcode and probably start finding patterns of how location affects purchase on the online store.</p>
 <p>The point of going through the example above was to tell that some columns might contain concealed information that, if revealed in form of another feature, can provide more predictive capability then just a set of strings that make no sense on its own. Similarly, feature engineering also involves creating combination of features into a new one. In a social impact analysis setting, as we will see in our guided practice ahead, it will make more sense to use hit-rate (created by dividing the sum of searches with contraband found for a race in a beat by the total population of a race in that beat) for analyzing presence of police discrimination than just using the sum of searches with contraband found alone.</p>
@@ -497,49 +504,37 @@ Name: ContraORDrugs, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>2531</th>
+      <th>62698</th>
       <td>True</td>
       <td>1</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>109373</th>
+      <th>340748</th>
       <td>True</td>
       <td>1</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>295814</th>
+      <th>3744</th>
       <td>True</td>
       <td>1</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>245202</th>
-      <td>True</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>244190</th>
+      <th>242110</th>
       <td>True</td>
       <td>1</td>
       <td>2</td>
     </tr>
     <tr>
-      <th>245834</th>
+      <th>61623</th>
       <td>True</td>
       <td>1</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>4927</th>
-      <td>True</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>5095</th>
+      <th>241982</th>
       <td>True</td>
       <td>1</td>
       <td>1</td>
@@ -551,37 +546,49 @@ Name: ContraORDrugs, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>287125</th>
-      <td>True</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>424</th>
+      <th>58804</th>
       <td>True</td>
       <td>1</td>
       <td>2</td>
     </tr>
     <tr>
-      <th>148183</th>
+      <th>191042</th>
       <td>True</td>
       <td>1</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>495</th>
+      <th>339676</th>
       <td>True</td>
       <td>1</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>243596</th>
+      <th>5461</th>
       <td>True</td>
       <td>1</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>292487</th>
+      <th>236845</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>62258</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>108512</th>
+      <td>True</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2033</th>
       <td>True</td>
       <td>1</td>
       <td>1</td>
@@ -750,7 +757,7 @@ Name: IsWeekend, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7fec8336f790&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7fefd50d3e50&gt;
 </pre></div>
 </div>
 </div>
@@ -1113,6 +1120,13 @@ Name: DURATION, dtype: float64
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Chapter 4: Finding Hidden Insights</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="Chapter6.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 6: Common Operations in Pandas</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
