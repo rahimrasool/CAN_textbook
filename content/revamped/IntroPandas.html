@@ -1,0 +1,1572 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Pandas &#8212; My sample book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Introduction.html">
+                    Data Science Course - Social Impact Track
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01/Section1.html">
+   Section 1: - Dealing with Data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/Chapter1.html">
+     Chapter 1: Defining the problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/Chapter2.html">
+     Chapter 2: Gathering and Collecting Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/Chapter3.html">
+     Chapter 3: Cleaning Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/Chapter4.html">
+     Chapter 4: Finding Hidden Insights
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/Chapter5.html">
+     Chapter 5: Wrangling and Feature Engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/Chapter6.html">
+     Chapter 6: Common Operations in Pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/content/revamped/IntroPandas.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontent/revamped/IntroPandas.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/content/revamped/IntroPandas.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introduction to Pandas
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-structures-in-pandas">
+   Data Structures in Pandas
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#files-in-pandas">
+   Files in Pandas
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-metadata">
+   Basic metadata
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to Pandas</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introduction to Pandas
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-structures-in-pandas">
+   Data Structures in Pandas
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#files-in-pandas">
+   Files in Pandas
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-metadata">
+   Basic metadata
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="introduction-to-pandas">
+<h1>Introduction to Pandas<a class="headerlink" href="#introduction-to-pandas" title="Permalink to this headline">#</a></h1>
+<p>For doing data analysis and manipulation in Python, Pandas is one of the most powerful, resourceful and easy to begin with package. It consists of data structures and functions and can assist you with doing a huge set of tasks for analytical work. In order to use these resources, Pandas needs to be loaded using the <strong>import</strong> command, as shown below, for it to be used in our script. We can also define an alias for Pandas (we used pd) as we are going to use Pandas’ modules multiple times in our code.</p>
+<img src="https://pandas.pydata.org/docs/_static/pandas.svg" width="200"/>
+<p>A little note about Pandas is that it used object-oriented notations. No need to worry if you are not familiar with this concept. However, getting a high-level intuition about object-oriented programming (OOP) is going to be helpful in understanding how Pandas work. All data srtuctures that store our data in the program are a form of Pandas objects defined by a blueprint called Class. For example, a DataFrame (to be discussed below) is a data-structure to store data in a format similar to spreadsheet. We can create a DataFrame object to store a table of our dataset and this object will have multiple methods and function that operate on this object.</p>
+<p>Pandas comes usually installed with Jupyter enviornments like the one you are using here. If pandas is installed, you can check the current version of Pandas by using the <code class="docutils literal notranslate"><span class="pre">pd.__version__</span></code> command after the import command below:</p>
+<p><em>Note: pd is an alias</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;1.4.2&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-structures-in-pandas">
+<h1>Data Structures in Pandas<a class="headerlink" href="#data-structures-in-pandas" title="Permalink to this headline">#</a></h1>
+<p>We will learn the 2 fundamental data structures in Pandas: <strong>Series</strong> and <strong>DataFrames</strong>. Understanding the between Series and DataFrame difference can assist in knowing what methods work for a Series and what work for a DataFrame when refering to the documentation.</p>
+<img src="series.png" width="300"/><p><strong>Series</strong> is a one-dimensional array which can hold data of various types. Series are labelled where an index labels each element on the axis. Each index element has to be unique. Series can be created out from a list, a python dictionary or even a scalar value. A pandas Series has a single dtype.</p>
+<p>Below, we will go through 2 of the ways to create a Pandas Series.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Series out of a dictionary</span>
+
+<span class="n">sample_dictionary</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Mercury&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s1">&#39;Venus&#39;</span><span class="p">:</span> <span class="mi">67</span><span class="p">,</span> <span class="s1">&#39;Earth&#39;</span><span class="p">:</span> <span class="mi">93</span><span class="p">}</span>
+
+<span class="n">sample_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sample_dictionary</span><span class="p">)</span>
+
+<span class="c1"># Print the series</span>
+<span class="n">sample_series</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mercury    35
+Venus      67
+Earth      93
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note: if we do not specify the index, the default numeric range will be given.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Series from a list without index given</span>
+
+<span class="n">sample_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">93</span><span class="p">]</span>
+
+<span class="n">sample_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sample_list</span><span class="p">)</span>
+
+<span class="n">sample_series</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    35
+1    67
+2    93
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Series from a list with index specified</span>
+
+<span class="n">sample_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sample_list</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Mercury&#39;</span><span class="p">,</span> <span class="s1">&#39;Venus&#39;</span><span class="p">,</span> <span class="s1">&#39;Earth&#39;</span><span class="p">])</span>
+
+<span class="n">sample_series</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mercury    35
+Venus      67
+Earth      93
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can retrieve a value from a Series by specifying the index in square brackets as you would do for a Python dictionary. You can also use the Series.get() method and specify the index and default value if the index is not in the Series.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_series</span><span class="p">[</span><span class="s1">&#39;Mercury&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_series</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Venus&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>67
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_series</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Mars&#39;</span><span class="p">,</span> <span class="s1">&#39;Value not found!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Value not found!&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<hr style="border:2px solid gray">
+<p>Unlike Series, <strong>DataFrames</strong> are a 2 dimensional, consisting of both row and columns. They are similar to a spreadsheet or a SQL table. Pandas provides all the functionality and methods to deal with data in the DataFrame. Each row in a DataFrame is labeled with an index, as in Series. Whereas, there are also labels for each column.</p>
+<img src="dataframe.png" width="500"/>
+<p>There are several ways to create or form a DataFrame. A DataFrame can be made of one or multiple series combined. It can also be formed out of lists and dictionaries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DataFrame from dictionary of lists</span>
+<span class="c1"># Creating Data for site views (in thousands) on a website per browser every year</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Chrome&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">67</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">89</span><span class="p">],</span>
+    <span class="s1">&#39;Safari&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span>
+    <span class="s1">&#39;Firefox&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="p">},</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">])</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chrome</th>
+      <th>Safari</th>
+      <th>Firefox</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>67</td>
+      <td>44</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>74</td>
+      <td>58</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>89</td>
+      <td>70</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DataFrame from list of dictionaries</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">[{</span><span class="s2">&quot;Chrome&quot;</span><span class="p">:</span> <span class="mi">67</span><span class="p">,</span> <span class="s2">&quot;Safari&quot;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="s2">&quot;Firefox&quot;</span><span class="p">:</span><span class="mi">8</span> <span class="p">},</span> 
+     <span class="p">{</span><span class="s2">&quot;Chrome&quot;</span><span class="p">:</span> <span class="mi">74</span><span class="p">,</span> <span class="s2">&quot;Safari&quot;</span><span class="p">:</span> <span class="mi">58</span><span class="p">,</span> <span class="s2">&quot;Firefox&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Chrome&quot;</span><span class="p">:</span> <span class="mi">89</span><span class="p">,</span> <span class="s2">&quot;Safari&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span> <span class="s2">&quot;Firefox&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">}]</span>
+<span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chrome</th>
+      <th>Safari</th>
+      <th>Firefox</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>67</td>
+      <td>44</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>74</td>
+      <td>58</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>89</td>
+      <td>70</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note: If we do not provide the index, pandas defaults the index list to a range of integers beginning from 0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DataFrame from 2D lists</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">[[</span><span class="mi">67</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">89</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]],</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Chrome&quot;</span><span class="p">,</span> <span class="s2">&quot;Safari&quot;</span><span class="p">,</span> <span class="s2">&quot;Firefox&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chrome</th>
+      <th>Safari</th>
+      <th>Firefox</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>67</td>
+      <td>74</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>44</td>
+      <td>58</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>8</td>
+      <td>14</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Similar to series, we can use dictionary-like indexing to select columns from a DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Chrome&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2018    67
+2019    44
+2020     8
+Name: Chrome, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="files-in-pandas">
+<h1>Files in Pandas<a class="headerlink" href="#files-in-pandas" title="Permalink to this headline">#</a></h1>
+<p>The pandas I/O API is a set of top level reader functions accessed like pandas.read_csv() that generally return a pandas object.</p>
+<p>Pandas offeres reader functions which can read in a data file and return it as a pandas object. The most useful one <code class="docutils literal notranslate"><span class="pre">read.csv()</span></code> will read a text file and convert it to a DataFrame with default arguments. Pandas also offers <code class="docutils literal notranslate"><span class="pre">read_json()</span></code> and <code class="docutils literal notranslate"><span class="pre">read_excel</span></code> to read json and excel files, respectively, 2 of the most common file types for data.</p>
+<p>We will use the <code class="docutils literal notranslate"><span class="pre">read.csv</span></code> function to read the Chicago Police Traffic Stops data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;idot/IDOT_2021.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">documentation</a> provides great detail of the arguments that <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function accepts. Some of the common ones that you must know are:</p>
+<p><strong>filepath_or_buffer</strong>: Either a path to a file or URL.
+<br><strong>sep</strong>: Delimiter to use. Default delimiter is <code class="docutils literal notranslate"><span class="pre">','</span></code> (for comma-separated files. Use <code class="docutils literal notranslate"><span class="pre">'\t'</span></code> for tab-separated files, tsv)</p>
+<p>Typing and running the DataFrame name on a Jupyter cell displays the dataset with rows and columns truncated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATESTOP</th>
+      <th>TIMESTOP</th>
+      <th>DURATION</th>
+      <th>OFFNAME</th>
+      <th>OFFBDGE</th>
+      <th>CITY_I</th>
+      <th>STATE</th>
+      <th>VEHMAKE</th>
+      <th>VEHYEAR</th>
+      <th>YRBIRTH</th>
+      <th>...</th>
+      <th>DOGALERT</th>
+      <th>DOGALERTSRCH</th>
+      <th>DOGALERTSRCHCONTRA</th>
+      <th>DOGDRUG</th>
+      <th>DOGPARA</th>
+      <th>DOGALC</th>
+      <th>DOGWEAP</th>
+      <th>DOGSTOLPROP</th>
+      <th>DOGOTHER</th>
+      <th>DOGDRAMT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1/1/21</td>
+      <td>0:33</td>
+      <td>5</td>
+      <td>FIDEL LEGORRETA</td>
+      <td>5902.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>CHEVROLET</td>
+      <td>2017.0</td>
+      <td>1993</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1/1/21</td>
+      <td>1:50</td>
+      <td>4</td>
+      <td>VICTOR PEREZ</td>
+      <td>7383.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>FORD</td>
+      <td>2012.0</td>
+      <td>1957</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1/1/21</td>
+      <td>8:50</td>
+      <td>4</td>
+      <td>STEPHANIE ORTIGARA</td>
+      <td>18302.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>FORD</td>
+      <td>2007.0</td>
+      <td>1967</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1/1/21</td>
+      <td>12:41</td>
+      <td>6</td>
+      <td>JASON ARROYO</td>
+      <td>14502.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>BMW</td>
+      <td>1998.0</td>
+      <td>1990</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1/1/21</td>
+      <td>13:51</td>
+      <td>5</td>
+      <td>MONTY OWENS</td>
+      <td>11975.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>TOYOTA</td>
+      <td>2002.0</td>
+      <td>1945</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>377894</th>
+      <td>12/30/21</td>
+      <td>23:40</td>
+      <td>2</td>
+      <td>MATTHEW DRINNAN</td>
+      <td>13585.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>HYUNDAI</td>
+      <td>2020.0</td>
+      <td>1964</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>377895</th>
+      <td>12/31/21</td>
+      <td>20:35</td>
+      <td>5</td>
+      <td>EMMANUEL GARCIA</td>
+      <td>19038.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>NISSAN</td>
+      <td>2007.0</td>
+      <td>1973</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>377896</th>
+      <td>12/31/21</td>
+      <td>20:31</td>
+      <td>21</td>
+      <td>LUIS NUNEZ</td>
+      <td>18229.0</td>
+      <td>CHICAGO HEIGHTS</td>
+      <td>IL</td>
+      <td>HONDA</td>
+      <td>2007.0</td>
+      <td>1980</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>377897</th>
+      <td>12/31/21</td>
+      <td>21:33</td>
+      <td>2</td>
+      <td>GUSTAVO DOMINGUEZ</td>
+      <td>15235.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>KIA</td>
+      <td>2014.0</td>
+      <td>1982</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>377898</th>
+      <td>12/31/21</td>
+      <td>21:20</td>
+      <td>4</td>
+      <td>FRANK GIANAKAKIS</td>
+      <td>6934.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>TOYOTA</td>
+      <td>2015.0</td>
+      <td>1987</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>377899 rows × 55 columns</p>
+</div></div></div>
+</div>
+<p>This dataset is huge! Pandas also offers methods to view a small sample of a Series or DataFrame object. The <code class="docutils literal notranslate"><span class="pre">head()</span></code> and <code class="docutils literal notranslate"><span class="pre">tail()</span></code> methods enable you to do so showing you the first set of rows and last set of rows, respectively. By default, they display 5 rows. The argument to these methods can be changed to the number of rows needed to be displayed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View first 5 rows</span>
+<span class="n">stops_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATESTOP</th>
+      <th>TIMESTOP</th>
+      <th>DURATION</th>
+      <th>OFFNAME</th>
+      <th>OFFBDGE</th>
+      <th>CITY_I</th>
+      <th>STATE</th>
+      <th>VEHMAKE</th>
+      <th>VEHYEAR</th>
+      <th>YRBIRTH</th>
+      <th>...</th>
+      <th>DOGALERT</th>
+      <th>DOGALERTSRCH</th>
+      <th>DOGALERTSRCHCONTRA</th>
+      <th>DOGDRUG</th>
+      <th>DOGPARA</th>
+      <th>DOGALC</th>
+      <th>DOGWEAP</th>
+      <th>DOGSTOLPROP</th>
+      <th>DOGOTHER</th>
+      <th>DOGDRAMT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1/1/21</td>
+      <td>0:33</td>
+      <td>5</td>
+      <td>FIDEL LEGORRETA</td>
+      <td>5902.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>CHEVROLET</td>
+      <td>2017.0</td>
+      <td>1993</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1/1/21</td>
+      <td>1:50</td>
+      <td>4</td>
+      <td>VICTOR PEREZ</td>
+      <td>7383.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>FORD</td>
+      <td>2012.0</td>
+      <td>1957</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1/1/21</td>
+      <td>8:50</td>
+      <td>4</td>
+      <td>STEPHANIE ORTIGARA</td>
+      <td>18302.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>FORD</td>
+      <td>2007.0</td>
+      <td>1967</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1/1/21</td>
+      <td>12:41</td>
+      <td>6</td>
+      <td>JASON ARROYO</td>
+      <td>14502.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>BMW</td>
+      <td>1998.0</td>
+      <td>1990</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1/1/21</td>
+      <td>13:51</td>
+      <td>5</td>
+      <td>MONTY OWENS</td>
+      <td>11975.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>TOYOTA</td>
+      <td>2002.0</td>
+      <td>1945</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 55 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View last 3 rows</span>
+<span class="n">stops_df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATESTOP</th>
+      <th>TIMESTOP</th>
+      <th>DURATION</th>
+      <th>OFFNAME</th>
+      <th>OFFBDGE</th>
+      <th>CITY_I</th>
+      <th>STATE</th>
+      <th>VEHMAKE</th>
+      <th>VEHYEAR</th>
+      <th>YRBIRTH</th>
+      <th>...</th>
+      <th>DOGALERT</th>
+      <th>DOGALERTSRCH</th>
+      <th>DOGALERTSRCHCONTRA</th>
+      <th>DOGDRUG</th>
+      <th>DOGPARA</th>
+      <th>DOGALC</th>
+      <th>DOGWEAP</th>
+      <th>DOGSTOLPROP</th>
+      <th>DOGOTHER</th>
+      <th>DOGDRAMT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>377896</th>
+      <td>12/31/21</td>
+      <td>20:31</td>
+      <td>21</td>
+      <td>LUIS NUNEZ</td>
+      <td>18229.0</td>
+      <td>CHICAGO HEIGHTS</td>
+      <td>IL</td>
+      <td>HONDA</td>
+      <td>2007.0</td>
+      <td>1980</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>377897</th>
+      <td>12/31/21</td>
+      <td>21:33</td>
+      <td>2</td>
+      <td>GUSTAVO DOMINGUEZ</td>
+      <td>15235.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>KIA</td>
+      <td>2014.0</td>
+      <td>1982</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>377898</th>
+      <td>12/31/21</td>
+      <td>21:20</td>
+      <td>4</td>
+      <td>FRANK GIANAKAKIS</td>
+      <td>6934.0</td>
+      <td>CHICAGO</td>
+      <td>IL</td>
+      <td>TOYOTA</td>
+      <td>2015.0</td>
+      <td>1987</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 55 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="basic-metadata">
+<h1>Basic metadata<a class="headerlink" href="#basic-metadata" title="Permalink to this headline">#</a></h1>
+<p>Pandas enables you to access basic metadata for its object by using some attributes. The important ones we are going to learn here are <strong>shape</strong>, <strong>dtypes</strong> and axis labels.</p>
+<p><strong>Shape</strong> gives the axis dimensions of the object. For a DataFrame, it will give the number of rows and columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(377899, 55)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>dtypes</strong> will give the data type for each column in a DataFrame. We are going to learn more about data types in the upcoming sections.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATESTOP               object
+TIMESTOP               object
+DURATION                int64
+OFFNAME                object
+OFFBDGE               float64
+CITY_I                 object
+STATE                  object
+VEHMAKE                object
+VEHYEAR               float64
+YRBIRTH                 int64
+DRSEX                   int64
+DRRACE                float64
+REASSTOP              float64
+TYPEMOV               float64
+RESSTOP                 int64
+BEAT_I                  int64
+VEHCONSREQ              int64
+VEHCONSGIV              int64
+VEHSRCHCOND             int64
+VEHSRCHCONDBY           int64
+VEHCONTRA               int64
+VEHDRUGS                int64
+VEHPARA                 int64
+VEHALC                  int64
+VEHWEAP                 int64
+VEHSTOLPROP             int64
+VEHOTHER                int64
+VEHDRAMT                int64
+DRCONSREQ               int64
+DRCONSGIV               int64
+DRVSRCHCOND             int64
+DRVSRCHCONDBY           int64
+PASSCONSREQ             int64
+PASSCONSGIV             int64
+PASSSRCHCOND            int64
+PASSSRCHCONDBY          int64
+PASSDRVCONTRA           int64
+PASSDRVDRUGS            int64
+PASSDRVPARA             int64
+PASSDRVALC              int64
+PASSDRVWEAP             int64
+PASSDRVSTOLPROP         int64
+PASSDRVOTHER            int64
+PASSDRVDRAMT            int64
+DOGPERFSNIFF            int64
+DOGALERT                int64
+DOGALERTSRCH            int64
+DOGALERTSRCHCONTRA      int64
+DOGDRUG                 int64
+DOGPARA                 int64
+DOGALC                  int64
+DOGWEAP                 int64
+DOGSTOLPROP             int64
+DOGOTHER                int64
+DOGDRAMT                int64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pandas objects have axis labels. We have seen that each element in a Series is labeled through an index. Whereas, a DataFrame has a set of labels for each row and another set for columns. We can access these labels for a DataFrame using <code class="docutils literal notranslate"><span class="pre">.index</span></code> and <code class="docutils literal notranslate"><span class="pre">.columns</span></code> methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;DATESTOP&#39;, &#39;TIMESTOP&#39;, &#39;DURATION&#39;, &#39;OFFNAME&#39;, &#39;OFFBDGE&#39;, &#39;CITY_I&#39;,
+       &#39;STATE&#39;, &#39;VEHMAKE&#39;, &#39;VEHYEAR&#39;, &#39;YRBIRTH&#39;, &#39;DRSEX&#39;, &#39;DRRACE&#39;, &#39;REASSTOP&#39;,
+       &#39;TYPEMOV&#39;, &#39;RESSTOP&#39;, &#39;BEAT_I&#39;, &#39;VEHCONSREQ&#39;, &#39;VEHCONSGIV&#39;,
+       &#39;VEHSRCHCOND&#39;, &#39;VEHSRCHCONDBY&#39;, &#39;VEHCONTRA&#39;, &#39;VEHDRUGS&#39;, &#39;VEHPARA&#39;,
+       &#39;VEHALC&#39;, &#39;VEHWEAP&#39;, &#39;VEHSTOLPROP&#39;, &#39;VEHOTHER&#39;, &#39;VEHDRAMT&#39;, &#39;DRCONSREQ&#39;,
+       &#39;DRCONSGIV&#39;, &#39;DRVSRCHCOND&#39;, &#39;DRVSRCHCONDBY&#39;, &#39;PASSCONSREQ&#39;,
+       &#39;PASSCONSGIV&#39;, &#39;PASSSRCHCOND&#39;, &#39;PASSSRCHCONDBY&#39;, &#39;PASSDRVCONTRA&#39;,
+       &#39;PASSDRVDRUGS&#39;, &#39;PASSDRVPARA&#39;, &#39;PASSDRVALC&#39;, &#39;PASSDRVWEAP&#39;,
+       &#39;PASSDRVSTOLPROP&#39;, &#39;PASSDRVOTHER&#39;, &#39;PASSDRVDRAMT&#39;, &#39;DOGPERFSNIFF&#39;,
+       &#39;DOGALERT&#39;, &#39;DOGALERTSRCH&#39;, &#39;DOGALERTSRCHCONTRA&#39;, &#39;DOGDRUG&#39;, &#39;DOGPARA&#39;,
+       &#39;DOGALC&#39;, &#39;DOGWEAP&#39;, &#39;DOGSTOLPROP&#39;, &#39;DOGOTHER&#39;, &#39;DOGDRAMT&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RangeIndex(start=0, stop=377899, step=1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can notice, since there wasn’t any index provided by the dataset, Pandas set the default index to range of integers from 0 to length of the DataFrame.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/revamped"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
