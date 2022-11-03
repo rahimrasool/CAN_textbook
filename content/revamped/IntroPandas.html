@@ -361,39 +361,69 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Introduction to Pandas
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-structures-in-pandas">
    Data Structures in Pandas
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#files-in-pandas">
    Files in Pandas
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-metadata">
    Basic metadata
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#selecting-and-subsetting">
    Selecting and Subsetting
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-types-and-conversion">
    Data types and conversion
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#datetime-in-pandas">
    Datetime in Pandas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#missing-values">
+   Missing Values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mapping-replacing-values-and-labels">
+   Mapping/Replacing values and labels
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistics">
+   Statistics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pointers-and-object-references">
+   Pointers and Object References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#export">
+   Export
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#method-chaining">
+   Method Chaining
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#groupby-apply-and-lambda-functions">
+   Groupby Apply and Lambda Functions
   </a>
  </li>
 </ul>
@@ -415,39 +445,69 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Introduction to Pandas
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-structures-in-pandas">
    Data Structures in Pandas
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#files-in-pandas">
    Files in Pandas
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-metadata">
    Basic metadata
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#selecting-and-subsetting">
    Selecting and Subsetting
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-types-and-conversion">
    Data types and conversion
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#datetime-in-pandas">
    Datetime in Pandas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#missing-values">
+   Missing Values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mapping-replacing-values-and-labels">
+   Mapping/Replacing values and labels
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistics">
+   Statistics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pointers-and-object-references">
+   Pointers and Object References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#export">
+   Export
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#method-chaining">
+   Method Chaining
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#groupby-apply-and-lambda-functions">
+   Groupby Apply and Lambda Functions
   </a>
  </li>
 </ul>
@@ -460,13 +520,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="introduction-to-pandas">
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-pandas">
 <h1>Introduction to Pandas<a class="headerlink" href="#introduction-to-pandas" title="Permalink to this headline">#</a></h1>
 <p>For doing data analysis and manipulation in Python, Pandas is one of the most powerful, resourceful and easy to begin with packages. It consists of data structures and functions and can assist us with doing a huge set of tasks for analytical work. In order to use these resources, Pandas needs to be loaded using the <strong>import</strong> command, as shown below, for it to be used in our script. We can also define an alias for Pandas (we used pd) as we are going to use Pandas’ modules multiple times in our code.</p>
-<img src="https://pandas.pydata.org/docs/_static/pandas.svg" width="200"/>
-<p>A little note about Pandas is that it uses object-oriented notations. No need to worry if you are not familiar with this concept. However, getting a high-level intuition about object-oriented programming (OOP) is going to be helpful in understanding how Pandas work. All data structures that store our data in the program are a form of Pandas objects defined by a blueprint called Class. For example, a DataFrame (to be discussed below) is a data-structure to store data in a format similar to spreadsheet. We can create a DataFrame object to store a table of our dataset and this object will have multiple methods and functions that operate on this object.</p>
+<img src="https://pandas.pydata.org/docs/_static/pandas.svg" width="200"/><p>A little note about Pandas is that it uses object-oriented notations. No need to worry if you are not familiar with this concept. However, getting a high-level intuition about object-oriented programming (OOP) is going to be helpful in understanding how Pandas work. All data structures that store our data in the program are a form of Pandas objects defined by a blueprint called Class. For example, a DataFrame (to be discussed below) is a data-structure to store data in a format similar to spreadsheet. We can create a DataFrame object to store a table of our dataset and this object will have multiple methods and functions that operate on this object.</p>
 <p>Pandas comes usually installed with Jupyter environments like the one you are using here. If pandas is installed, you can check the current version of Pandas by using the <code class="docutils literal notranslate"><span class="pre">pd.__version__</span></code> command after the import command below:</p>
-<p><em>Note: pd is an alias</em></p>
+<p><em>Note: pd is an alias for pandas</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -480,9 +539,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
 <section id="data-structures-in-pandas">
-<h1>Data Structures in Pandas<a class="headerlink" href="#data-structures-in-pandas" title="Permalink to this headline">#</a></h1>
+<h2>Data Structures in Pandas<a class="headerlink" href="#data-structures-in-pandas" title="Permalink to this headline">#</a></h2>
 <p>We will learn the 2 fundamental data structures in Pandas: <strong>Series</strong> and <strong>DataFrames</strong>.</p>
 <img src="series.png" width="300"/><p><strong>Series</strong> is a one-dimensional array which can hold data of various types. Series are labelled where an index labels each element on the axis. Each index element has to be unique. Series can be created out from a list, a python dictionary or even a scalar value. A pandas Series has a single dtype.</p>
 <p>Below, we will go through 2 of the ways to create a Pandas Series. The method below creates a Series out of a Python dictionary.</p>
@@ -737,13 +795,89 @@ dtype: int64
 </div>
 </section>
 <section id="files-in-pandas">
-<h1>Files in Pandas<a class="headerlink" href="#files-in-pandas" title="Permalink to this headline">#</a></h1>
+<h2>Files in Pandas<a class="headerlink" href="#files-in-pandas" title="Permalink to this headline">#</a></h2>
 <p>The pandas I/O API is a set of top level reader functions accessed like pandas.read_csv() that generally return a pandas object.</p>
 <p>Pandas offeres reader functions which can read in a data file and return it as a pandas object. The most useful one <code class="docutils literal notranslate"><span class="pre">read.csv()</span></code> will read a text file and convert it to a DataFrame with default arguments. Pandas also offers <code class="docutils literal notranslate"><span class="pre">read_json()</span></code> and <code class="docutils literal notranslate"><span class="pre">read_excel</span></code> to read json and excel files, respectively, 2 of the most common file types for data.</p>
 <p>We will use the <code class="docutils literal notranslate"><span class="pre">read.csv</span></code> function to read the Chicago Police Traffic Stops data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;idot/IDOT_2021.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;TrafficStopsChicago.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [9],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">stops_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;TrafficStopsChicago.csv&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/util/_decorators.py:311,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:680,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">666</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>     <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">},</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">680</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:575,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">572</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">575</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">577</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:933,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">930</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">932</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">--&gt; </span><span class="mi">933</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1217,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1213</span>     <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;rb&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1214</span> <span class="c1"># error: No overload variant of &quot;get_handle&quot; matches argument types</span>
+<span class="g g-Whitespace">   </span><span class="mi">1215</span> <span class="c1"># &quot;Union[str, PathLike[str], ReadCsvBuffer[bytes], ReadCsvBuffer[str]]&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1216</span> <span class="c1"># , &quot;str&quot;, &quot;bool&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1217</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>  <span class="c1"># type: ignore[call-overload]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1218</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1219</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1220</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1221</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1222</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1223</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1224</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1225</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1226</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1227</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1228</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/common.py:789,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">784</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">785</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">786</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">787</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">788</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">789</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">791</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">792</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">793</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">794</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">795</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">796</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">797</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">798</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;TrafficStopsChicago.csv&#39;
 </pre></div>
 </div>
 </div>
@@ -777,146 +911,92 @@ dtype: int64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>DATESTOP</th>
-      <th>TIMESTOP</th>
-      <th>DURATION</th>
-      <th>OFFNAME</th>
-      <th>OFFBDGE</th>
-      <th>CITY_I</th>
-      <th>STATE</th>
-      <th>VEHMAKE</th>
-      <th>VEHYEAR</th>
-      <th>YRBIRTH</th>
-      <th>...</th>
-      <th>DOGALERT</th>
-      <th>DOGALERTSRCH</th>
-      <th>DOGALERTSRCHCONTRA</th>
-      <th>DOGDRUG</th>
-      <th>DOGPARA</th>
-      <th>DOGALC</th>
-      <th>DOGWEAP</th>
-      <th>DOGSTOLPROP</th>
-      <th>DOGOTHER</th>
-      <th>DOGDRAMT</th>
+      <th>DateStop</th>
+      <th>TimeStop</th>
+      <th>Duration</th>
+      <th>City</th>
+      <th>DriverRace</th>
+      <th>ReasonStop</th>
+      <th>TypeOfMovingViolation</th>
+      <th>Beat</th>
+      <th>SearchConducted</th>
+      <th>ContraFound</th>
+      <th>DrugsFound</th>
+      <th>WeaponFound</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1/1/21</td>
+      <td>2021-01-01</td>
       <td>0:33</td>
       <td>5</td>
-      <td>FIDEL LEGORRETA</td>
-      <td>5902.0</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>CHEVROLET</td>
-      <td>2017.0</td>
-      <td>1993</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>1234</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1/1/21</td>
+      <td>2021-01-01</td>
       <td>1:50</td>
       <td>4</td>
-      <td>VICTOR PEREZ</td>
-      <td>7383.0</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>FORD</td>
-      <td>2012.0</td>
-      <td>1957</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>1122</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1/1/21</td>
+      <td>2021-01-01</td>
       <td>8:50</td>
       <td>4</td>
-      <td>STEPHANIE ORTIGARA</td>
-      <td>18302.0</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>FORD</td>
-      <td>2007.0</td>
-      <td>1967</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>332</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1/1/21</td>
+      <td>2021-01-01</td>
       <td>12:41</td>
       <td>6</td>
-      <td>JASON ARROYO</td>
-      <td>14502.0</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>BMW</td>
-      <td>1998.0</td>
-      <td>1990</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>1121</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1/1/21</td>
+      <td>2021-01-01</td>
       <td>13:51</td>
       <td>5</td>
-      <td>MONTY OWENS</td>
-      <td>11975.0</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>TOYOTA</td>
-      <td>2002.0</td>
-      <td>1945</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>423</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -935,139 +1015,85 @@ dtype: int64
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
-      <th>377894</th>
-      <td>12/30/21</td>
-      <td>23:40</td>
+      <th>76275</th>
+      <td>2021-02-28</td>
+      <td>20:34</td>
+      <td>9</td>
+      <td>CHICAGO</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>1533</td>
       <td>2</td>
-      <td>MATTHEW DRINNAN</td>
-      <td>13585.0</td>
-      <td>CHICAGO</td>
-      <td>IL</td>
-      <td>HYUNDAI</td>
-      <td>2020.0</td>
-      <td>1964</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>377895</th>
-      <td>12/31/21</td>
-      <td>20:35</td>
-      <td>5</td>
-      <td>EMMANUEL GARCIA</td>
-      <td>19038.0</td>
-      <td>CHICAGO</td>
-      <td>IL</td>
-      <td>NISSAN</td>
-      <td>2007.0</td>
-      <td>1973</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>377896</th>
-      <td>12/31/21</td>
-      <td>20:31</td>
-      <td>21</td>
-      <td>LUIS NUNEZ</td>
-      <td>18229.0</td>
-      <td>CHICAGO HEIGHTS</td>
-      <td>IL</td>
-      <td>HONDA</td>
-      <td>2007.0</td>
-      <td>1980</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>377897</th>
-      <td>12/31/21</td>
-      <td>21:33</td>
-      <td>2</td>
-      <td>GUSTAVO DOMINGUEZ</td>
-      <td>15235.0</td>
-      <td>CHICAGO</td>
-      <td>IL</td>
-      <td>KIA</td>
-      <td>2014.0</td>
-      <td>1982</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>377898</th>
-      <td>12/31/21</td>
-      <td>21:20</td>
+      <th>76276</th>
+      <td>2021-02-28</td>
+      <td>20:06</td>
       <td>4</td>
-      <td>FRANK GIANAKAKIS</td>
-      <td>6934.0</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>TOYOTA</td>
-      <td>2015.0</td>
-      <td>1987</td>
-      <td>...</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>214</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
+    </tr>
+    <tr>
+      <th>76277</th>
+      <td>2021-02-28</td>
+      <td>21:47</td>
+      <td>4</td>
+      <td>SAINT PAUL</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>1821</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
+    </tr>
+    <tr>
+      <th>76278</th>
+      <td>2021-02-28</td>
+      <td>21:15</td>
+      <td>5</td>
+      <td>CHICAGO</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>331</td>
+      <td>2</td>
       <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>76279</th>
+      <td>2021-02-28</td>
+      <td>21:15</td>
+      <td>4</td>
+      <td>CHICAGO</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>1033</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
-<p>377899 rows × 55 columns</p>
+<p>76280 rows × 12 columns</p>
 </div></div></div>
 </div>
 <p>This dataset is huge! Pandas also offers methods to view a small sample of a Series or DataFrame object. The <code class="docutils literal notranslate"><span class="pre">head()</span></code> and <code class="docutils literal notranslate"><span class="pre">tail()</span></code> methods enable you to do so showing you the first set of rows and last set of rows, respectively. By default, they display 5 rows. The argument to these methods can be changed to the number of rows needed to be displayed.</p>
@@ -1097,153 +1123,98 @@ dtype: int64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>DATESTOP</th>
-      <th>TIMESTOP</th>
-      <th>DURATION</th>
-      <th>OFFNAME</th>
-      <th>OFFBDGE</th>
-      <th>CITY_I</th>
-      <th>STATE</th>
-      <th>VEHMAKE</th>
-      <th>VEHYEAR</th>
-      <th>YRBIRTH</th>
-      <th>...</th>
-      <th>DOGALERT</th>
-      <th>DOGALERTSRCH</th>
-      <th>DOGALERTSRCHCONTRA</th>
-      <th>DOGDRUG</th>
-      <th>DOGPARA</th>
-      <th>DOGALC</th>
-      <th>DOGWEAP</th>
-      <th>DOGSTOLPROP</th>
-      <th>DOGOTHER</th>
-      <th>DOGDRAMT</th>
+      <th>DateStop</th>
+      <th>TimeStop</th>
+      <th>Duration</th>
+      <th>City</th>
+      <th>DriverRace</th>
+      <th>ReasonStop</th>
+      <th>TypeOfMovingViolation</th>
+      <th>Beat</th>
+      <th>SearchConducted</th>
+      <th>ContraFound</th>
+      <th>DrugsFound</th>
+      <th>WeaponFound</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1/1/21</td>
+      <td>2021-01-01</td>
       <td>0:33</td>
       <td>5</td>
-      <td>FIDEL LEGORRETA</td>
-      <td>5902.0</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>CHEVROLET</td>
-      <td>2017.0</td>
-      <td>1993</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>1234</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1/1/21</td>
+      <td>2021-01-01</td>
       <td>1:50</td>
       <td>4</td>
-      <td>VICTOR PEREZ</td>
-      <td>7383.0</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>FORD</td>
-      <td>2012.0</td>
-      <td>1957</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>1122</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1/1/21</td>
+      <td>2021-01-01</td>
       <td>8:50</td>
       <td>4</td>
-      <td>STEPHANIE ORTIGARA</td>
-      <td>18302.0</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>FORD</td>
-      <td>2007.0</td>
-      <td>1967</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>332</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1/1/21</td>
+      <td>2021-01-01</td>
       <td>12:41</td>
       <td>6</td>
-      <td>JASON ARROYO</td>
-      <td>14502.0</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>BMW</td>
-      <td>1998.0</td>
-      <td>1990</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>1121</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1/1/21</td>
+      <td>2021-01-01</td>
       <td>13:51</td>
       <td>5</td>
-      <td>MONTY OWENS</td>
-      <td>11975.0</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>TOYOTA</td>
-      <td>2002.0</td>
-      <td>1945</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>423</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 55 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1272,110 +1243,73 @@ dtype: int64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>DATESTOP</th>
-      <th>TIMESTOP</th>
-      <th>DURATION</th>
-      <th>OFFNAME</th>
-      <th>OFFBDGE</th>
-      <th>CITY_I</th>
-      <th>STATE</th>
-      <th>VEHMAKE</th>
-      <th>VEHYEAR</th>
-      <th>YRBIRTH</th>
-      <th>...</th>
-      <th>DOGALERT</th>
-      <th>DOGALERTSRCH</th>
-      <th>DOGALERTSRCHCONTRA</th>
-      <th>DOGDRUG</th>
-      <th>DOGPARA</th>
-      <th>DOGALC</th>
-      <th>DOGWEAP</th>
-      <th>DOGSTOLPROP</th>
-      <th>DOGOTHER</th>
-      <th>DOGDRAMT</th>
+      <th>DateStop</th>
+      <th>TimeStop</th>
+      <th>Duration</th>
+      <th>City</th>
+      <th>DriverRace</th>
+      <th>ReasonStop</th>
+      <th>TypeOfMovingViolation</th>
+      <th>Beat</th>
+      <th>SearchConducted</th>
+      <th>ContraFound</th>
+      <th>DrugsFound</th>
+      <th>WeaponFound</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>377896</th>
-      <td>12/31/21</td>
-      <td>20:31</td>
-      <td>21</td>
-      <td>LUIS NUNEZ</td>
-      <td>18229.0</td>
-      <td>CHICAGO HEIGHTS</td>
-      <td>IL</td>
-      <td>HONDA</td>
-      <td>2007.0</td>
-      <td>1980</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>377897</th>
-      <td>12/31/21</td>
-      <td>21:33</td>
-      <td>2</td>
-      <td>GUSTAVO DOMINGUEZ</td>
-      <td>15235.0</td>
-      <td>CHICAGO</td>
-      <td>IL</td>
-      <td>KIA</td>
-      <td>2014.0</td>
-      <td>1982</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>377898</th>
-      <td>12/31/21</td>
-      <td>21:20</td>
+      <th>76277</th>
+      <td>2021-02-28</td>
+      <td>21:47</td>
       <td>4</td>
-      <td>FRANK GIANAKAKIS</td>
-      <td>6934.0</td>
+      <td>SAINT PAUL</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>1821</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>76278</th>
+      <td>2021-02-28</td>
+      <td>21:15</td>
+      <td>5</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>TOYOTA</td>
-      <td>2015.0</td>
-      <td>1987</td>
-      <td>...</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>331</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+    </tr>
+    <tr>
+      <th>76279</th>
+      <td>2021-02-28</td>
+      <td>21:15</td>
+      <td>4</td>
+      <td>CHICAGO</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>1033</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
-<p>3 rows × 55 columns</p>
 </div></div></div>
 </div>
 </section>
 <section id="basic-metadata">
-<h1>Basic metadata<a class="headerlink" href="#basic-metadata" title="Permalink to this headline">#</a></h1>
+<h2>Basic metadata<a class="headerlink" href="#basic-metadata" title="Permalink to this headline">#</a></h2>
 <p>Pandas enables you to access basic metadata for its object by using some attributes. The important ones we are going to learn here are <strong>shape</strong>, <strong>dtypes</strong> and axis labels.</p>
 <p><strong>Shape</strong> gives the axis dimensions of the object. For a DataFrame, it will give the number of rows and columns.</p>
 <div class="cell docutils container">
@@ -1385,7 +1319,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(377899, 55)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(76280, 12)
 </pre></div>
 </div>
 </div>
@@ -1398,61 +1332,18 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATESTOP               object
-TIMESTOP               object
-DURATION                int64
-OFFNAME                object
-OFFBDGE               float64
-CITY_I                 object
-STATE                  object
-VEHMAKE                object
-VEHYEAR               float64
-YRBIRTH                 int64
-DRSEX                   int64
-DRRACE                float64
-REASSTOP              float64
-TYPEMOV               float64
-RESSTOP                 int64
-BEAT_I                  int64
-VEHCONSREQ              int64
-VEHCONSGIV              int64
-VEHSRCHCOND             int64
-VEHSRCHCONDBY           int64
-VEHCONTRA               int64
-VEHDRUGS                int64
-VEHPARA                 int64
-VEHALC                  int64
-VEHWEAP                 int64
-VEHSTOLPROP             int64
-VEHOTHER                int64
-VEHDRAMT                int64
-DRCONSREQ               int64
-DRCONSGIV               int64
-DRVSRCHCOND             int64
-DRVSRCHCONDBY           int64
-PASSCONSREQ             int64
-PASSCONSGIV             int64
-PASSSRCHCOND            int64
-PASSSRCHCONDBY          int64
-PASSDRVCONTRA           int64
-PASSDRVDRUGS            int64
-PASSDRVPARA             int64
-PASSDRVALC              int64
-PASSDRVWEAP             int64
-PASSDRVSTOLPROP         int64
-PASSDRVOTHER            int64
-PASSDRVDRAMT            int64
-DOGPERFSNIFF            int64
-DOGALERT                int64
-DOGALERTSRCH            int64
-DOGALERTSRCHCONTRA      int64
-DOGDRUG                 int64
-DOGPARA                 int64
-DOGALC                  int64
-DOGWEAP                 int64
-DOGSTOLPROP             int64
-DOGOTHER                int64
-DOGDRAMT                int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DateStop                  object
+TimeStop                  object
+Duration                   int64
+City                      object
+DriverRace               float64
+ReasonStop               float64
+TypeOfMovingViolation    float64
+Beat                       int64
+SearchConducted            int64
+ContraFound                int64
+DrugsFound                 int64
+WeaponFound                int64
 dtype: object
 </pre></div>
 </div>
@@ -1466,17 +1357,9 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;DATESTOP&#39;, &#39;TIMESTOP&#39;, &#39;DURATION&#39;, &#39;OFFNAME&#39;, &#39;OFFBDGE&#39;, &#39;CITY_I&#39;,
-       &#39;STATE&#39;, &#39;VEHMAKE&#39;, &#39;VEHYEAR&#39;, &#39;YRBIRTH&#39;, &#39;DRSEX&#39;, &#39;DRRACE&#39;, &#39;REASSTOP&#39;,
-       &#39;TYPEMOV&#39;, &#39;RESSTOP&#39;, &#39;BEAT_I&#39;, &#39;VEHCONSREQ&#39;, &#39;VEHCONSGIV&#39;,
-       &#39;VEHSRCHCOND&#39;, &#39;VEHSRCHCONDBY&#39;, &#39;VEHCONTRA&#39;, &#39;VEHDRUGS&#39;, &#39;VEHPARA&#39;,
-       &#39;VEHALC&#39;, &#39;VEHWEAP&#39;, &#39;VEHSTOLPROP&#39;, &#39;VEHOTHER&#39;, &#39;VEHDRAMT&#39;, &#39;DRCONSREQ&#39;,
-       &#39;DRCONSGIV&#39;, &#39;DRVSRCHCOND&#39;, &#39;DRVSRCHCONDBY&#39;, &#39;PASSCONSREQ&#39;,
-       &#39;PASSCONSGIV&#39;, &#39;PASSSRCHCOND&#39;, &#39;PASSSRCHCONDBY&#39;, &#39;PASSDRVCONTRA&#39;,
-       &#39;PASSDRVDRUGS&#39;, &#39;PASSDRVPARA&#39;, &#39;PASSDRVALC&#39;, &#39;PASSDRVWEAP&#39;,
-       &#39;PASSDRVSTOLPROP&#39;, &#39;PASSDRVOTHER&#39;, &#39;PASSDRVDRAMT&#39;, &#39;DOGPERFSNIFF&#39;,
-       &#39;DOGALERT&#39;, &#39;DOGALERTSRCH&#39;, &#39;DOGALERTSRCHCONTRA&#39;, &#39;DOGDRUG&#39;, &#39;DOGPARA&#39;,
-       &#39;DOGALC&#39;, &#39;DOGWEAP&#39;, &#39;DOGSTOLPROP&#39;, &#39;DOGOTHER&#39;, &#39;DOGDRAMT&#39;],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;DateStop&#39;, &#39;TimeStop&#39;, &#39;Duration&#39;, &#39;City&#39;, &#39;DriverRace&#39;, &#39;ReasonStop&#39;,
+       &#39;TypeOfMovingViolation&#39;, &#39;Beat&#39;, &#39;SearchConducted&#39;, &#39;ContraFound&#39;,
+       &#39;DrugsFound&#39;, &#39;WeaponFound&#39;],
       dtype=&#39;object&#39;)
 </pre></div>
 </div>
@@ -1489,7 +1372,7 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RangeIndex(start=0, stop=377899, step=1)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RangeIndex(start=0, stop=76280, step=1)
 </pre></div>
 </div>
 </div>
@@ -1497,7 +1380,7 @@ dtype: object
 <p>As you can notice, since there wasn’t any index provided by the dataset, Pandas set the default index to range of integers from 0 to length of the DataFrame.</p>
 </section>
 <section id="selecting-and-subsetting">
-<h1>Selecting and Subsetting<a class="headerlink" href="#selecting-and-subsetting" title="Permalink to this headline">#</a></h1>
+<h2>Selecting and Subsetting<a class="headerlink" href="#selecting-and-subsetting" title="Permalink to this headline">#</a></h2>
 <p>Pandas offers a few ways that we can use to select a set of data which can include a cell, row, column or a subset of the entire dataframe. The 3 ways that we will go through are selection using <code class="docutils literal notranslate"><span class="pre">[]</span></code>, <code class="docutils literal notranslate"><span class="pre">.loc</span></code> (label based indexing) and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> (position based indexing).</p>
 <p>Using <code class="docutils literal notranslate"><span class="pre">[]</span></code> is an archaic way of indexing which mimics the same way we would index dictionaries in Python. In Pandas, it’ll select the lower-dimensional set. For the Series below we are using the row Index to select a row below.</p>
 <div class="cell docutils container">
@@ -1528,7 +1411,7 @@ Name: Chrome, dtype: int64
 </div>
 </div>
 </div>
-<p>While you may stil find this notation being used for indexing DataFrames and Series, it can often result in errors and confusion. The purpose to bring it up here was to provide familiarity with this notation. Therefore, we will focus more on using <code class="docutils literal notranslate"><span class="pre">.loc</span></code> for selection which is a more powerful and explicit indexer.</p>
+<p>While you may stil find this notation being used for indexing DataFrames and Series, it can often result in errors and confusion. The purpose to bring it up here was to provide familiarity with this notation. Therefore, we will focus more on using <code class="docutils literal notranslate"><span class="pre">.loc</span></code> for selection which is a more powerful and explicit indexer. The format it follows is <code class="docutils literal notranslate"><span class="pre">.loc[row_indexer,col_indexer]</span></code></p>
 <p>The integer below is the label for the index that will extract the row with index label 2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1537,61 +1420,18 @@ Name: Chrome, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATESTOP                          1/1/21
-TIMESTOP                            8:50
-DURATION                               4
-OFFNAME               STEPHANIE ORTIGARA
-OFFBDGE                          18302.0
-CITY_I                           CHICAGO
-STATE                                 IL
-VEHMAKE                             FORD
-VEHYEAR                           2007.0
-YRBIRTH                             1967
-DRSEX                                  1
-DRRACE                               2.0
-REASSTOP                             3.0
-TYPEMOV                              NaN
-RESSTOP                                3
-BEAT_I                               332
-VEHCONSREQ                             2
-VEHCONSGIV                             0
-VEHSRCHCOND                            2
-VEHSRCHCONDBY                          0
-VEHCONTRA                              0
-VEHDRUGS                               0
-VEHPARA                                0
-VEHALC                                 0
-VEHWEAP                                0
-VEHSTOLPROP                            0
-VEHOTHER                               0
-VEHDRAMT                               0
-DRCONSREQ                              2
-DRCONSGIV                              0
-DRVSRCHCOND                            2
-DRVSRCHCONDBY                          0
-PASSCONSREQ                            2
-PASSCONSGIV                            0
-PASSSRCHCOND                           2
-PASSSRCHCONDBY                         0
-PASSDRVCONTRA                          0
-PASSDRVDRUGS                           0
-PASSDRVPARA                            0
-PASSDRVALC                             0
-PASSDRVWEAP                            0
-PASSDRVSTOLPROP                        0
-PASSDRVOTHER                           0
-PASSDRVDRAMT                           0
-DOGPERFSNIFF                           2
-DOGALERT                               0
-DOGALERTSRCH                           0
-DOGALERTSRCHCONTRA                     0
-DOGDRUG                                0
-DOGPARA                                0
-DOGALC                                 0
-DOGWEAP                                0
-DOGSTOLPROP                            0
-DOGOTHER                               0
-DOGDRAMT                               0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DateStop                 2021-01-01
+TimeStop                       8:50
+Duration                          4
+City                        CHICAGO
+DriverRace                      2.0
+ReasonStop                      3.0
+TypeOfMovingViolation           NaN
+Beat                            332
+SearchConducted                   2
+ContraFound                       0
+DrugsFound                        0
+WeaponFound                       0
 Name: 2, dtype: object
 </pre></div>
 </div>
@@ -1624,127 +1464,90 @@ Name: 2, dtype: object
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>DATESTOP</th>
-      <th>TIMESTOP</th>
-      <th>DURATION</th>
-      <th>OFFNAME</th>
-      <th>OFFBDGE</th>
-      <th>CITY_I</th>
-      <th>STATE</th>
-      <th>VEHMAKE</th>
-      <th>VEHYEAR</th>
-      <th>YRBIRTH</th>
-      <th>...</th>
-      <th>DOGALERT</th>
-      <th>DOGALERTSRCH</th>
-      <th>DOGALERTSRCHCONTRA</th>
-      <th>DOGDRUG</th>
-      <th>DOGPARA</th>
-      <th>DOGALC</th>
-      <th>DOGWEAP</th>
-      <th>DOGSTOLPROP</th>
-      <th>DOGOTHER</th>
-      <th>DOGDRAMT</th>
+      <th>DateStop</th>
+      <th>TimeStop</th>
+      <th>Duration</th>
+      <th>City</th>
+      <th>DriverRace</th>
+      <th>ReasonStop</th>
+      <th>TypeOfMovingViolation</th>
+      <th>Beat</th>
+      <th>SearchConducted</th>
+      <th>ContraFound</th>
+      <th>DrugsFound</th>
+      <th>WeaponFound</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1/1/21</td>
+      <td>2021-01-01</td>
       <td>0:33</td>
       <td>5</td>
-      <td>FIDEL LEGORRETA</td>
-      <td>5902.0</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>CHEVROLET</td>
-      <td>2017.0</td>
-      <td>1993</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>1234</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1/1/21</td>
+      <td>2021-01-01</td>
       <td>1:50</td>
       <td>4</td>
-      <td>VICTOR PEREZ</td>
-      <td>7383.0</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>FORD</td>
-      <td>2012.0</td>
-      <td>1957</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>1122</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1/1/21</td>
+      <td>2021-01-01</td>
       <td>8:50</td>
       <td>4</td>
-      <td>STEPHANIE ORTIGARA</td>
-      <td>18302.0</td>
       <td>CHICAGO</td>
-      <td>IL</td>
-      <td>FORD</td>
-      <td>2007.0</td>
-      <td>1967</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>332</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
-<p>3 rows × 55 columns</p>
 </div></div></div>
 </div>
-<p>Using the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> attribute, we can also select the second dimension (column for a DataFrame). In the cell below, we are selecting all rows and the ‘OFFNAME’ column.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> attribute, we can also select the second dimension (column for a DataFrame). In the cell below, we are selecting all rows and the ‘City’ column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span> <span class="p">,</span><span class="s1">&#39;OFFNAME&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span> <span class="p">,</span><span class="s1">&#39;City&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0            FIDEL LEGORRETA
-1               VICTOR PEREZ
-2         STEPHANIE ORTIGARA
-3               JASON ARROYO
-4                MONTY OWENS
-                 ...        
-377894       MATTHEW DRINNAN
-377895       EMMANUEL GARCIA
-377896            LUIS NUNEZ
-377897     GUSTAVO DOMINGUEZ
-377898      FRANK GIANAKAKIS
-Name: OFFNAME, Length: 377899, dtype: object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0           CHICAGO
+1           CHICAGO
+2           CHICAGO
+3           CHICAGO
+4           CHICAGO
+            ...    
+76275       CHICAGO
+76276       CHICAGO
+76277    SAINT PAUL
+76278       CHICAGO
+76279       CHICAGO
+Name: City, Length: 76280, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1752,12 +1555,12 @@ Name: OFFNAME, Length: 377899, dtype: object
 <p>By specifying a single value in both the dimensions, we can select the specific cell as well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">5</span> <span class="p">,</span><span class="s1">&#39;OFFNAME&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">5</span> <span class="p">,</span><span class="s1">&#39;City&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;MONTY OWENS&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;CHICAGO&#39;
 </pre></div>
 </div>
 </div>
@@ -1765,7 +1568,7 @@ Name: OFFNAME, Length: 377899, dtype: object
 <p>Or select a range of rows over multiple columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">55</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;OFFNAME&#39;</span><span class="p">,</span><span class="s1">&#39;DRSEX&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">55</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;City&#39;</span><span class="p">,</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1788,40 +1591,40 @@ Name: OFFNAME, Length: 377899, dtype: object
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>OFFNAME</th>
-      <th>DRSEX</th>
+      <th>City</th>
+      <th>DriverRace</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>55</th>
-      <td>ESTEBAN PEREZ</td>
-      <td>1</td>
+      <td>MAYWOOD</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>56</th>
-      <td>BRENDAN CIMAGLIA</td>
-      <td>1</td>
+      <td>CHICAGO</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>57</th>
-      <td>RAUL GONZALEZ</td>
-      <td>1</td>
+      <td>CHICAGO</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>58</th>
-      <td>HAMZEH SUWI</td>
-      <td>2</td>
+      <td>FORES PARK</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>59</th>
-      <td>JESSICA BAUTISTA</td>
-      <td>2</td>
+      <td>BELVIDERE</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>60</th>
-      <td>NAWACHUD BURAKETRACHAKUL</td>
-      <td>2</td>
+      <td>CHICAGO</td>
+      <td>1.0</td>
     </tr>
   </tbody>
 </table>
@@ -1830,7 +1633,7 @@ Name: OFFNAME, Length: 377899, dtype: object
 <p>The selection can also be a list of indices rather than a range.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">55</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">903</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;OFFNAME&#39;</span><span class="p">,</span><span class="s1">&#39;DRSEX&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">55</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">903</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;City&#39;</span><span class="p">,</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1853,74 +1656,74 @@ Name: OFFNAME, Length: 377899, dtype: object
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>OFFNAME</th>
-      <th>DRSEX</th>
+      <th>City</th>
+      <th>DriverRace</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>55</th>
-      <td>ESTEBAN PEREZ</td>
-      <td>1</td>
+      <td>MAYWOOD</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>78</th>
-      <td>MICHAEL MANNION</td>
-      <td>1</td>
+      <td>CHICAGO</td>
+      <td>4.0</td>
     </tr>
     <tr>
       <th>903</th>
-      <td>LUIS HUESCA</td>
-      <td>2</td>
+      <td>CHICAGO</td>
+      <td>1.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>Another useful approach that comes handy when performing data manipulation operations is selection using boolean operators. In the cell below, before the comparision operator, we are subsetting the DataFrame to return all rows in the ‘DURATION’ column. We are then comparing the ‘DURATION’ value and returning <code class="docutils literal notranslate"><span class="pre">True</span></code> if the value is strictly less than 5. This returns a boolean array.</p>
+<p>Another useful approach that comes handy when performing data manipulation operations is selection using boolean operators. In the cell below, before the comparision operator, we are subsetting the DataFrame to return all rows in the ‘Duration’ column. We are then comparing the ‘Duration’ value and returning <code class="docutils literal notranslate"><span class="pre">True</span></code> if the value is strictly less than 5. This returns a boolean array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;DURATION&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Duration&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         False
-1          True
-2          True
-3         False
-4         False
-          ...  
-377894     True
-377895    False
-377896    False
-377897     True
-377898     True
-Name: DURATION, Length: 377899, dtype: bool
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        False
+1         True
+2         True
+3        False
+4        False
+         ...  
+76275    False
+76276     True
+76277     True
+76278    False
+76279     True
+Name: Duration, Length: 76280, dtype: bool
 </pre></div>
 </div>
 </div>
 </div>
-<p>The above comparision operation can then be used to filter out rows that are True for the above case. In the cell below, we are using the same comparision operation to return cells from the entire DataFrame that have a stop duration of less than 5. Notice, we are then subsetting it to only provide Officer’s Names of those rows.</p>
+<p>The above comparision operation can then be used to filter out rows that are True for the above case. In the cell below, we are using the same comparision operation to return cells from the entire DataFrame that have a stop duration of less than 5. Notice, we are then subsetting it to only provide City Names of those rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;DURATION&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;OFFNAME&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;City&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1               VICTOR PEREZ
-2         STEPHANIE ORTIGARA
-5                MONTY OWENS
-8                CARLOS MOTA
-9            MARCUS LYLES JR
-                 ...        
-377891         JOSEPH ALFARO
-377892       KRYSTAL TROTTER
-377894       MATTHEW DRINNAN
-377897     GUSTAVO DOMINGUEZ
-377898      FRANK GIANAKAKIS
-Name: OFFNAME, Length: 198861, dtype: object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1                 CHICAGO
+2                 CHICAGO
+5                 CHICAGO
+8        GLENDALE HEIGHTS
+9                 CHICAGO
+               ...       
+76270             CHICAGO
+76272             CHICAGO
+76276             CHICAGO
+76277          SAINT PAUL
+76279             CHICAGO
+Name: City, Length: 40558, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1933,68 +1736,25 @@ Name: OFFNAME, Length: 198861, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATESTOP                        1/1/21
-TIMESTOP                         17:26
-DURATION                             2
-OFFNAME                    CARLOS MOTA
-OFFBDGE                         3548.0
-CITY_I                GLENDALE HEIGHTS
-STATE                               IL
-VEHMAKE                          LEXUS
-VEHYEAR                         2014.0
-YRBIRTH                           1980
-DRSEX                                1
-DRRACE                             5.0
-REASSTOP                           1.0
-TYPEMOV                            6.0
-RESSTOP                              3
-BEAT_I                            1824
-VEHCONSREQ                           2
-VEHCONSGIV                           0
-VEHSRCHCOND                          2
-VEHSRCHCONDBY                        0
-VEHCONTRA                            0
-VEHDRUGS                             0
-VEHPARA                              0
-VEHALC                               0
-VEHWEAP                              0
-VEHSTOLPROP                          0
-VEHOTHER                             0
-VEHDRAMT                             0
-DRCONSREQ                            2
-DRCONSGIV                            0
-DRVSRCHCOND                          2
-DRVSRCHCONDBY                        0
-PASSCONSREQ                          2
-PASSCONSGIV                          0
-PASSSRCHCOND                         2
-PASSSRCHCONDBY                       0
-PASSDRVCONTRA                        0
-PASSDRVDRUGS                         0
-PASSDRVPARA                          0
-PASSDRVALC                           0
-PASSDRVWEAP                          0
-PASSDRVSTOLPROP                      0
-PASSDRVOTHER                         0
-PASSDRVDRAMT                         0
-DOGPERFSNIFF                         2
-DOGALERT                             0
-DOGALERTSRCH                         0
-DOGALERTSRCHCONTRA                   0
-DOGDRUG                              0
-DOGPARA                              0
-DOGALC                               0
-DOGWEAP                              0
-DOGSTOLPROP                          0
-DOGOTHER                             0
-DOGDRAMT                             0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DateStop                       2021-01-01
+TimeStop                            17:26
+Duration                                2
+City                     GLENDALE HEIGHTS
+DriverRace                            5.0
+ReasonStop                            1.0
+TypeOfMovingViolation                 6.0
+Beat                                 1824
+SearchConducted                         2
+ContraFound                             0
+DrugsFound                              0
+WeaponFound                             0
 Name: 8, dtype: object
 </pre></div>
 </div>
 </div>
 </div>
 <p>In the case of this dataset, index labels are sorted integers which is the same as the index position as well, therefore, in this specific case, using wither <code class="docutils literal notranslate"><span class="pre">.loc</span></code> or <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> will return the same set of rows. However, since we have string labels for eac column, we will have to provide integer values that mark the position of the column in the DataFrame. Providing column name or any non-integer value in <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> will return an error.</p>
-<p>In the cell below, we are selecting rows 2 till 6, with 2 included, and selecting the 4th column (‘DURATION’ is at position 4).</p>
+<p>In the cell below, we are selecting rows 2 till 6, with 2 included, and selecting the 4th column (‘Duration’ is at position 4).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
@@ -2002,11 +1762,11 @@ Name: 8, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2    18302.0
-3    14502.0
-4    11975.0
-5    11975.0
-Name: OFFBDGE, dtype: float64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2    2.0
+3    2.0
+4    2.0
+5    2.0
+Name: DriverRace, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2037,40 +1797,40 @@ Name: OFFBDGE, dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>OFFBDGE</th>
-      <th>CITY_I</th>
-      <th>STATE</th>
-      <th>VEHMAKE</th>
+      <th>DriverRace</th>
+      <th>ReasonStop</th>
+      <th>TypeOfMovingViolation</th>
+      <th>Beat</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>2</th>
-      <td>18302.0</td>
-      <td>CHICAGO</td>
-      <td>IL</td>
-      <td>FORD</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>332</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>14502.0</td>
-      <td>CHICAGO</td>
-      <td>IL</td>
-      <td>BMW</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>1121</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>11975.0</td>
-      <td>CHICAGO</td>
-      <td>IL</td>
-      <td>TOYOTA</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>423</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>11975.0</td>
-      <td>CHICAGO</td>
-      <td>IL</td>
-      <td>HONDA</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>423</td>
     </tr>
   </tbody>
 </table>
@@ -2079,42 +1839,39 @@ Name: OFFBDGE, dtype: float64
 <p>Note: Out of range slice indexes are handled gracefully just as in Python. It will not return an error but will return everything in the range apart from the our of range slices. If the entire slice index is out of range, Python will return empty list.</p>
 </section>
 <section id="data-types-and-conversion">
-<h1>Data types and conversion<a class="headerlink" href="#data-types-and-conversion" title="Permalink to this headline">#</a></h1>
+<h2>Data types and conversion<a class="headerlink" href="#data-types-and-conversion" title="Permalink to this headline">#</a></h2>
 <p>We saw above how the attribute <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> provides us with the the data type for each column in a DataFrame. Pandas has a set of data types that it understands and manipulates. It also includes a set of extended types from third-party libraries that have implemented this extension.</p>
 <p>We will touch upon the most basic and common ones that you saw in the result returned from running the command <code class="docutils literal notranslate"><span class="pre">stops_df.dtypes</span></code>. In brief, they include:</p>
 <ul class="simple">
 <li><p>integer: default integer types are int64 (called nullable integers too)</p></li>
 <li><p>float: default float types are float64</p></li>
 <li><p>boolean: stores boolean data (True/False) with missing values</p></li>
-<li><p>date/time: datetime64[ns] format timestamp</p></li>
+<li><p>date/time: timestamp for scalar and datetime64[ns] format for series</p></li>
 <li><p>object:  holds any Python object, including strings</p></li>
 <li><p>string: dedicated to strings</p></li>
 <li><p>category: stores limited, fixed number of possible values</p></li>
 </ul>
-<p>We can print the data types for the stops DataFrame again and can see that by default, Pandas doesn’t interpret all data types correctly in the form that can be useful for us. For eg. DATESTOP and TIMESTOP are object types (stored as strings) and will prevent us from performing several temporal operations. (We will cover datetime in detail in the following section)</p>
-<p>Similarly, DRRACE and DRSEX, which indicates the category of the Driver’s Race and Sex, respectively. However, since these categories are assigned float and integer, respectively, this can mislead our analytical process and any prediction we might want to make.</p>
+<p>We can print the data types for the stops DataFrame again and can see that by default, Pandas doesn’t interpret all data types in the form that can be useful for us. For eg. DATESTOP and TIMESTOP are object types (stored as strings) and will prevent us from performing several temporal operations. (We will cover datetime in detail in the following section)</p>
+<p>Similarly, DriverRace and ReasonStop, which indicates the category of the Driver’s Race and Reason for Stop, respectively. However, since these categories are assigned float and integer, respectively, this can mislead our analytical process and any prediction we might want to make.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">15</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATESTOP     object
-TIMESTOP     object
-DURATION      int64
-OFFNAME      object
-OFFBDGE     float64
-CITY_I       object
-STATE        object
-VEHMAKE      object
-VEHYEAR     float64
-YRBIRTH       int64
-DRSEX         int64
-DRRACE      float64
-REASSTOP    float64
-TYPEMOV     float64
-RESSTOP       int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DateStop                  object
+TimeStop                  object
+Duration                   int64
+City                      object
+DriverRace               float64
+ReasonStop               float64
+TypeOfMovingViolation    float64
+Beat                       int64
+SearchConducted            int64
+ContraFound                int64
+DrugsFound                 int64
+WeaponFound                int64
 dtype: object
 </pre></div>
 </div>
@@ -2123,7 +1880,7 @@ dtype: object
 <p>The <code class="docutils literal notranslate"><span class="pre">astype</span></code> method enables us to convert data types to the desired ones. A convenient way of performing this operation is to pass a dictionary with the column name whose type needs to be changed as key and the desired data type as value. We are then assigning the returned result to the original DataFrame to replace it with these new changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s1">&#39;OFFBDGE&#39;</span><span class="p">:</span> <span class="s1">&#39;object&#39;</span><span class="p">,</span> <span class="s1">&#39;DRRACE&#39;</span><span class="p">:</span> <span class="s1">&#39;category&#39;</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">:</span> <span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="s1">&#39;ReasonStop&#39;</span><span class="p">:</span> <span class="s1">&#39;category&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -2131,26 +1888,23 @@ dtype: object
 <p>Let’s use <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> to check the new assigned data types</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">15</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATESTOP      object
-TIMESTOP      object
-DURATION       int64
-OFFNAME       object
-OFFBDGE       object
-CITY_I        object
-STATE         object
-VEHMAKE       object
-VEHYEAR      float64
-YRBIRTH        int64
-DRSEX          int64
-DRRACE      category
-REASSTOP     float64
-TYPEMOV      float64
-RESSTOP        int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DateStop                   object
+TimeStop                   object
+Duration                    int64
+City                       object
+DriverRace               category
+ReasonStop               category
+TypeOfMovingViolation     float64
+Beat                        int64
+SearchConducted             int64
+ContraFound                 int64
+DrugsFound                  int64
+WeaponFound                 int64
 dtype: object
 </pre></div>
 </div>
@@ -2158,13 +1912,13 @@ dtype: object
 </div>
 </section>
 <section id="datetime-in-pandas">
-<h1>Datetime in Pandas<a class="headerlink" href="#datetime-in-pandas" title="Permalink to this headline">#</a></h1>
-<p>Temporal data (consisting of date and time stamps) is highly useful in data analytics and can result in useful features. Pandas offers the ability to parse time series information from various sources and formats. This can enable us to perform several operations on datetime values such as sorting, predicting or categorizing data by certain time periods.</p>
-<p>One of the most convenient formats for datetime that Pandas uses is referred to as Date times which is a specific date and time with timezone support. You can notice that this is in the form of datetime64[ns].</p>
-<p>Series and DataFrame have extended data type support and functionality for datetime. To convert object of in a DataFrame to date-like objects  we will use the to_datetime function</p>
+<h2>Datetime in Pandas<a class="headerlink" href="#datetime-in-pandas" title="Permalink to this headline">#</a></h2>
+<p>Temporal data (consisting of date and time stamps) is highly useful in data analytics and can result in useful features. Pandas offers the ability to work with time series information in various formats. This can enable us to perform several operations on datetime values such as sorting, predicting or categorizing data by certain time periods.</p>
+<p>A convenient format for datetime that Pandas uses is datetime from Python’s <a class="reference external" href="https://docs.python.org/3/library/datetime.html">datetime</a> library. This provides the ability for manipulating dates and times. We will work with datetime.datetime type from this library which is a combination of both date and time. Pandas will assign either datetime64[ns] or datetime64[ns, tz] data type to such a format.</p>
+<p>Series and DataFrame have extended data type support and functionality for datetime. In order to create this format from a Series or list consisting of timestamps in String or Object form (as is in the case of <code class="docutils literal notranslate"><span class="pre">stops_df</span></code> dataframe), we will use pandas’ <code class="docutils literal notranslate"><span class="pre">to_datetime</span></code> function. A single scalar value will be converted to Timestamp data type, whereas, a pandas object will convert to datetime64[ns].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2010/11/12&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y/%m/</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2010/11/12&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2174,55 +1928,1076 @@ dtype: object
 </div>
 </div>
 </div>
-<p>Using it on the stops DataFrame, we get the following result. We will then assign it back to the original DataFrame.</p>
+<p>Using this function on the stops DataFrame will result in pandas parsing it to datetime.datetime like format. You can notice the data type it gets converted into.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DATESTOP&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        2021-01-01
-1        2021-01-01
-2        2021-01-01
-3        2021-01-01
-4        2021-01-01
-            ...    
-377894   2021-12-30
-377895   2021-12-31
-377896   2021-12-31
-377897   2021-12-31
-377898   2021-12-31
-Name: DATESTOP, Length: 377899, dtype: datetime64[ns]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       2021-01-01
+1       2021-01-01
+2       2021-01-01
+3       2021-01-01
+4       2021-01-01
+           ...    
+76275   2021-02-28
+76276   2021-02-28
+76277   2021-02-28
+76278   2021-02-28
+76279   2021-02-28
+Name: DateStop, Length: 76280, dtype: datetime64[ns]
 </pre></div>
 </div>
 </div>
 </div>
-<p>In addition to the required datetime string, a format argument can be passed to ensure specific parsing. This could also potentially speed up the conversion considerably.</p>
-<p>There are several time/date properties that one can access from Timestamp or a collection of timestamps like a DatetimeIndex. We will use one such way to extract month out of our dataset.</p>
+<p>We will now assign it back to the original DataFrame. The <code class="docutils literal notranslate"><span class="pre">to_datetime</span></code> function also enables to pass a format argument to ensure specific parsing. This could also potentially speed up the conversion considerably. You can find the format codes on this <a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes">link</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DATESTOP&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Every Timestamp has a set of time/date properties or temporal features that can be extracted.</p>
+<p>For a Series of type datetime, we can use the .dt accessor to extract these properties. This <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/timeseries.html#time-date-components">table</a> lists all the properties that can be accessed. We will use it to get hour of the day and the day of the week (to classify if the stop was on a weekend or a weekday). We will assign these to a new column in the DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;Month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+<span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;Weekday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see how we accessed properties from the timestamp in DATESTOP column for some randomly selected rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">44</span><span class="p">,</span><span class="mi">5400</span><span class="p">,</span><span class="mi">10434</span><span class="p">,</span><span class="mi">55400</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">,</span><span class="s1">&#39;Month&#39;</span><span class="p">,</span><span class="s1">&#39;Weekday&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0          1
-1          1
-2          1
-3          1
-4          1
-          ..
-377894    12
-377895    12
-377896    12
-377897    12
-377898    12
-Name: DATESTOP, Length: 377899, dtype: int64
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DateStop</th>
+      <th>Month</th>
+      <th>Weekday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2021-01-01</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>2021-01-01</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5400</th>
+      <td>2021-02-06</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>10434</th>
+      <td>2021-01-05</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>55400</th>
+      <td>2021-02-20</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="missing-values">
+<h2>Missing Values<a class="headerlink" href="#missing-values" title="Permalink to this headline">#</a></h2>
+<p>Dealing with missing values is a major component of the data cleaning process. Fortunately, pandas has a set of markers and methods to help us do that. Primarily, pandas uses NaN as the default missing value marker and can be found in different data types.</p>
+<p>Pandas offers a set of methids to detect, fill or replace NaN values. Moreover, NaNs can also be ignored in pandas function by specifying to ignore NaNs in the function areguments if possible. Therefore, it is handy to convert any value indicating a missing value to a NaN.</p>
+<p>In order to check for NaN in a DataFrame or Series, we can use <code class="docutils literal notranslate"><span class="pre">.isna()</span></code> or <code class="docutils literal notranslate"><span class="pre">.notna()</span></code> attribute.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DateStop</th>
+      <th>TimeStop</th>
+      <th>Duration</th>
+      <th>City</th>
+      <th>DriverRace</th>
+      <th>ReasonStop</th>
+      <th>TypeOfMovingViolation</th>
+      <th>Beat</th>
+      <th>SearchConducted</th>
+      <th>ContraFound</th>
+      <th>DrugsFound</th>
+      <th>WeaponFound</th>
+      <th>Month</th>
+      <th>Weekday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">.notna()</span></code> will reverse the results. As you can notice above, we can find missing values in the column ‘TypeOfMovingViolation’ with slight glimpse over the dataframe. In order to count the total missing values in all columns, we can suffix it with a method <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> which adds all cells where value is True (where each True is 1).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DateStop                     0
+TimeStop                     0
+Duration                     0
+City                         0
+DriverRace                   3
+ReasonStop                   0
+TypeOfMovingViolation    53326
+Beat                         0
+SearchConducted              0
+ContraFound                  0
+DrugsFound                   0
+WeaponFound                  0
+Month                        0
+Weekday                      0
+dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
+<p>One of the ways to deal with these missing values is to fill in the NaNs with a scaler value using <code class="docutils literal notranslate"><span class="pre">.fillna()</span></code>. Here, the method accepts the value to be replaced. The inplace argument, when set to True, applies the changes to the DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;No moving violation&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note</strong>: For storage purposes, it isn’t optimal to fill in categorical with a long string. Therefore, categories are usually mapped to a single character to save space.</p>
+<p>Another way is to simply exclude rows or columns from a dataset that might contain missing values. We need to be very careful when deciding to use this approach since we might lose critical data or reduce the data size.</p>
+<p>In case we plan to, <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> will do the job for use. By specifying the axis in the argument (either ‘index’ or ‘columns’), the specified axis containing atleast one NaN will be removed.</p>
+<p>We will use it below to remove the rows where the Driver’s Race is missing since that is the key value for our analysis. We specify the column name as the subset argument to only remove rows where ‘DriveRace’ is missing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mapping-replacing-values-and-labels">
+<h2>Mapping/Replacing values and labels<a class="headerlink" href="#mapping-replacing-values-and-labels" title="Permalink to this headline">#</a></h2>
+<p>Data cleaning process usuallly requires replacing vague, misspled or missing values with correct ones. IT also requires structuring the index and column labels properly in order to make it easier for analysis.</p>
+<p>In order to rename index labels or columns, the rename method is very useful. By mapping the existing value to a new one, we can replace the column name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Beat&quot;</span><span class="p">:</span> <span class="s2">&quot;BeatCode&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">stops_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;DateStop&#39;, &#39;TimeStop&#39;, &#39;Duration&#39;, &#39;City&#39;, &#39;DriverRace&#39;, &#39;ReasonStop&#39;,
+       &#39;TypeOfMovingViolation&#39;, &#39;BeatCode&#39;, &#39;SearchConducted&#39;, &#39;ContraFound&#39;,
+       &#39;DrugsFound&#39;, &#39;WeaponFound&#39;, &#39;Month&#39;, &#39;Weekday&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">.loc()</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>, any cell’s value can be changed</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">230</span><span class="p">,</span> <span class="s1">&#39;City&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Chicago&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#map values</span>
+<span class="c1">#stops_df[&#39;SearchConducted&#39;].map</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="statistics">
+<h2>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">#</a></h2>
+<p>In the exploratory process, it is essential to have an understanding of the distribution of data and its summary statistics. Pandas offers a set of methods that provide this information and additionaly, enable us to visualize it.</p>
+<p>A few ways to do this includes using <code class="docutils literal notranslate"><span class="pre">mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">median</span></code> method to get these summary statis for a DataFrame or a Series. See the cells below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.579952016990705
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We got the mean and median duration for all Traffic stops. Depending on the data type, we can gather more of such stats to assist with our analysis. We can also use the <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> method to provide us with a quick way to see essential summary stats for each column. Notice, that summary stats are only given for numeric columns, therefore, we do not see summary stats for any column with datetime, categorical or object type.</p>
+<p>You can also notice that columns that were supposed to have categorical types and were picked up as integer or float data type, got statistical values that are not relevant. For eg. Month has mean and percentiles. Therefore, this emphasizes on the relevance of converting such columns to categorical data types to get a suitable analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Duration</th>
+      <th>Beat</th>
+      <th>SearchConducted</th>
+      <th>ContraFound</th>
+      <th>DrugsFound</th>
+      <th>WeaponFound</th>
+      <th>Month</th>
+      <th>Weekday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>76277.000000</td>
+      <td>76277.000000</td>
+      <td>76277.000000</td>
+      <td>76277.000000</td>
+      <td>76277.000000</td>
+      <td>76277.000000</td>
+      <td>76277.000000</td>
+      <td>76277.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>7.579952</td>
+      <td>1081.627070</td>
+      <td>1.985251</td>
+      <td>0.026076</td>
+      <td>0.027151</td>
+      <td>0.029091</td>
+      <td>1.440133</td>
+      <td>3.116064</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>26.182170</td>
+      <td>646.260818</td>
+      <td>0.120547</td>
+      <td>0.219205</td>
+      <td>0.226316</td>
+      <td>0.238602</td>
+      <td>0.496406</td>
+      <td>1.958205</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>111.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>3.000000</td>
+      <td>612.000000</td>
+      <td>2.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>4.000000</td>
+      <td>1022.000000</td>
+      <td>2.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>3.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>6.000000</td>
+      <td>1522.000000</td>
+      <td>2.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>2.000000</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>719.000000</td>
+      <td>6100.000000</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
+      <td>6.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Other significant attributes that give useful information include <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> which provides count of unique values in a series. We can use it to see the number of stops on each day of the week.<br><br>Note: Pandas weekday attribute maps Monday to 0 and Sunday to 6</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;Weekday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4    12198
+5    11944
+3    10899
+6    10780
+2    10695
+1    10405
+0     9356
+Name: Weekday, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pointers-and-object-references">
+<h2>Pointers and Object References<a class="headerlink" href="#pointers-and-object-references" title="Permalink to this headline">#</a></h2>
+<p>It is important to know how Pandas objects are treated, especially when they are passed to functions or when changes are made to them. You might be familiar with how arguments to functions are pass-by-value where python creates a copy of the variable inside the function and works with that copy. However, pandas objects, particularly DataFrame and Series are passed as pass-by-reference, where the variable <em>pointing</em> to the pandas object is given to the function and, therefore, any changes made to the object the pointer variable is pointing to within the function, also changes the object in place.</p>
+<p>Moreover, any assignment to a new variable such as <code class="docutils literal notranslate"><span class="pre">df2</span> <span class="pre">=</span> <span class="pre">df</span></code> just makes the new variable point to the same DataFrame and as a result, any changes made to <code class="docutils literal notranslate"><span class="pre">df2</span></code> will also impact <code class="docutils literal notranslate"><span class="pre">df</span></code> since they both point to the same object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chrome</th>
+      <th>Safari</th>
+      <th>Firefox</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>67</td>
+      <td>44</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>74</td>
+      <td>58</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>89</td>
+      <td>70</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="s1">&#39;Safari&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">87</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chrome</th>
+      <th>Safari</th>
+      <th>Firefox</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>67</td>
+      <td>87</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>74</td>
+      <td>58</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>89</td>
+      <td>70</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2021</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chrome</th>
+      <th>Safari</th>
+      <th>Firefox</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>67</td>
+      <td>87</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>74</td>
+      <td>58</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>89</td>
+      <td>70</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>2021</th>
+      <td>32</td>
+      <td>19</td>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Similarly, passing dataframe as an argument to a function call doesn’t create a new copy but changes the DataFrame in-place as it is only passing the reference of the DataFrame object and not the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square_vals</span><span class="p">(</span><span class="n">dataframe</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dataframe</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">square_vals</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Chrome  Safari  Firefox
+2018    4489    7569       64
+2019    5476    3364      196
+2020    7921    4900      256
+2021    1024     361     2025
+</pre></div>
+</div>
+</div>
+</div>
+<p>The process above of assigning DataFrame to a new variable using <code class="docutils literal notranslate"><span class="pre">=</span></code> sign doesn’t copy the values but just makes the new variable another point of reference for the dataframe.</p>
+<p>Pandas uses a method called shallow copy. This creates a new object where the object will only have references to the original data and its indexes but not the data and index itself. Any changes to values in a shallow copy will also reflect in the original dataframe. The difference this has with using the assignment operator <code class="docutils literal notranslate"><span class="pre">=</span></code> is that we can append extra rows and columns to the shallow copied dataframe without affecting the original one. The original dataframe will only change if we change existing values as we are changing the values that are referred to in both the dataframes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chrome</th>
+      <th>Safari</th>
+      <th>Firefox</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>67</td>
+      <td>87</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>74</td>
+      <td>58</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>89</td>
+      <td>70</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>2021</th>
+      <td>32</td>
+      <td>19</td>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_shallow</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_shallow</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="s1">&#39;Chrome&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chrome</th>
+      <th>Safari</th>
+      <th>Firefox</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>67</td>
+      <td>87</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>74</td>
+      <td>58</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>80</td>
+      <td>70</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>2021</th>
+      <td>32</td>
+      <td>19</td>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_shallow</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2022</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chrome</th>
+      <th>Safari</th>
+      <th>Firefox</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>67</td>
+      <td>87</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>74</td>
+      <td>58</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>80</td>
+      <td>70</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>2021</th>
+      <td>32</td>
+      <td>19</td>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>On the other hand, we can use a deep copy which creats a new object and copies both the data and values to the new object. Therefore, any changes to the deep copy will not be reflected in the original copy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_deep</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_deep</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="s1">&#39;Firefox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="n">df_deep</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chrome</th>
+      <th>Safari</th>
+      <th>Firefox</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>67</td>
+      <td>87</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>74</td>
+      <td>58</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>80</td>
+      <td>70</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>2021</th>
+      <td>32</td>
+      <td>19</td>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chrome</th>
+      <th>Safari</th>
+      <th>Firefox</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>67</td>
+      <td>87</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>74</td>
+      <td>58</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>80</td>
+      <td>70</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>2021</th>
+      <td>32</td>
+      <td>19</td>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Note</strong>: It is important to note that within deep copy, data is copied but actual Python objects will not be copied recursively, only the reference to the object. This means that if the cells in the dataframe contain references to other objects, the references will be copied only and not the objects it refers too.</p>
+</section>
+<section id="export">
+<h2>Export<a class="headerlink" href="#export" title="Permalink to this headline">#</a></h2>
+<p>In the beginning, we went through how we can import a variety of files and read it as a pandas object. Similarly, we can make use of writer functions that enable us save a pandas object to your computer. For saving dataframes, a few of the methods that we can use are <code class="docutils literal notranslate"><span class="pre">.to_csv()</span></code> (comma-separated file format), <code class="docutils literal notranslate"><span class="pre">.to_excel()</span></code> (MS Excel format) and <code class="docutils literal notranslate"><span class="pre">to_pickle()</span></code> (Python pickle format). All these methods take the file path as the first argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;brower.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="method-chaining">
+<h2>Method Chaining<a class="headerlink" href="#method-chaining" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="groupby-apply-and-lambda-functions">
+<h2>Groupby Apply and Lambda Functions<a class="headerlink" href="#groupby-apply-and-lambda-functions" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Merge/Concat/Join</span>
+<span class="c1"># Multiindexing</span>
+<span class="c1"># Reshape/melt/stack/pivot</span>
+<span class="c1"># Dealing with errors</span>
+<span class="c1"># String methods</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add exercises</span>
+<span class="c1"># Make images on canva - add more</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
