@@ -417,14 +417,21 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#method-chaining">
-   Method Chaining
+  <a class="reference internal nav-link" href="#groupby">
+   Groupby
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#groupby-apply-and-lambda-functions">
-   Groupby Apply and Lambda Functions
+  <a class="reference internal nav-link" href="#additional-concepts">
+   Additional Concepts
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-chaining">
+     Method Chaining
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -501,14 +508,21 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#method-chaining">
-   Method Chaining
+  <a class="reference internal nav-link" href="#groupby">
+   Groupby
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#groupby-apply-and-lambda-functions">
-   Groupby Apply and Lambda Functions
+  <a class="reference internal nav-link" href="#additional-concepts">
+   Additional Concepts
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-chaining">
+     Method Chaining
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1851,7 +1865,7 @@ Name: DriverRace, dtype: float64
 <li><p>string: dedicated to strings</p></li>
 <li><p>category: stores limited, fixed number of possible values</p></li>
 </ul>
-<p>We can print the data types for the stops DataFrame again and can see that by default, Pandas doesn’t interpret all data types in the form that can be useful for us. For eg. DATESTOP and TIMESTOP are object types (stored as strings) and will prevent us from performing several temporal operations. (We will cover datetime in detail in the following section)</p>
+<p>We can print the data types for the stops DataFrame again and can see that by default, Pandas doesn’t interpret all data types in the form that can be useful for us. For eg. DateStop and TimeStop are object types (stored as strings) and will prevent us from performing several temporal operations. (We will cover datetime in detail in the following section)</p>
 <p>Similarly, DriverRace and ReasonStop, which indicates the category of the Driver’s Race and Reason for Stop, respectively. However, since these categories are assigned float and integer, respectively, this can mislead our analytical process and any prediction we might want to make.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1880,7 +1894,8 @@ dtype: object
 <p>The <code class="docutils literal notranslate"><span class="pre">astype</span></code> method enables us to convert data types to the desired ones. A convenient way of performing this operation is to pass a dictionary with the column name whose type needs to be changed as key and the desired data type as value. We are then assigning the returned result to the original DataFrame to replace it with these new changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">:</span> <span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="s1">&#39;ReasonStop&#39;</span><span class="p">:</span> <span class="s1">&#39;category&#39;</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">:</span> <span class="s1">&#39;category&#39;</span><span class="p">,</span> 
+                            <span class="s1">&#39;ReasonStop&#39;</span><span class="p">:</span> <span class="s1">&#39;category&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1955,7 +1970,8 @@ Name: DateStop, Length: 76280, dtype: datetime64[ns]
 <p>We will now assign it back to the original DataFrame. The <code class="docutils literal notranslate"><span class="pre">to_datetime</span></code> function also enables to pass a format argument to ensure specific parsing. This could also potentially speed up the conversion considerably. You can find the format codes on this <a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes">link</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">],</span> 
+                                      <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2203,7 +2219,8 @@ dtype: int64
 <p>One of the ways to deal with these missing values is to fill in the NaNs with a scaler value using <code class="docutils literal notranslate"><span class="pre">.fillna()</span></code>. Here, the method accepts the value to be replaced. The inplace argument, when set to True, applies the changes to the DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;No moving violation&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;No moving violation&#39;</span><span class="p">,</span> 
+                                         <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2214,7 +2231,9 @@ dtype: int64
 <p>We will use it below to remove the rows where the Driver’s Race is missing since that is the key value for our analysis. We specify the column name as the subset argument to only remove rows where ‘DriveRace’ is missing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> 
+                <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">],</span> 
+                <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2226,7 +2245,8 @@ dtype: int64
 <p>In order to rename index labels or columns, the rename method is very useful. By mapping the existing value to a new one, we can replace the column name.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Beat&quot;</span><span class="p">:</span> <span class="s2">&quot;BeatCode&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Beat&quot;</span><span class="p">:</span> <span class="s2">&quot;BeatCode&quot;</span><span class="p">},</span> 
+                <span class="n">inplace</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">stops_df</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
@@ -2240,7 +2260,7 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Using <code class="docutils literal notranslate"><span class="pre">.loc()</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>, any cell’s value can be changed</p>
+<p>To change any cells value, we can use <code class="docutils literal notranslate"><span class="pre">.loc()</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> as shown below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">230</span><span class="p">,</span> <span class="s1">&#39;City&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Chicago&#39;</span>
@@ -2248,10 +2268,32 @@ dtype: int64
 </div>
 </div>
 </div>
+<p>However, value replacement, particularly for data cleaning purposes, is usually applied on set of values combined. For such purposes, pandas provides the map method that maps value in a Series (or a column in a DataFrame) to a given set of values.</p>
+<p>In the cell below, we are using the map method to convert the categorical values of race in numerical form to the actual race title in string as provided in the data dictionary. Note that we are using a dictionary where the key is the existing value and the value is the new string we want to replace it with. Providing a dictionary for mapping is the most convenient way, however, map method takes other forms of inputs too.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#map values</span>
-<span class="c1">#stops_df[&#39;SearchConducted&#39;].map</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
+    <span class="mf">1.0</span><span class="p">:</span> <span class="s1">&#39;White&#39;</span><span class="p">,</span>
+    <span class="mf">2.0</span><span class="p">:</span> <span class="s1">&#39;Black or African American&#39;</span><span class="p">,</span>
+    <span class="mf">3.0</span><span class="p">:</span> <span class="s1">&#39;American Indian or Alaska Native&#39;</span><span class="p">,</span>
+    <span class="mf">4.0</span><span class="p">:</span> <span class="s1">&#39;Hispanic or Latino&#39;</span><span class="p">,</span>
+    <span class="mf">5.0</span><span class="p">:</span> <span class="s1">&#39;Asian&#39;</span><span class="p">,</span>
+    <span class="mf">6.0</span><span class="p">:</span> <span class="s1">&#39;Native Hawaiian or Other Pacific Islander&#39;</span><span class="p">,</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
+    <span class="mf">1.0</span><span class="p">:</span> <span class="s1">&#39;Speed&#39;</span><span class="p">,</span>
+    <span class="mf">2.0</span><span class="p">:</span> <span class="s1">&#39;Lane Violation&#39;</span><span class="p">,</span>
+    <span class="mf">3.0</span><span class="p">:</span> <span class="s1">&#39;Seat Belt&#39;</span><span class="p">,</span>
+    <span class="mf">4.0</span><span class="p">:</span> <span class="s1">&#39;Traffic Sign or Signal&#39;</span><span class="p">,</span>
+    <span class="mf">5.0</span><span class="p">:</span> <span class="s1">&#39;Follow too close&#39;</span><span class="p">,</span>
+    <span class="mf">6.0</span><span class="p">:</span> <span class="s1">&#39;Other&#39;</span><span class="p">,</span>
+<span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -2964,7 +3006,7 @@ Name: Weekday, dtype: int64
 </section>
 <section id="export">
 <h2>Export<a class="headerlink" href="#export" title="Permalink to this headline">#</a></h2>
-<p>In the beginning, we went through how we can import a variety of files and read it as a pandas object. Similarly, we can make use of writer functions that enable us save a pandas object to your computer. For saving dataframes, a few of the methods that we can use are <code class="docutils literal notranslate"><span class="pre">.to_csv()</span></code> (comma-separated file format), <code class="docutils literal notranslate"><span class="pre">.to_excel()</span></code> (MS Excel format) and <code class="docutils literal notranslate"><span class="pre">to_pickle()</span></code> (Python pickle format). All these methods take the file path as the first argument.</p>
+<p>In the beginning, we went through how we can import a variety of files and read it as a pandas object. Similarly, we can make use of writer functions that enable us to save a pandas object to your computer. For saving dataframes, a few of the methods that we can use are <code class="docutils literal notranslate"><span class="pre">.to_csv()</span></code> (comma-separated file format), <code class="docutils literal notranslate"><span class="pre">.to_excel()</span></code> (MS Excel format) and <code class="docutils literal notranslate"><span class="pre">to_pickle()</span></code> (Python pickle format). All these methods take the file path as the first argument.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;brower.csv&#39;</span><span class="p">)</span>
@@ -2973,30 +3015,754 @@ Name: Weekday, dtype: int64
 </div>
 </div>
 </section>
-<section id="method-chaining">
-<h2>Method Chaining<a class="headerlink" href="#method-chaining" title="Permalink to this headline">#</a></h2>
+<section id="groupby">
+<h2>Groupby<a class="headerlink" href="#groupby" title="Permalink to this headline">#</a></h2>
+<p>Groupby is certainly amongst the most useful set of methods in pandas. To make this concept intuitive, we will break it down into its 3 major steps: split-apply-combine.</p>
+<p>In the <em>split</em> step, the data is divided into groups by a criteria. For eg. we will group our datasets into race groups (6 in this DataFrame). The format for this step is shown below where the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method takes the column name to group over as an argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RaceGroups</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the <em>apply</em> step, a function is applied to each group that was formed. These are referred to as aggregation functions. We will use an averaging function (mean) to be applied to values in each race group.</p>
+<p>The <em>combine</em> step then combines and structures the result into a DataFrame. By applying the aggregation function to the grouped data below, we are performing both the apply and combine step.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RaceGroups</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Duration</th>
+      <th>BeatCode</th>
+      <th>SearchConducted</th>
+      <th>ContraFound</th>
+      <th>DrugsFound</th>
+      <th>WeaponFound</th>
+      <th>Month</th>
+      <th>Weekday</th>
+    </tr>
+    <tr>
+      <th>DriverRace</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>White</th>
+      <td>7.501639</td>
+      <td>1472.421225</td>
+      <td>1.995715</td>
+      <td>0.007310</td>
+      <td>0.007562</td>
+      <td>0.008571</td>
+      <td>1.444795</td>
+      <td>3.098437</td>
+    </tr>
+    <tr>
+      <th>Black or African American</th>
+      <td>7.777141</td>
+      <td>931.528335</td>
+      <td>1.982218</td>
+      <td>0.031661</td>
+      <td>0.032955</td>
+      <td>0.034966</td>
+      <td>1.437555</td>
+      <td>3.107487</td>
+    </tr>
+    <tr>
+      <th>American Indian or Alaska Native</th>
+      <td>6.758278</td>
+      <td>1316.754967</td>
+      <td>1.996689</td>
+      <td>0.006623</td>
+      <td>0.006623</td>
+      <td>0.006623</td>
+      <td>1.476821</td>
+      <td>3.235099</td>
+    </tr>
+    <tr>
+      <th>Hispanic or Latino</th>
+      <td>7.168813</td>
+      <td>1312.990674</td>
+      <td>1.987629</td>
+      <td>0.021252</td>
+      <td>0.022204</td>
+      <td>0.024678</td>
+      <td>1.445537</td>
+      <td>3.153651</td>
+    </tr>
+    <tr>
+      <th>Asian</th>
+      <td>6.271658</td>
+      <td>1445.236364</td>
+      <td>1.998930</td>
+      <td>0.002139</td>
+      <td>0.002139</td>
+      <td>0.002139</td>
+      <td>1.435829</td>
+      <td>3.094118</td>
+    </tr>
+    <tr>
+      <th>Native Hawaiian or Other Pacific Islander</th>
+      <td>7.015957</td>
+      <td>1291.494681</td>
+      <td>2.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.462766</td>
+      <td>3.026596</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>For every numerical column that we have in our dataset, we get a mean value for every group. It surely doesn’t make sense to have a mean for every column since some of them contain categories. We can select the column we want to aggregate by specifying along with the group.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RaceGroups</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DriverRace
+White                                        7.501639
+Black or African American                    7.777141
+American Indian or Alaska Native             6.758278
+Hispanic or Latino                           7.168813
+Asian                                        6.271658
+Native Hawaiian or Other Pacific Islander    7.015957
+Name: Duration, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to set the group names as a column, we need to use the <code class="docutils literal notranslate"><span class="pre">reset_index()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RaceGroups</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DriverRace</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>White</td>
+      <td>7.501639</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Black or African American</td>
+      <td>7.777141</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>American Indian or Alaska Native</td>
+      <td>6.758278</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Hispanic or Latino</td>
+      <td>7.168813</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Asian</td>
+      <td>6.271658</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Native Hawaiian or Other Pacific Islander</td>
+      <td>7.015957</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Size is another aggragation function to get the size for each group.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RaceGroups</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DriverRace
+White                                         7934
+Black or African American                    50220
+American Indian or Alaska Native               302
+Hispanic or Latino                           15763
+Asian                                         1870
+Native Hawaiian or Other Pacific Islander      188
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also groupby multiple columns and chain all these steps in a single line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;DriverRace&#39;</span><span class="p">])[</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TypeOfMovingViolation</th>
+      <th>DriverRace</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Follow too close</td>
+      <td>White</td>
+      <td>4.600000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Follow too close</td>
+      <td>Black or African American</td>
+      <td>15.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Follow too close</td>
+      <td>American Indian or Alaska Native</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Follow too close</td>
+      <td>Hispanic or Latino</td>
+      <td>7.333333</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Follow too close</td>
+      <td>Asian</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Follow too close</td>
+      <td>Native Hawaiian or Other Pacific Islander</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Lane Violation</td>
+      <td>White</td>
+      <td>8.907216</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Lane Violation</td>
+      <td>Black or African American</td>
+      <td>7.950725</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Lane Violation</td>
+      <td>American Indian or Alaska Native</td>
+      <td>6.100000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Lane Violation</td>
+      <td>Hispanic or Latino</td>
+      <td>7.844322</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Lane Violation</td>
+      <td>Asian</td>
+      <td>11.231707</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Lane Violation</td>
+      <td>Native Hawaiian or Other Pacific Islander</td>
+      <td>6.363636</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Other</td>
+      <td>White</td>
+      <td>8.245262</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Other</td>
+      <td>Black or African American</td>
+      <td>8.885165</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Other</td>
+      <td>American Indian or Alaska Native</td>
+      <td>5.928571</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Other</td>
+      <td>Hispanic or Latino</td>
+      <td>10.408136</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Other</td>
+      <td>Asian</td>
+      <td>6.734940</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Other</td>
+      <td>Native Hawaiian or Other Pacific Islander</td>
+      <td>5.090909</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Seat Belt</td>
+      <td>White</td>
+      <td>7.747748</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Seat Belt</td>
+      <td>Black or African American</td>
+      <td>5.981643</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Seat Belt</td>
+      <td>American Indian or Alaska Native</td>
+      <td>5.666667</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Seat Belt</td>
+      <td>Hispanic or Latino</td>
+      <td>5.567123</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Seat Belt</td>
+      <td>Asian</td>
+      <td>4.444444</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Seat Belt</td>
+      <td>Native Hawaiian or Other Pacific Islander</td>
+      <td>67.000000</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Speed</td>
+      <td>White</td>
+      <td>8.500000</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Speed</td>
+      <td>Black or African American</td>
+      <td>18.070496</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Speed</td>
+      <td>American Indian or Alaska Native</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Speed</td>
+      <td>Hispanic or Latino</td>
+      <td>13.543307</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Speed</td>
+      <td>Asian</td>
+      <td>9.900000</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Speed</td>
+      <td>Native Hawaiian or Other Pacific Islander</td>
+      <td>15.000000</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Traffic Sign or Signal</td>
+      <td>White</td>
+      <td>9.378069</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Traffic Sign or Signal</td>
+      <td>Black or African American</td>
+      <td>10.094833</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Traffic Sign or Signal</td>
+      <td>American Indian or Alaska Native</td>
+      <td>8.384615</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Traffic Sign or Signal</td>
+      <td>Hispanic or Latino</td>
+      <td>8.120463</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Traffic Sign or Signal</td>
+      <td>Asian</td>
+      <td>6.781362</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Traffic Sign or Signal</td>
+      <td>Native Hawaiian or Other Pacific Islander</td>
+      <td>7.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
-<section id="groupby-apply-and-lambda-functions">
-<h2>Groupby Apply and Lambda Functions<a class="headerlink" href="#groupby-apply-and-lambda-functions" title="Permalink to this headline">#</a></h2>
+<section id="additional-concepts">
+<h2>Additional Concepts<a class="headerlink" href="#additional-concepts" title="Permalink to this headline">#</a></h2>
+<section id="method-chaining">
+<h3>Method Chaining<a class="headerlink" href="#method-chaining" title="Permalink to this headline">#</a></h3>
+<p>As the name suggests, method chaining enables us to use a series of methods in a single command. This is possible because every method that we use on a pandas object gets returned as a pandas object itself, allowing us to apply another method on it. Method chaining simplies are code and makes it more readable.</p>
+<p>We will repeat the method chaining acion we perfomed previously.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Merge/Concat/Join</span>
-<span class="c1"># Multiindexing</span>
-<span class="c1"># Reshape/melt/stack/pivot</span>
-<span class="c1"># Dealing with errors</span>
-<span class="c1"># String methods</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;DriverRace&#39;</span><span class="p">])[</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TypeOfMovingViolation</th>
+      <th>DriverRace</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Follow too close</td>
+      <td>White</td>
+      <td>4.600000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Follow too close</td>
+      <td>Black or African American</td>
+      <td>15.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Follow too close</td>
+      <td>American Indian or Alaska Native</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Follow too close</td>
+      <td>Hispanic or Latino</td>
+      <td>7.333333</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Follow too close</td>
+      <td>Asian</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Follow too close</td>
+      <td>Native Hawaiian or Other Pacific Islander</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Lane Violation</td>
+      <td>White</td>
+      <td>8.907216</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Lane Violation</td>
+      <td>Black or African American</td>
+      <td>7.950725</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Lane Violation</td>
+      <td>American Indian or Alaska Native</td>
+      <td>6.100000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Lane Violation</td>
+      <td>Hispanic or Latino</td>
+      <td>7.844322</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Lane Violation</td>
+      <td>Asian</td>
+      <td>11.231707</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Lane Violation</td>
+      <td>Native Hawaiian or Other Pacific Islander</td>
+      <td>6.363636</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Other</td>
+      <td>White</td>
+      <td>8.245262</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Other</td>
+      <td>Black or African American</td>
+      <td>8.885165</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Other</td>
+      <td>American Indian or Alaska Native</td>
+      <td>5.928571</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Other</td>
+      <td>Hispanic or Latino</td>
+      <td>10.408136</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Other</td>
+      <td>Asian</td>
+      <td>6.734940</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Other</td>
+      <td>Native Hawaiian or Other Pacific Islander</td>
+      <td>5.090909</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Seat Belt</td>
+      <td>White</td>
+      <td>7.747748</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Seat Belt</td>
+      <td>Black or African American</td>
+      <td>5.981643</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Seat Belt</td>
+      <td>American Indian or Alaska Native</td>
+      <td>5.666667</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Seat Belt</td>
+      <td>Hispanic or Latino</td>
+      <td>5.567123</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Seat Belt</td>
+      <td>Asian</td>
+      <td>4.444444</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Seat Belt</td>
+      <td>Native Hawaiian or Other Pacific Islander</td>
+      <td>67.000000</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Speed</td>
+      <td>White</td>
+      <td>8.500000</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Speed</td>
+      <td>Black or African American</td>
+      <td>18.070496</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Speed</td>
+      <td>American Indian or Alaska Native</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Speed</td>
+      <td>Hispanic or Latino</td>
+      <td>13.543307</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Speed</td>
+      <td>Asian</td>
+      <td>9.900000</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Speed</td>
+      <td>Native Hawaiian or Other Pacific Islander</td>
+      <td>15.000000</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Traffic Sign or Signal</td>
+      <td>White</td>
+      <td>9.378069</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Traffic Sign or Signal</td>
+      <td>Black or African American</td>
+      <td>10.094833</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Traffic Sign or Signal</td>
+      <td>American Indian or Alaska Native</td>
+      <td>8.384615</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Traffic Sign or Signal</td>
+      <td>Hispanic or Latino</td>
+      <td>8.120463</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Traffic Sign or Signal</td>
+      <td>Asian</td>
+      <td>6.781362</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Traffic Sign or Signal</td>
+      <td>Native Hawaiian or Other Pacific Islander</td>
+      <td>7.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add exercises</span>
-<span class="c1"># Make images on canva - add more</span>
-</pre></div>
-</div>
-</div>
-</div>
+</section>
 </section>
 </section>
 
