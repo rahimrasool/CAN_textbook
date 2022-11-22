@@ -52,7 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Chapter 5: Wrangling and Feature Engineering" href="Chapter5.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -107,48 +106,16 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="Section1.html">
-   Section 1: - Dealing with Data
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../revamped/IntroPandas.html">
+   Introduction to Pandas
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter1.html">
-     Chapter 1: Defining the problem
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter2.html">
-     Chapter 2: Gathering and Collecting Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter3.html">
-     Chapter 3: Cleaning Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter4.html">
-     Chapter 4: Finding Hidden Insights
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter5.html">
-     Chapter 5: Wrangling and Feature Engineering
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Chapter 6: Common Operations in Pandas
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../revamped/DataViz.html">
+   Matplotlib and its structure
+  </a>
  </li>
 </ul>
 
@@ -401,7 +368,7 @@ title="Print to PDF"
 <p>Therefore, in order to give you a breif hint of a short set of the limitless capabilities that Pandas can offer, we will go through the guided exercises below. You will cover basic SQL like functions that you can also perform on Pandas. Don’t worry if you are not familiar with SQL. Our purpose is to start with combining different tables and appending data to the existing ones. Moreover, we will also have a look at how dataframes can be re-structured into different shapes and multi-indexed structured to get a better view of the dataframe that fulfills the need.</p>
 <section id="guided-practice">
 <h2>Guided Practice<a class="headerlink" href="#guided-practice" title="Permalink to this headline">#</a></h2>
-<p>In this guided practice we will use additional meta data to help improve the analysis regarding eixstence of Racial bias in Police stops. In order to move ahead, we will again import the police beat demographic data. Our first task in this exercise would be to combine both the data frames together. But how can we do it when format in both the dataset is very distinct. The police stops data is arranged with a row for every stop, whereas, the demographic data has a row for every beat.</p>
+<p>In this guided practice we will use additional meta data to help improve the analysis regarding existence of Racial bias in Police stops. In order to move ahead, we will again import the police beat demographic data. Our first task in this exercise would be to combine both the data frames together. But how can we do it when format in both the dataset is very distinct. The police stops data is arranged with a row for every stop, whereas, the demographic data has a row for every beat.</p>
 <p>Since we need an aggregate analysis for every beat, we will group the police stops data by beat and perform aggregation on for selected columns in each beat. Since this new grouped dataframe will be listed by beat, we will join the demographic dataframe with it in order to compare both stops demographics with racial demographics in each beat.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -426,6 +393,53 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Getting the beatrace dataframe</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;beatrace.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Getting the beatrace dataframe</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;beatrace.pkl&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/pickle.py:187,</span> in <span class="ni">read_pickle</span><span class="nt">(filepath_or_buffer, compression, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span> <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span><span class="sd"> Load pickled pandas object (or any object) from file.</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span><span class="sd"> 4    4    9</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span><span class="sd"> &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span> <span class="n">excs_to_catch</span> <span class="o">=</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">ImportError</span><span class="p">,</span> <span class="ne">ModuleNotFoundError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">187</span> <span class="k">with</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span>     <span class="n">filepath_or_buffer</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span>     <span class="s2">&quot;rb&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">190</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span>     <span class="n">is_text</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">193</span> <span class="p">)</span> <span class="k">as</span> <span class="n">handles</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span> 
+<span class="g g-Whitespace">    </span><span class="mi">195</span>     <span class="c1"># 1) try standard library Pickle</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>     <span class="c1"># 2) try pickle_compat (older pandas version) to handle subclass changes</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span>     <span class="c1"># 3) try pickle_compat with latin-1 encoding upon a UnicodeDecodeError</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span>     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span>         <span class="c1"># TypeError for Cython complaints about object.__new__ vs Tick.__new__</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span>         <span class="k">try</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/common.py:798,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">789</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">791</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">794</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">795</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">796</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">797</span>         <span class="c1"># Binary mode</span>
+<span class="ne">--&gt; </span><span class="mi">798</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">799</span>     <span class="n">handles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">801</span> <span class="c1"># Convert BytesIO or file objects passed with an encoding</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;beatrace.pkl&#39;
 </pre></div>
 </div>
 </div>
@@ -616,13 +630,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Chapter5.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Chapter 5: Wrangling and Feature Engineering</p>
-        </div>
-    </a>
 </div>
             </footer>
         </div>
