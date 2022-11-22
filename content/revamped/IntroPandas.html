@@ -52,6 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Matplotlib and its structure" href="DataViz.html" />
     <link rel="prev" title="Data Science Course - Social Impact Track" href="../Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -111,6 +112,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Introduction to Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DataViz.html">
+   Matplotlib and its structure
   </a>
  </li>
 </ul>
@@ -375,9 +381,26 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#groupby">
-   Groupby
+  <a class="reference internal nav-link" href="#advanced-topics">
+   Advanced Topics
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#groupby">
+     Groupby
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-level-indexing">
+     Multi-level Indexing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#merge">
+     Merge
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#additional-concepts">
@@ -466,9 +489,26 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#groupby">
-   Groupby
+  <a class="reference internal nav-link" href="#advanced-topics">
+   Advanced Topics
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#groupby">
+     Groupby
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-level-indexing">
+     Multi-level Indexing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#merge">
+     Merge
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#additional-concepts">
@@ -494,9 +534,9 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-pandas">
 <h1>Introduction to Pandas<a class="headerlink" href="#introduction-to-pandas" title="Permalink to this headline">#</a></h1>
-<p>For doing data analysis and manipulation in Python, Pandas is one of the most powerful, resourceful and easy to begin with packages. It consists of data structures and functions and can assist us with doing a huge set of tasks for analytical work. In order to use these resources, Pandas needs to be loaded using the <strong>import</strong> command, as shown below, for it to be used in our script. We can also define an alias for Pandas (we used pd) as we are going to use Pandas’ modules multiple times in our code.</p>
-<img src="https://pandas.pydata.org/docs/_static/pandas.svg" width="200"/><p>A little note about Pandas is that it uses object-oriented notations. No need to worry if you are not familiar with this concept. However, getting a high-level intuition about object-oriented programming (OOP) is going to be helpful in understanding how Pandas work. All data structures that store our data in the program are a form of Pandas objects defined by a blueprint called Class. For example, a DataFrame (to be discussed below) is a data-structure to store data in a format similar to spreadsheet. We can create a DataFrame object to store a table of our dataset and this object will have multiple methods and functions that operate on this object.</p>
-<p>Pandas comes usually installed with Jupyter environments like the one you are using here. If pandas is installed, you can check the current version of Pandas by using the <code class="docutils literal notranslate"><span class="pre">pd.__version__</span></code> command after the import command below:</p>
+<p>For doing data analysis and manipulation in Python, Pandas is one of the most powerful, resourceful and intuituve packages. It consists of data structures and functions and can assist us with doing a huge set of tasks for analytical work. In order to use these resources in our script, Pandas needs to be loaded using the <strong>import</strong> command, as shown below. We can also define an alias for Pandas (we used pd) as we are going to use Pandas’ modules multiple times in our code.</p>
+<img src="https://pandas.pydata.org/docs/_static/pandas.svg" width="200"/><p>Pandas enables us to work with data structures, a special form of storage to store and process data. For example, a DataFrame (to be discussed below) is a data structure to store data in a format similar to an Excel spreadsheet. We can create a DataFrame to store a dataset in form of a table and this DataFrame will have multiple methods and functions that operate on it to process the data it stores.</p>
+<p>Pandas comes usually installed with Jupyter environments like the one you are using here. If Pandas is installed, you can check the current version of Pandas by using the <code class="docutils literal notranslate"><span class="pre">pd.__version__</span></code> command after the import command below:</p>
 <p><em>Note: pd is an alias for pandas</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -514,7 +554,8 @@ title="Print to PDF"
 <section id="data-structures-in-pandas">
 <h2>Data Structures in Pandas<a class="headerlink" href="#data-structures-in-pandas" title="Permalink to this headline">#</a></h2>
 <p>We will learn the 2 fundamental data structures in Pandas: <strong>Series</strong> and <strong>DataFrames</strong>.</p>
-<img src="series.png" width="300"/><p><strong>Series</strong> is a one-dimensional array which can hold data of various types. Series are labelled where an index labels each element on the axis. Each index element has to be unique. Series can be created out from a list, a python dictionary or even a scalar value. A pandas Series has a single dtype.</p>
+<p><img alt="" src="../../_images/series.png" /></p>
+<p><strong>Series</strong> is a one-dimensional data structure which can hold data of multiple types. Series are labelled where an index labels each element inside a series. Series can be created out from a Python list, a Python dictionary or even a scalar value. A particular Pandas Series can hold only a single data type.</p>
 <p>Below, we will go through 2 of the ways to create a Pandas Series. The method below creates a Series out of a Python dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -525,6 +566,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>Note: Typing and running the data structure name on a Jupyter cell displays the elements of the data structure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the series</span>
@@ -541,7 +583,8 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Note: if we do not specify the index, the default numeric range will be given.</p>
+<p>The keys in the dictionary becomes the index of the element in the Series, whereas, the values are the data stored in the Series as it’s elements.</p>
+<p>Note: if we do not specify the index, the default numeric range (from 0 till length of all elements) will be given.</p>
 <p>We will now create a Series from a list, without giving the index. In the cell after that, we will provide the index while we create a Series out of a list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -580,19 +623,19 @@ dtype: int64
 </div>
 </div>
 <hr style="border:2px solid gray">
-<p>Unlike Series, <strong>DataFrames</strong> are a multi-dimensional, consisting of row and columns. They are similar to a spreadsheet or a SQL table. Pandas provides all the functionality and methods to deal with data in the DataFrame. Each row in a DataFrame is labeled with an index, as in Series. Whereas, there are also labels for each column. In one of upcoming sections, we will also have a look at multi-level indexing for DataFrames.</p>
-<img src="dataframe.png" width="500"/>
-<p>There are several ways to create or form a DataFrame. A DataFrame can be made of one or multiple series combined. It can also be formed out of lists and dictionaries. In the first cell, we will create a DataFrame using a Dictionary of lists.</p>
+<p>Unlike Series, <strong>DataFrames</strong> are multi-dimensional, primarily consisting of rows and columns. They are similar to a spreadsheet or a SQL table. Pandas provides all functionalities and methods to deal with data in the DataFrame. Each row in a DataFrame is labeled with an index, as it is done in Series. Whereas, there are also labels for each column. In one of upcoming sections, we will also have a look at multi-level indexing for DataFrames.</p>
+<p><img alt="" src="../../_images/dataframe.png" /></p>
+<p>There are several ways to create or form a DataFrame. A DataFrame can be created from combining multiple Series. It can also be formed out of Python lists and dictionaries. In the first cell, we will create a DataFrame using a Dictionary of lists.</p>
 <p>In the examples below, we are creating data for site views (in thousands) on a website per browser every year.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">web_views</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">&#39;Chrome&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">67</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">89</span><span class="p">],</span>
     <span class="s1">&#39;Safari&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span>
     <span class="s1">&#39;Firefox&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
 <span class="p">},</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">])</span>
 
-<span class="n">df</span>
+<span class="n">web_views</span>
 </pre></div>
 </div>
 </div>
@@ -646,13 +689,13 @@ dtype: int64
 <p>Below we will create a DataFrame using a list of dictionaries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">web_views</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">[{</span><span class="s2">&quot;Chrome&quot;</span><span class="p">:</span> <span class="mi">67</span><span class="p">,</span> <span class="s2">&quot;Safari&quot;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="s2">&quot;Firefox&quot;</span><span class="p">:</span><span class="mi">8</span> <span class="p">},</span> 
      <span class="p">{</span><span class="s2">&quot;Chrome&quot;</span><span class="p">:</span> <span class="mi">74</span><span class="p">,</span> <span class="s2">&quot;Safari&quot;</span><span class="p">:</span> <span class="mi">58</span><span class="p">,</span> <span class="s2">&quot;Firefox&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">},</span>
     <span class="p">{</span><span class="s2">&quot;Chrome&quot;</span><span class="p">:</span> <span class="mi">89</span><span class="p">,</span> <span class="s2">&quot;Safari&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span> <span class="s2">&quot;Firefox&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">}]</span>
 <span class="p">)</span>
 
-<span class="n">df</span>
+<span class="n">web_views</span>
 </pre></div>
 </div>
 </div>
@@ -703,18 +746,18 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
-<p>Note: If we do not provide the index, pandas defaults the index list to a range of integers beginning from 0.</p>
+<p><strong>Note</strong>: If we do not provide the index, Pandas uses the default index: a list of integers beginning from 0 to length of the dataframe.</p>
 <p>In the following cell we will create a DataFrame using a 2 dimensional list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">web_views</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">[[</span><span class="mi">67</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">89</span><span class="p">],</span>
      <span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span>
      <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]],</span>
     <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Chrome&quot;</span><span class="p">,</span> <span class="s2">&quot;Safari&quot;</span><span class="p">,</span> <span class="s2">&quot;Firefox&quot;</span><span class="p">]</span>
 <span class="p">)</span>
 
-<span class="n">df</span>
+<span class="n">web_views</span>
 </pre></div>
 </div>
 </div>
@@ -768,8 +811,7 @@ dtype: int64
 </section>
 <section id="files-in-pandas">
 <h2>Files in Pandas<a class="headerlink" href="#files-in-pandas" title="Permalink to this headline">#</a></h2>
-<p>The pandas I/O API is a set of top level reader functions accessed like pandas.read_csv() that generally return a pandas object.</p>
-<p>Pandas offeres reader functions which can read in a data file and return it as a pandas object. The most useful one <code class="docutils literal notranslate"><span class="pre">read.csv()</span></code> will read a text file and convert it to a DataFrame with default arguments. Pandas also offers <code class="docutils literal notranslate"><span class="pre">read_json()</span></code> and <code class="docutils literal notranslate"><span class="pre">read_excel</span></code> to read json and excel files, respectively, 2 of the most common file types for data.</p>
+<p>Pandas offers reader functions which can read in a data file and enable us to store it in a Pandas data structure. The most useful one <code class="docutils literal notranslate"><span class="pre">read.csv()</span></code> will read a text file and convert it to a DataFrame (primarily used for reading comma-separated files). Pandas also offers <code class="docutils literal notranslate"><span class="pre">read_json()</span></code> and <code class="docutils literal notranslate"><span class="pre">read_excel</span></code> to read json and excel files, respectively, 2 of the most common file types for data.</p>
 <p>We will use the <code class="docutils literal notranslate"><span class="pre">read.csv</span></code> function to read the Chicago Police Traffic Stops data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -781,7 +823,7 @@ dtype: int64
 <p>The <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">documentation</a> provides great detail of the arguments that <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function accepts. Some of the common ones that you must know are:</p>
 <p><strong>filepath_or_buffer</strong>: Either a path to a file or URL.
 <br><strong>sep</strong>: Delimiter to use. Default delimiter is <code class="docutils literal notranslate"><span class="pre">','</span></code> (for comma-separated files. Use <code class="docutils literal notranslate"><span class="pre">'\t'</span></code> for tab-separated files, tsv)</p>
-<p>Typing and running the DataFrame name on a Jupyter cell displays the dataset with rows and columns truncated.</p>
+<p>For a large DataFrame, typing and running the DataFrame name on a Jupyter cell displays the dataset with truncated rows and columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span>
@@ -992,7 +1034,7 @@ dtype: int64
 <p>76280 rows × 12 columns</p>
 </div></div></div>
 </div>
-<p>This dataset is huge! Pandas also offers methods to view a small sample of a Series or DataFrame object. The <code class="docutils literal notranslate"><span class="pre">head()</span></code> and <code class="docutils literal notranslate"><span class="pre">tail()</span></code> methods enable you to do so showing you the first set of rows and last set of rows, respectively. By default, they display 5 rows. The argument to these methods can be changed to the number of rows needed to be displayed.</p>
+<p>This dataset is huge! Pandas also offers methods to view a small sample of a Series or a DataFrame. The <code class="docutils literal notranslate"><span class="pre">head()</span></code> and <code class="docutils literal notranslate"><span class="pre">tail()</span></code> methods enable us to do that. They show us the first set of rows and the last set of rows, respectively. By default, they display 5 rows. The argument to these methods can be changed to the number of rows needed to be displayed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View first 5 rows</span>
@@ -1206,8 +1248,8 @@ dtype: int64
 </section>
 <section id="basic-metadata">
 <h2>Basic metadata<a class="headerlink" href="#basic-metadata" title="Permalink to this headline">#</a></h2>
-<p>Pandas enables you to access basic metadata for its object by using some attributes. The important ones we are going to learn here are <strong>shape</strong>, <strong>dtypes</strong> and axis labels.</p>
-<p><strong>Shape</strong> gives the axis dimensions of the object. For a DataFrame, it will give the number of rows and columns.</p>
+<p>Pandas enables us to access basic metadata (supplementary data that gives information about the main dataset) for its data structures by using some functions (also referred as attributes). The important ones that we are going to learn here are <strong>shape</strong>, <strong>dtypes</strong> and axis labels.</p>
+<p><strong>Shape</strong> gives the axis dimensions of the data structure. For a DataFrame, it will give the number of rows and columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">shape</span>
@@ -1245,7 +1287,7 @@ dtype: object
 </div>
 </div>
 </div>
-<p>Pandas objects have axis labels. We have seen that each element in a Series is labeled through an index. Whereas, a DataFrame has a set of labels for each row and another set for columns. We can access these labels for a DataFrame using <code class="docutils literal notranslate"><span class="pre">.index</span></code> and <code class="docutils literal notranslate"><span class="pre">.columns</span></code> methods.</p>
+<p>Pandas data structures have axis labels. We have seen that each element in a Series is labeled using an index. Whereas, a DataFrame has a set of labels for each row and another set for columns. We can access these labels for a DataFrame using <code class="docutils literal notranslate"><span class="pre">.index</span></code> and <code class="docutils literal notranslate"><span class="pre">.columns</span></code> attributes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">columns</span>
@@ -1273,12 +1315,12 @@ dtype: object
 </div>
 </div>
 </div>
-<p>As you can notice, since there wasn’t any index provided by the dataset, Pandas set the default index to range of integers from 0 to length of the DataFrame.</p>
+<p>As you can notice, since there wasn’t any index provided by the dataset, Pandas sets the default index to a range of integers from 0 to length of the DataFrame.</p>
 </section>
 <section id="selecting-and-subsetting">
 <h2>Selecting and Subsetting<a class="headerlink" href="#selecting-and-subsetting" title="Permalink to this headline">#</a></h2>
-<p>Pandas offers a few ways that we can use to select a set of data which can include a cell, row, column or a subset of the entire dataframe. The 3 ways that we will go through are selection using <code class="docutils literal notranslate"><span class="pre">[]</span></code>, <code class="docutils literal notranslate"><span class="pre">.loc</span></code> (label based indexing) and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> (position based indexing).</p>
-<p>Using <code class="docutils literal notranslate"><span class="pre">[]</span></code> is an archaic way of indexing which mimics the same way we would index dictionaries in Python. In Pandas, it’ll select the lower-dimensional set. For the Series below we are using the row Index to select a row below.</p>
+<p>Pandas offers a few ways that we can use to select a set of data. This includes selecting a cell, row, column or a subset of the entire dataframe. The 3 ways that we will go through include: selection using <code class="docutils literal notranslate"><span class="pre">[]</span></code>, <code class="docutils literal notranslate"><span class="pre">.loc</span></code> (label based indexing) and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> (position based indexing).</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">[]</span></code> is an archaic way of indexing which mimics the same way we would index dictionaries in Python. In Pandas, it will select the lower-dimension. For the Series below, we are using the row index to select a row below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_series</span><span class="p">[</span><span class="s1">&#39;Mercury&#39;</span><span class="p">]</span>
@@ -1294,7 +1336,7 @@ dtype: object
 <p>Similarly, we can use this notation to index a column in a DataFrame. This will result in a Series.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Chrome&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">web_views</span><span class="p">[</span><span class="s1">&#39;Chrome&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1307,7 +1349,7 @@ Name: Chrome, dtype: int64
 </div>
 </div>
 </div>
-<p>While you may stil find this notation being used for indexing DataFrames and Series, it can often result in errors and confusion. The purpose to bring it up here was to provide familiarity with this notation. Therefore, we will focus more on using <code class="docutils literal notranslate"><span class="pre">.loc</span></code> for selection which is a more powerful and explicit indexer. The format it follows is <code class="docutils literal notranslate"><span class="pre">.loc[row_indexer,col_indexer]</span></code></p>
+<p>While you may still find the use of this notation for indexing DataFrames and Series, it can often result in errors and ambiguity. The purpose to bring it up here was to provide familiarity with this notation. Therefore, we will focus more on using <code class="docutils literal notranslate"><span class="pre">.loc</span></code> for selection as it is a powerful and explicit indexer. The format it follows is <code class="docutils literal notranslate"><span class="pre">.loc[row_indexer,col_indexer]</span></code></p>
 <p>The integer below is the label for the index that will extract the row with index label 2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1334,7 +1376,7 @@ Name: 2, dtype: object
 </div>
 </div>
 <p>We can also print out a set of rows using slices. <code class="docutils literal notranslate"><span class="pre">:2</span></code> refers to index in the the range 0 to 2, a shorthand for <code class="docutils literal notranslate"><span class="pre">0:2</span></code>.</p>
-<p>Note that the index labels are interger in this DataFrame. This method also works well with non-integer index. For eg. we can also using slicing for sting labels. In that case, pandas will return all the rows in between the rows whose labels are specified in the slice, including the specified rows as well.</p>
+<p>Note that the index labels are interger in this DataFrame. This method also works well with non-integer index. For eg. we can also use slicing for sting labels. In that case, pandas will return all the rows in between the rows whose labels are specified in the slice, including the specified rows as well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
@@ -1424,7 +1466,7 @@ Name: 2, dtype: object
 </table>
 </div></div></div>
 </div>
-<p>Using the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> attribute, we can also select the second dimension (column for a DataFrame). In the cell below, we are selecting all rows and the ‘City’ column.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> selector, we can also select the second dimension (column for a DataFrame). In the cell below, we are selecting all rows and the ‘City’ column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span> <span class="p">,</span><span class="s1">&#39;City&#39;</span><span class="p">]</span>
@@ -1576,7 +1618,7 @@ Name: City, Length: 76280, dtype: object
 </table>
 </div></div></div>
 </div>
-<p>Another useful approach that comes handy when performing data manipulation operations is selection using boolean operators. In the cell below, before the comparision operator, we are subsetting the DataFrame to return all rows in the ‘Duration’ column. We are then comparing the ‘Duration’ value and returning <code class="docutils literal notranslate"><span class="pre">True</span></code> if the value is strictly less than 5. This returns a boolean array.</p>
+<p>Another useful approach that comes handy when performing data manipulation operations is selection using boolean operators. In the cell below, before the comparision operator, we are subsetting the DataFrame to return all rows in the ‘Duration’ column. We are then comparing the ‘Duration’ value and returning <code class="docutils literal notranslate"><span class="pre">True</span></code> if the value is strictly less than 5. This returns a boolean Series.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Duration&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5</span>
@@ -1600,7 +1642,7 @@ Name: Duration, Length: 76280, dtype: bool
 </div>
 </div>
 </div>
-<p>The above comparision operation can then be used to filter out rows that are True for the above case. In the cell below, we are using the same comparision operation to return cells from the entire DataFrame that have a stop duration of less than 5. Notice, we are then subsetting it to only provide City Names of those rows.</p>
+<p>The above comparision operation can then be used to filter out rows that are True for the above case. In the cell below, we are using the same comparision operation to return cells from the entire DataFrame that have a stop duration of less than 5. Notice, we are then subsetting it to only provide City Names of rows that pass that condition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;City&#39;</span><span class="p">]</span>
@@ -1649,7 +1691,7 @@ Name: 8, dtype: object
 </div>
 </div>
 </div>
-<p>In the case of this dataset, index labels are sorted integers which is the same as the index position as well, therefore, in this specific case, using wither <code class="docutils literal notranslate"><span class="pre">.loc</span></code> or <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> will return the same set of rows. However, since we have string labels for eac column, we will have to provide integer values that mark the position of the column in the DataFrame. Providing column name or any non-integer value in <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> will return an error.</p>
+<p>In the case of this dataset, index labels are sorted integers which is the same as the index position as well, therefore, in this specific case, using either <code class="docutils literal notranslate"><span class="pre">.loc</span></code> or <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> will return the same set of rows. However, since we have string labels for each column, we will have to provide integer values that mark the position of the column in the DataFrame. Providing column name or any non-integer value in <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> will return an error.</p>
 <p>In the cell below, we are selecting rows 2 till 6, with 2 included, and selecting the 4th column (‘Duration’ is at position 4).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1732,23 +1774,22 @@ Name: DriverRace, dtype: float64
 </table>
 </div></div></div>
 </div>
-<p>Note: Out of range slice indexes are handled gracefully just as in Python. It will not return an error but will return everything in the range apart from the our of range slices. If the entire slice index is out of range, Python will return empty list.</p>
+<p><strong>Note</strong>: Out of range slice indexes are handled gracefully. It will not return an error but will return everything in the range apart from the out of range slices. If the entire slice index is out of range, Python will return empty list.</p>
 </section>
 <section id="data-types-and-conversion">
 <h2>Data types and conversion<a class="headerlink" href="#data-types-and-conversion" title="Permalink to this headline">#</a></h2>
-<p>We saw above how the attribute <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> provides us with the the data type for each column in a DataFrame. Pandas has a set of data types that it understands and manipulates. It also includes a set of extended types from third-party libraries that have implemented this extension.</p>
-<p>We will touch upon the most basic and common ones that you saw in the result returned from running the command <code class="docutils literal notranslate"><span class="pre">stops_df.dtypes</span></code>. In brief, they include:</p>
+<p>We saw above how the attribute <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> provides us with the the data type for each column in a DataFrame. Pandas has a set of data types that it understands and manipulates. We will touch upon the most basic and common ones that you saw in the result returned from running the command <code class="docutils literal notranslate"><span class="pre">stops_df.dtypes</span></code>. In brief, they include:</p>
 <ul class="simple">
 <li><p>integer: default integer types are int64 (called nullable integers too)</p></li>
 <li><p>float: default float types are float64</p></li>
 <li><p>boolean: stores boolean data (True/False) with missing values</p></li>
-<li><p>date/time: timestamp for scalar and datetime64[ns] format for series</p></li>
+<li><p>date/time: stores dates in datetime64[ns] format</p></li>
 <li><p>object:  holds any Python object, including strings</p></li>
 <li><p>string: dedicated to strings</p></li>
 <li><p>category: stores limited, fixed number of possible values</p></li>
 </ul>
 <p>We can print the data types for the stops DataFrame again and can see that by default, Pandas doesn’t interpret all data types in the form that can be useful for us. For eg. DateStop and TimeStop are object types (stored as strings) and will prevent us from performing several temporal operations. (We will cover datetime in detail in the following section)</p>
-<p>Similarly, DriverRace and ReasonStop, which indicates the category of the Driver’s Race and Reason for Stop, respectively. However, since these categories are assigned float and integer, respectively, this can mislead our analytical process and any prediction we might want to make.</p>
+<p>Similarly, DriverRace and ReasonStop, which indicates the category of the Driver’s Race and Reason for Stop, respectively, are not given the correct type. Since these categories are assigned float and integer, respectively, this can mislead our analytical process and any prediction we might want to make.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">dtypes</span>
@@ -1773,11 +1814,15 @@ dtype: object
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">astype</span></code> method enables us to convert data types to the desired ones. A convenient way of performing this operation is to pass a dictionary with the column name whose type needs to be changed as key and the desired data type as value. We are then assigning the returned result to the original DataFrame to replace it with these new changes.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">astype</span></code> function enables us to convert data types to the desired ones. A convenient way of performing this operation is to pass a dictionary with the column name, whose type needs to be changed, as a key and the desired data type as value. We will then assign the returned result to the original DataFrame to replace it with these new changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">:</span> <span class="s1">&#39;category&#39;</span><span class="p">,</span> 
-                            <span class="s1">&#39;ReasonStop&#39;</span><span class="p">:</span> <span class="s1">&#39;category&#39;</span><span class="p">})</span>
+                            <span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">:</span><span class="s1">&#39;category&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;Beat&#39;</span><span class="p">:</span><span class="s1">&#39;category&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;ContraFound&#39;</span><span class="p">:</span><span class="s1">&#39;category&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;DrugsFound&#39;</span><span class="p">:</span><span class="s1">&#39;category&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;WeaponFound&#39;</span><span class="p">:</span><span class="s1">&#39;category&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1795,13 +1840,13 @@ TimeStop                   object
 Duration                    int64
 City                       object
 DriverRace               category
-ReasonStop               category
-TypeOfMovingViolation     float64
-Beat                        int64
+ReasonStop                float64
+TypeOfMovingViolation    category
+Beat                     category
 SearchConducted             int64
-ContraFound                 int64
-DrugsFound                  int64
-WeaponFound                 int64
+ContraFound              category
+DrugsFound               category
+WeaponFound              category
 dtype: object
 </pre></div>
 </div>
@@ -1810,12 +1855,13 @@ dtype: object
 </section>
 <section id="datetime-in-pandas">
 <h2>Datetime in Pandas<a class="headerlink" href="#datetime-in-pandas" title="Permalink to this headline">#</a></h2>
-<p>Temporal data (consisting of date and time stamps) is highly useful in data analytics and can result in useful features. Pandas offers the ability to work with time series information in various formats. This can enable us to perform several operations on datetime values such as sorting, predicting or categorizing data by certain time periods.</p>
-<p>A convenient format for datetime that Pandas uses is datetime from Python’s <a class="reference external" href="https://docs.python.org/3/library/datetime.html">datetime</a> library. This provides the ability for manipulating dates and times. We will work with datetime.datetime type from this library which is a combination of both date and time. Pandas will assign either datetime64[ns] or datetime64[ns, tz] data type to such a format.</p>
-<p>Series and DataFrame have extended data type support and functionality for datetime. In order to create this format from a Series or list consisting of timestamps in String or Object form (as is in the case of <code class="docutils literal notranslate"><span class="pre">stops_df</span></code> dataframe), we will use pandas’ <code class="docutils literal notranslate"><span class="pre">to_datetime</span></code> function. A single scalar value will be converted to Timestamp data type, whereas, a pandas object will convert to datetime64[ns].</p>
+<p>Temporal data (consisting of date and time stamps) is highly common in data analytics and can be processed to create useful features. Pandas offers the ability to work with time series information in various formats. This can enable us to perform several operations on datetime values such as sorting, predicting or categorizing data by certain time periods.</p>
+<p>A convenient format for date and time data that Pandas uses is datetime from Python’s <a class="reference external" href="https://docs.python.org/3/library/datetime.html">datetime</a> library. This provides the ability for manipulating dates and times. We will work with datetime.datetime type from this library, which is a combination of both date and time. Pandas will assign either datetime64[ns] or datetime64[ns, tz] data type to such a format.</p>
+<p>Series and DataFrame have extended data type support and functionality for datetime. In order to create this format from a Series or list consisting of timestamps in String or Object form (as is in the case of <code class="docutils literal notranslate"><span class="pre">stops_df</span></code> dataframe), we will use Pandas’ <code class="docutils literal notranslate"><span class="pre">.to_datetime()</span></code> function. A single scalar value will be converted to Timestamp data type, whereas, in a Series, the Pandas object data type will convert to datetime64[ns].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2010/11/12&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># converting a single scalar value</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2010/11/12&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1825,10 +1871,10 @@ dtype: object
 </div>
 </div>
 </div>
-<p>Using this function on the stops DataFrame will result in pandas parsing it to datetime.datetime like format. You can notice the data type it gets converted into.</p>
+<p>Using this function on the stops DataFrame will result in Pandas parsing it to datetime.datetime like format. You can notice the data type it gets converted into at the bottom of the output.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;DateStop&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1849,29 +1895,28 @@ Name: DateStop, Length: 76280, dtype: datetime64[ns]
 </div>
 </div>
 </div>
-<p>We will now assign it back to the original DataFrame. The <code class="docutils literal notranslate"><span class="pre">to_datetime</span></code> function also enables to pass a format argument to ensure specific parsing. This could also potentially speed up the conversion considerably. You can find the format codes on this <a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes">link</a>.</p>
+<p>We will now assign it back to the original DataFrame. The <code class="docutils literal notranslate"><span class="pre">.to_datetime()</span></code> function also enables to pass a format argument to ensure specific parsing. This could also potentially speed up the conversion. You can find the format codes on this <a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes">link</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">],</span> 
-                                      <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;DateStop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;DateStop&#39;</span><span class="p">],</span> 
+                                            <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>Every Timestamp has a set of time/date properties or temporal features that can be extracted.</p>
-<p>For a Series of type datetime, we can use the .dt accessor to extract these properties. This <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/timeseries.html#time-date-components">table</a> lists all the properties that can be accessed. We will use it to get hour of the day and the day of the week (to classify if the stop was on a weekend or a weekday). We will assign these to a new column in the DataFrame.</p>
+<p>For a Series of type datetime, we can use the .dt accessor to extract these properties. This <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/timeseries.html#time-date-components">table</a> lists all the properties that can be accessed. We will use it to get the day of the week (to classify if the stop was on a weekend or a weekday). We will assign it to a new column in the DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;Month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
-<span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;Weekday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Weekday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;DateStop&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can see how we accessed properties from the timestamp in DATESTOP column for some randomly selected rows.</p>
+<p>We will now see the values returned from the timestamp in DATESTOP column for some randomly selected rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">44</span><span class="p">,</span><span class="mi">5400</span><span class="p">,</span><span class="mi">10434</span><span class="p">,</span><span class="mi">55400</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">,</span><span class="s1">&#39;Month&#39;</span><span class="p">,</span><span class="s1">&#39;Weekday&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">44</span><span class="p">,</span><span class="mi">5400</span><span class="p">,</span><span class="mi">10434</span><span class="p">,</span><span class="mi">55400</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;DateStop&#39;</span><span class="p">,</span><span class="s1">&#39;Weekday&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1895,7 +1940,6 @@ Name: DateStop, Length: 76280, dtype: datetime64[ns]
     <tr style="text-align: right;">
       <th></th>
       <th>DateStop</th>
-      <th>Month</th>
       <th>Weekday</th>
     </tr>
   </thead>
@@ -1903,32 +1947,124 @@ Name: DateStop, Length: 76280, dtype: datetime64[ns]
     <tr>
       <th>1</th>
       <td>2021-01-01</td>
-      <td>1</td>
       <td>4</td>
     </tr>
     <tr>
       <th>44</th>
       <td>2021-01-01</td>
-      <td>1</td>
       <td>4</td>
     </tr>
     <tr>
       <th>5400</th>
       <td>2021-02-06</td>
-      <td>2</td>
       <td>5</td>
     </tr>
     <tr>
       <th>10434</th>
       <td>2021-01-05</td>
       <td>1</td>
-      <td>1</td>
     </tr>
     <tr>
       <th>55400</th>
       <td>2021-02-20</td>
-      <td>2</td>
       <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Similarly, we can convert the TimeStop variable’s ‘object’ data type to datetime type. The <code class="docutils literal notranslate"><span class="pre">.to_datetime()</span></code> function will also prefix a specific date to it since this column doesn’t contain one. We will extract the time out from it using the <code class="docutils literal notranslate"><span class="pre">.dt</span></code> accessor. We will also use this accessor to create hour of the day variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;TimeStop&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%H:%M&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       1900-01-01 00:33:00
+1       1900-01-01 01:50:00
+2       1900-01-01 08:50:00
+3       1900-01-01 12:41:00
+4       1900-01-01 13:51:00
+                ...        
+76275   1900-01-01 20:34:00
+76276   1900-01-01 20:06:00
+76277   1900-01-01 21:47:00
+76278   1900-01-01 21:15:00
+76279   1900-01-01 21:15:00
+Name: TimeStop, Length: 76280, dtype: datetime64[ns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;TimeStop&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%H:%M&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">time</span>
+<span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;TimeStop&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%H:%M&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will print the first 5 rows to see if the hour corresponds with the time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span><span class="s1">&#39;Hour&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>Hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00:33:00</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01:50:00</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>08:50:00</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>12:41:00</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>13:51:00</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>13:48:00</td>
+      <td>13</td>
     </tr>
   </tbody>
 </table>
@@ -1937,8 +2073,8 @@ Name: DateStop, Length: 76280, dtype: datetime64[ns]
 </section>
 <section id="missing-values">
 <h2>Missing Values<a class="headerlink" href="#missing-values" title="Permalink to this headline">#</a></h2>
-<p>Dealing with missing values is a major component of the data cleaning process. Fortunately, pandas has a set of markers and methods to help us do that. Primarily, pandas uses NaN as the default missing value marker and can be found in different data types.</p>
-<p>Pandas offers a set of methids to detect, fill or replace NaN values. Moreover, NaNs can also be ignored in pandas function by specifying to ignore NaNs in the function areguments if possible. Therefore, it is handy to convert any value indicating a missing value to a NaN.</p>
+<p>Dealing with missing values is a major component of the data cleaning process. Fortunately, Pandas has a set of markers and methods to help us do that. Primarily, Pandas uses NaN as the default missing value marker and this can be used as a marker for different data types.</p>
+<p>Pandas offers a set of methods to detect, fill or replace NaN values. Moreover, NaNs can also be ignored in Pandas function by specifying to ignore NaNs in the function arguments, if possible. Therefore, it is handy to convert any value indicating a missing value to a NaN.</p>
 <p>In order to check for NaN in a DataFrame or Series, we can use <code class="docutils literal notranslate"><span class="pre">.isna()</span></code> or <code class="docutils literal notranslate"><span class="pre">.notna()</span></code> attribute.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1977,8 +2113,9 @@ Name: DateStop, Length: 76280, dtype: datetime64[ns]
       <th>ContraFound</th>
       <th>DrugsFound</th>
       <th>WeaponFound</th>
-      <th>Month</th>
       <th>Weekday</th>
+      <th>Time</th>
+      <th>Hour</th>
     </tr>
   </thead>
   <tbody>
@@ -1991,6 +2128,7 @@ Name: DateStop, Length: 76280, dtype: datetime64[ns]
       <td>False</td>
       <td>False</td>
       <td>True</td>
+      <td>False</td>
       <td>False</td>
       <td>False</td>
       <td>False</td>
@@ -2015,6 +2153,7 @@ Name: DateStop, Length: 76280, dtype: datetime64[ns]
       <td>False</td>
       <td>False</td>
       <td>False</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>2</th>
@@ -2025,6 +2164,7 @@ Name: DateStop, Length: 76280, dtype: datetime64[ns]
       <td>False</td>
       <td>False</td>
       <td>True</td>
+      <td>False</td>
       <td>False</td>
       <td>False</td>
       <td>False</td>
@@ -2049,6 +2189,7 @@ Name: DateStop, Length: 76280, dtype: datetime64[ns]
       <td>False</td>
       <td>False</td>
       <td>False</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>4</th>
@@ -2066,12 +2207,13 @@ Name: DateStop, Length: 76280, dtype: datetime64[ns]
       <td>False</td>
       <td>False</td>
       <td>False</td>
+      <td>False</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>Using <code class="docutils literal notranslate"><span class="pre">.notna()</span></code> will reverse the results. As you can notice above, we can find missing values in the column ‘TypeOfMovingViolation’ with slight glimpse over the dataframe. In order to count the total missing values in all columns, we can suffix it with a method <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> which adds all cells where value is True (where each True is 1).</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">.notna()</span></code> will reverse the results. As you can notice above, we can find missing values in the column ‘TypeOfMovingViolation’ just by having a slight glimpse over the Dataframe. In order to count the total missing values in all columns, we can suffix it with a method <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> which adds all cells where value is True (where each True is 1).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -2091,26 +2233,29 @@ SearchConducted              0
 ContraFound                  0
 DrugsFound                   0
 WeaponFound                  0
-Month                        0
 Weekday                      0
+Time                         0
+Hour                         0
 dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
 <p>One of the ways to deal with these missing values is to fill in the NaNs with a scaler value using <code class="docutils literal notranslate"><span class="pre">.fillna()</span></code>. Here, the method accepts the value to be replaced. The inplace argument, when set to True, applies the changes to the DataFrame.</p>
+<p>However, for the case of any column or Series with dtype ‘category’, we need to make sure that the value we are replacing with is part of the category list. Therefore, before we fill the missing value using <code class="docutils literal notranslate"><span class="pre">.fillna()</span></code>, we will add the value to the category list of the column using <code class="docutils literal notranslate"><span class="pre">.cat.add_categoires()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;No moving violation&#39;</span><span class="p">,</span> 
-                                         <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">]</span> <span class="o">=</span> \
+<span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">add_categories</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Note</strong>: For storage purposes, it isn’t optimal to fill in categorical with a long string. Therefore, categories are usually mapped to a single character to save space.</p>
 <p>Another way is to simply exclude rows or columns from a dataset that might contain missing values. We need to be very careful when deciding to use this approach since we might lose critical data or reduce the data size.</p>
-<p>In case we plan to, <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> will do the job for use. By specifying the axis in the argument (either ‘index’ or ‘columns’), the specified axis containing atleast one NaN will be removed.</p>
-<p>We will use it below to remove the rows where the Driver’s Race is missing since that is the key value for our analysis. We specify the column name as the subset argument to only remove rows where ‘DriveRace’ is missing.</p>
+<p>In case we plan to, <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> will do the job for us. By specifying the axis in the argument (either ‘index’ or ‘columns’), the specified axis containing atleast one NaN will be removed.</p>
+<p>We will use it below to remove the rows where the Driver’s Race is missing since that is the key component for our analysis. We specify the column name as the subset argument to only remove rows where ‘DriveRace’ is missing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> 
@@ -2123,26 +2268,41 @@ dtype: int64
 </section>
 <section id="mapping-replacing-values-and-labels">
 <h2>Mapping/Replacing values and labels<a class="headerlink" href="#mapping-replacing-values-and-labels" title="Permalink to this headline">#</a></h2>
-<p>Data cleaning process usuallly requires replacing vague, misspled or missing values with correct ones. IT also requires structuring the index and column labels properly in order to make it easier for analysis.</p>
-<p>In order to rename index labels or columns, the rename method is very useful. By mapping the existing value to a new one, we can replace the column name.</p>
+<p>Data cleaning process usuallly requires replacing vague, misspelled or missing values with correct ones. It also requires structuring the index and column labels properly in order to make it easier for analysis.</p>
+<p>In order to rename index labels or columns, the rename method is very useful. By mapping the existing value to a new one, we can replace the column name. In the method below, the existing column name is provided as they key of a dictionary and the new column name as the value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Beat&quot;</span><span class="p">:</span> <span class="s2">&quot;BeatCode&quot;</span><span class="p">},</span> 
                 <span class="n">inplace</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">stops_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also drop columns and rows that are not needed. The drop function will remove column or row that is specified in arguments. To drop rows using their index, you can replace ‘columns’ with ‘index’ and pass it a single index name or a list of them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;TimeStop&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The columns attribute will enable us to verify the changes made.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;DateStop&#39;, &#39;TimeStop&#39;, &#39;Duration&#39;, &#39;City&#39;, &#39;DriverRace&#39;, &#39;ReasonStop&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;DateStop&#39;, &#39;Duration&#39;, &#39;City&#39;, &#39;DriverRace&#39;, &#39;ReasonStop&#39;,
        &#39;TypeOfMovingViolation&#39;, &#39;BeatCode&#39;, &#39;SearchConducted&#39;, &#39;ContraFound&#39;,
-       &#39;DrugsFound&#39;, &#39;WeaponFound&#39;, &#39;Month&#39;, &#39;Weekday&#39;],
+       &#39;DrugsFound&#39;, &#39;WeaponFound&#39;, &#39;Weekday&#39;, &#39;Time&#39;, &#39;Hour&#39;],
       dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
 </div>
-<p>To change any cells value, we can use <code class="docutils literal notranslate"><span class="pre">.loc()</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> as shown below.</p>
+<p>To change any cell’s value, we can use <code class="docutils literal notranslate"><span class="pre">.loc()</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> as shown below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">230</span><span class="p">,</span> <span class="s1">&#39;City&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Chicago&#39;</span>
@@ -2150,11 +2310,11 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>However, value replacement, particularly for data cleaning purposes, is usually applied on set of values combined. For such purposes, pandas provides the map method that maps value in a Series (or a column in a DataFrame) to a given set of values.</p>
+<p>However, value replacement, particularly for data cleaning purposes, is usually applied on a set of values combined. For such purposes, Pandas provides the map method that maps value in a Series (or a column in a DataFrame) to a given set of values.</p>
 <p>In the cell below, we are using the map method to convert the categorical values of race in numerical form to the actual race title in string as provided in the data dictionary. Note that we are using a dictionary where the key is the existing value and the value is the new string we want to replace it with. Providing a dictionary for mapping is the most convenient way, however, map method takes other forms of inputs too.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;DriverRace&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;DriverRace&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
     <span class="mf">1.0</span><span class="p">:</span> <span class="s1">&#39;White&#39;</span><span class="p">,</span>
     <span class="mf">2.0</span><span class="p">:</span> <span class="s1">&#39;Black or African American&#39;</span><span class="p">,</span>
     <span class="mf">3.0</span><span class="p">:</span> <span class="s1">&#39;American Indian or Alaska Native&#39;</span><span class="p">,</span>
@@ -2169,7 +2329,8 @@ dtype: int64
 <p>Similarly, we will map the numeric values in column ‘TypeOfMovingViolation’ to its respective category.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
+    <span class="mf">0.0</span><span class="p">:</span> <span class="s1">&#39;No Violation&#39;</span><span class="p">,</span>
     <span class="mf">1.0</span><span class="p">:</span> <span class="s1">&#39;Speed&#39;</span><span class="p">,</span>
     <span class="mf">2.0</span><span class="p">:</span> <span class="s1">&#39;Lane Violation&#39;</span><span class="p">,</span>
     <span class="mf">3.0</span><span class="p">:</span> <span class="s1">&#39;Seat Belt&#39;</span><span class="p">,</span>
@@ -2181,14 +2342,39 @@ dtype: int64
 </div>
 </div>
 </div>
+<p>We will also map the categories in other categorical variables for to simplify the analysis ahead.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;ContraFound&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;ContraFound&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
+    <span class="mf">0.0</span><span class="p">:</span> <span class="s1">&#39;NA&#39;</span><span class="p">,</span>
+    <span class="mf">1.0</span><span class="p">:</span> <span class="s1">&#39;Yes&#39;</span><span class="p">,</span>
+    <span class="mf">2.0</span><span class="p">:</span> <span class="s1">&#39;No&#39;</span>
+<span class="p">})</span>
+
+<span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;DrugsFound&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;DrugsFound&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
+    <span class="mf">0.0</span><span class="p">:</span> <span class="s1">&#39;NA&#39;</span><span class="p">,</span>
+    <span class="mf">1.0</span><span class="p">:</span> <span class="s1">&#39;Yes&#39;</span><span class="p">,</span>
+    <span class="mf">2.0</span><span class="p">:</span> <span class="s1">&#39;No&#39;</span>
+<span class="p">})</span>
+
+<span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;WeaponFound&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;WeaponFound&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span>
+    <span class="mf">0.0</span><span class="p">:</span> <span class="s1">&#39;NA&#39;</span><span class="p">,</span>
+    <span class="mf">1.0</span><span class="p">:</span> <span class="s1">&#39;Yes&#39;</span><span class="p">,</span>
+    <span class="mf">2.0</span><span class="p">:</span> <span class="s1">&#39;No&#39;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note</strong>: For storage purposes, it isn’t optimal to fill in categorical data types with a long string. Therefore, categories are usually mapped to a single character to save space.</p>
 </section>
 <section id="statistics">
 <h2>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">#</a></h2>
-<p>In the exploratory process, it is essential to have an understanding of the distribution of data and its summary statistics. Pandas offers a set of methods that provide this information and additionaly, enable us to visualize it.</p>
-<p>A few ways to do this includes using <code class="docutils literal notranslate"><span class="pre">mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">median</span></code> method to get these summary statis for a DataFrame or a Series. See the cells below:</p>
+<p>In the exploratory process, it is essential to have an understanding of the distribution of data and its summary statistics. Pandas offers a set of methods that provide this information and additionally, enable us to visualize it.</p>
+<p>A few ways to do this includes using <code class="docutils literal notranslate"><span class="pre">mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">median()</span></code> method to get these summary statistics for a DataFrame or a Series. See the cells below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2200,7 +2386,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2210,8 +2396,8 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>We got the mean and median duration for all Traffic stops. Depending on the data type, we can gather more of such stats to assist with our analysis. We can also use the <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> method to provide us with a quick way to see essential summary stats for each column. Notice, that summary stats are only given for numeric columns, therefore, we do not see summary stats for any column with datetime, categorical or object type.</p>
-<p>You can also notice that columns that were supposed to have categorical types and were picked up as integer or float data type, got statistical values that are not relevant. For eg. Month has mean and percentiles. Therefore, this emphasizes on the relevance of converting such columns to categorical data types to get a suitable analysis.</p>
+<p>We got the mean and median duration for all Traffic stops. Depending on the data type, we can gather more of such stats to assist us with our analysis. We can also use the <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> method to provide us with a quick way to see essential summary stats for each column. Notice, that summary stats are only given for numeric columns, therefore, we do not see summary stats for any column with datetime, categorical or object type.</p>
+<p>You can also notice that columns that were supposed to have categorical types and were picked up as integer or float data type, got statistical values that are not relevant. For eg. Weekday has mean and percentiles. Therefore, this emphasizes on the relevance of converting such columns to categorical data types.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -2238,13 +2424,10 @@ dtype: int64
     <tr style="text-align: right;">
       <th></th>
       <th>Duration</th>
-      <th>BeatCode</th>
+      <th>ReasonStop</th>
       <th>SearchConducted</th>
-      <th>ContraFound</th>
-      <th>DrugsFound</th>
-      <th>WeaponFound</th>
-      <th>Month</th>
       <th>Weekday</th>
+      <th>Hour</th>
     </tr>
   </thead>
   <tbody>
@@ -2255,95 +2438,80 @@ dtype: int64
       <td>76277.000000</td>
       <td>76277.000000</td>
       <td>76277.000000</td>
-      <td>76277.000000</td>
-      <td>76277.000000</td>
-      <td>76277.000000</td>
     </tr>
     <tr>
       <th>mean</th>
       <td>7.579952</td>
-      <td>1081.627070</td>
+      <td>1.972547</td>
       <td>1.985251</td>
-      <td>0.026076</td>
-      <td>0.027151</td>
-      <td>0.029091</td>
-      <td>1.440133</td>
       <td>3.116064</td>
+      <td>15.491131</td>
     </tr>
     <tr>
       <th>std</th>
       <td>26.182170</td>
-      <td>646.260818</td>
+      <td>0.757369</td>
       <td>0.120547</td>
-      <td>0.219205</td>
-      <td>0.226316</td>
-      <td>0.238602</td>
-      <td>0.496406</td>
       <td>1.958205</td>
+      <td>6.098630</td>
     </tr>
     <tr>
       <th>min</th>
       <td>0.000000</td>
-      <td>111.000000</td>
+      <td>1.000000</td>
       <td>1.000000</td>
       <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>1.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>25%</th>
       <td>3.000000</td>
-      <td>612.000000</td>
+      <td>1.000000</td>
       <td>2.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
       <td>1.000000</td>
-      <td>1.000000</td>
+      <td>11.000000</td>
     </tr>
     <tr>
       <th>50%</th>
       <td>4.000000</td>
-      <td>1022.000000</td>
       <td>2.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>1.000000</td>
+      <td>2.000000</td>
       <td>3.000000</td>
+      <td>17.000000</td>
     </tr>
     <tr>
       <th>75%</th>
       <td>6.000000</td>
-      <td>1522.000000</td>
-      <td>2.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
+      <td>3.000000</td>
       <td>2.000000</td>
       <td>5.000000</td>
+      <td>20.000000</td>
     </tr>
     <tr>
       <th>max</th>
       <td>719.000000</td>
-      <td>6100.000000</td>
-      <td>2.000000</td>
-      <td>2.000000</td>
-      <td>2.000000</td>
-      <td>2.000000</td>
+      <td>3.000000</td>
       <td>2.000000</td>
       <td>6.000000</td>
+      <td>23.000000</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<p>The result above displays some simple statistical estimates including mean, count, maximum and minimum value, standard deviation (std) and quartiles for each column. Let’s convert Weekday and Hour to categorical variables as required.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s1">&#39;Weekday&#39;</span><span class="p">:</span> <span class="s1">&#39;category&#39;</span><span class="p">,</span> 
+                            <span class="s1">&#39;Hour&#39;</span><span class="p">:</span><span class="s1">&#39;category&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Other significant attributes that give useful information include <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> which provides count of unique values in a series. We can use it to see the number of stops on each day of the week.<br><br>Note: Pandas weekday attribute maps Monday to 0 and Sunday to 6</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="p">[</span><span class="s1">&#39;Weekday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Weekday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2363,11 +2531,36 @@ Name: Weekday, dtype: int64
 </section>
 <section id="pointers-and-object-references">
 <h2>Pointers and Object References<a class="headerlink" href="#pointers-and-object-references" title="Permalink to this headline">#</a></h2>
-<p>It is important to know how Pandas objects are treated, especially when they are passed to functions or when changes are made to them. You might be familiar with how arguments to functions are pass-by-value where python creates a copy of the variable inside the function and works with that copy. However, pandas objects, particularly DataFrame and Series are passed as pass-by-reference, where the variable <em>pointing</em> to the pandas object is given to the function and, therefore, any changes made to the object the pointer variable is pointing to within the function, also changes the object in place.</p>
+<p>It is important to know how Pandas objects are treated, especially when they are passed to functions or when changes are made to them. If you are not familiar with the concept, arguments to functions are pass-by-value where Python creates a copy of the variable inside the function and works with that copy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square_number</span><span class="p">(</span><span class="n">number_in_function</span><span class="p">):</span>
+    <span class="n">number_in_function</span> <span class="o">=</span> <span class="n">number_in_function</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">square_number</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
+</div>
+<p>The number variable itself doesn’t get changed!</p>
+<p>However, Pandas objects, particularly DataFrame and Series are passed as pass-by-reference, where the variable <strong>pointing</strong> to the Pandas object is given to the function and, therefore, any changes made to the object the pointer variable is pointing to within the function, also changes the object in place.</p>
+<p><img alt="" src="https://blog.penjee.com/wp-content/uploads/2015/02/pass-by-reference-vs-pass-by-value-animation.gif" /></p>
 <p>Moreover, any assignment to a new variable such as <code class="docutils literal notranslate"><span class="pre">df2</span> <span class="pre">=</span> <span class="pre">df</span></code> just makes the new variable point to the same DataFrame and as a result, any changes made to <code class="docutils literal notranslate"><span class="pre">df2</span></code> will also impact <code class="docutils literal notranslate"><span class="pre">df</span></code> since they both point to the same object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">web_views</span>
 </pre></div>
 </div>
 </div>
@@ -2420,21 +2613,22 @@ Name: Weekday, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">web_views2</span> <span class="o">=</span> <span class="n">web_views</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will change a value in web_views2 to see the impact on web_views.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">web_views2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="s1">&#39;Safari&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">87</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="s1">&#39;Safari&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">87</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">web_views</span>
 </pre></div>
 </div>
 </div>
@@ -2485,10 +2679,11 @@ Name: Weekday, dtype: int64
 </table>
 </div></div></div>
 </div>
+<p>The value in that cell in web_views also changes. Similarly, adding a new row to web_views2 adds it to web_views as well. (As mentioned, they both point to the same dataframe)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2021</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
-<span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">web_views2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2021</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+<span class="n">web_views</span>
 </pre></div>
 </div>
 </div>
@@ -2545,36 +2740,20 @@ Name: Weekday, dtype: int64
 </table>
 </div></div></div>
 </div>
-<p>Similarly, passing dataframe as an argument to a function call doesn’t create a new copy but changes the DataFrame in-place as it is only passing the reference of the DataFrame object and not the data.</p>
+<p>Passing dataframe as an argument to a function call doesn’t create a new copy but changes the DataFrame in-place as it is only passing the reference of the DataFrame object and not the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square_vals</span><span class="p">(</span><span class="n">dataframe</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">dataframe</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">dataframe</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>As a result, passing the dataframe as an argument to the <code class="docutils literal notranslate"><span class="pre">square_vals()</span></code> function will alter the original dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">square_vals</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Chrome  Safari  Firefox
-2018    4489    7569     7921
-2019    1936    3364     4900
-2020      64     196      256
-2021    1024     361     2025
-</pre></div>
-</div>
-</div>
-</div>
-<p>The process above of assigning DataFrame to a new variable using <code class="docutils literal notranslate"><span class="pre">=</span></code> sign doesn’t copy the values but just makes the new variable another point of reference for the dataframe.</p>
-<p>Pandas uses a method called shallow copy. This creates a new object where the object will only have references to the original data and its indexes but not the data and index itself. Any changes to values in a shallow copy will also reflect in the original dataframe. The difference this has with using the assignment operator <code class="docutils literal notranslate"><span class="pre">=</span></code> is that we can append extra rows and columns to the shallow copied dataframe without affecting the original one. The original dataframe will only change if we change existing values as we are changing the values that are referred to in both the dataframes.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">square_vals</span><span class="p">(</span><span class="n">web_views</span><span class="p">)</span>
+<span class="n">web_views</span>
 </pre></div>
 </div>
 </div>
@@ -2605,27 +2784,88 @@ Name: Weekday, dtype: int64
   <tbody>
     <tr>
       <th>2018</th>
-      <td>67</td>
-      <td>87</td>
-      <td>89</td>
+      <td>4489</td>
+      <td>7569</td>
+      <td>7921</td>
     </tr>
     <tr>
       <th>2019</th>
-      <td>44</td>
-      <td>58</td>
-      <td>70</td>
+      <td>1936</td>
+      <td>3364</td>
+      <td>4900</td>
     </tr>
     <tr>
       <th>2020</th>
-      <td>8</td>
-      <td>14</td>
-      <td>16</td>
+      <td>64</td>
+      <td>196</td>
+      <td>256</td>
     </tr>
     <tr>
       <th>2021</th>
-      <td>32</td>
-      <td>19</td>
-      <td>45</td>
+      <td>1024</td>
+      <td>361</td>
+      <td>2025</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The process of assigning DataFrame to a new variable using <code class="docutils literal notranslate"><span class="pre">=</span></code> sign doesn’t copy the values but just makes the new variable another point of reference for the dataframe.</p>
+<p>Pandas uses a method called shallow copy. This creates a new object where the object will only have references to the original data and its indexes but not the data and the index itself. Any changes to values in a shallow copy will also reflect in the original dataframe. The difference this has with using the assignment operator <code class="docutils literal notranslate"><span class="pre">=</span></code> is that we can append extra rows and columns to the shallow copied DataFrame without affecting the original one. The original DataFrame will only change if we change existing values as we are changing the values that are referred to in both the dataframes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">web_views</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chrome</th>
+      <th>Safari</th>
+      <th>Firefox</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018</th>
+      <td>4489</td>
+      <td>7569</td>
+      <td>7921</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>1936</td>
+      <td>3364</td>
+      <td>4900</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>64</td>
+      <td>196</td>
+      <td>256</td>
+    </tr>
+    <tr>
+      <th>2021</th>
+      <td>1024</td>
+      <td>361</td>
+      <td>2025</td>
     </tr>
   </tbody>
 </table>
@@ -2633,15 +2873,15 @@ Name: Weekday, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_shallow</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shallow</span> <span class="o">=</span> <span class="n">web_views</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_shallow</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="s1">&#39;Chrome&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">80</span>
-<span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shallow</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="s1">&#39;Chrome&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">web_views</span>
 </pre></div>
 </div>
 </div>
@@ -2672,27 +2912,27 @@ Name: Weekday, dtype: int64
   <tbody>
     <tr>
       <th>2018</th>
-      <td>67</td>
-      <td>87</td>
-      <td>89</td>
+      <td>4489</td>
+      <td>7569</td>
+      <td>7921</td>
     </tr>
     <tr>
       <th>2019</th>
-      <td>44</td>
-      <td>58</td>
-      <td>70</td>
+      <td>1936</td>
+      <td>3364</td>
+      <td>4900</td>
     </tr>
     <tr>
       <th>2020</th>
       <td>80</td>
-      <td>14</td>
-      <td>16</td>
+      <td>196</td>
+      <td>256</td>
     </tr>
     <tr>
       <th>2021</th>
-      <td>32</td>
-      <td>19</td>
-      <td>45</td>
+      <td>1024</td>
+      <td>361</td>
+      <td>2025</td>
     </tr>
   </tbody>
 </table>
@@ -2700,8 +2940,8 @@ Name: Weekday, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_shallow</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2022</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
-<span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shallow</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2022</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">web_views</span>
 </pre></div>
 </div>
 </div>
@@ -2732,27 +2972,27 @@ Name: Weekday, dtype: int64
   <tbody>
     <tr>
       <th>2018</th>
-      <td>67</td>
-      <td>87</td>
-      <td>89</td>
+      <td>4489</td>
+      <td>7569</td>
+      <td>7921</td>
     </tr>
     <tr>
       <th>2019</th>
-      <td>44</td>
-      <td>58</td>
-      <td>70</td>
+      <td>1936</td>
+      <td>3364</td>
+      <td>4900</td>
     </tr>
     <tr>
       <th>2020</th>
       <td>80</td>
-      <td>14</td>
-      <td>16</td>
+      <td>196</td>
+      <td>256</td>
     </tr>
     <tr>
       <th>2021</th>
-      <td>32</td>
-      <td>19</td>
-      <td>45</td>
+      <td>1024</td>
+      <td>361</td>
+      <td>2025</td>
     </tr>
   </tbody>
 </table>
@@ -2761,15 +3001,15 @@ Name: Weekday, dtype: int64
 <p>On the other hand, we can use a deep copy which creats a new object and copies both the data and values to the new object. Therefore, any changes to the deep copy will not be reflected in the original copy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_deep</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deep</span> <span class="o">=</span> <span class="n">web_views</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_deep</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="s1">&#39;Firefox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
-<span class="n">df_deep</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deep</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2018</span><span class="p">,</span> <span class="s1">&#39;Firefox&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="n">deep</span>
 </pre></div>
 </div>
 </div>
@@ -2800,27 +3040,27 @@ Name: Weekday, dtype: int64
   <tbody>
     <tr>
       <th>2018</th>
-      <td>67</td>
-      <td>87</td>
+      <td>4489</td>
+      <td>7569</td>
       <td>99</td>
     </tr>
     <tr>
       <th>2019</th>
-      <td>44</td>
-      <td>58</td>
-      <td>70</td>
+      <td>1936</td>
+      <td>3364</td>
+      <td>4900</td>
     </tr>
     <tr>
       <th>2020</th>
       <td>80</td>
-      <td>14</td>
-      <td>16</td>
+      <td>196</td>
+      <td>256</td>
     </tr>
     <tr>
       <th>2021</th>
-      <td>32</td>
-      <td>19</td>
-      <td>45</td>
+      <td>1024</td>
+      <td>361</td>
+      <td>2025</td>
     </tr>
   </tbody>
 </table>
@@ -2828,7 +3068,7 @@ Name: Weekday, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">web_views</span>
 </pre></div>
 </div>
 </div>
@@ -2859,47 +3099,57 @@ Name: Weekday, dtype: int64
   <tbody>
     <tr>
       <th>2018</th>
-      <td>67</td>
-      <td>87</td>
-      <td>89</td>
+      <td>4489</td>
+      <td>7569</td>
+      <td>7921</td>
     </tr>
     <tr>
       <th>2019</th>
-      <td>44</td>
-      <td>58</td>
-      <td>70</td>
+      <td>1936</td>
+      <td>3364</td>
+      <td>4900</td>
     </tr>
     <tr>
       <th>2020</th>
       <td>80</td>
-      <td>14</td>
-      <td>16</td>
+      <td>196</td>
+      <td>256</td>
     </tr>
     <tr>
       <th>2021</th>
-      <td>32</td>
-      <td>19</td>
-      <td>45</td>
+      <td>1024</td>
+      <td>361</td>
+      <td>2025</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p><strong>Note</strong>: It is important to note that within deep copy, data is copied but actual Python objects will not be copied recursively, only the reference to the object. This means that if the cells in the dataframe contain references to other objects, the references will be copied only and not the objects it refers too.</p>
+<p><strong>Note</strong>: It is important to note that within deep copy, data is copied but actual Python objects will not be copied recursively, only the reference to the object. This means that if the cells in the DataFrame contain references to other objects, the references will be copied only and not the objects it refers too.</p>
 </section>
 <section id="export">
 <h2>Export<a class="headerlink" href="#export" title="Permalink to this headline">#</a></h2>
-<p>In the beginning, we went through how we can import a variety of files and read it as a pandas object. Similarly, we can make use of writer functions that enable us to save a pandas object to your computer. For saving dataframes, a few of the methods that we can use are <code class="docutils literal notranslate"><span class="pre">.to_csv()</span></code> (comma-separated file format), <code class="docutils literal notranslate"><span class="pre">.to_excel()</span></code> (MS Excel format) and <code class="docutils literal notranslate"><span class="pre">to_pickle()</span></code> (Python pickle format). All these methods take the file path as the first argument.</p>
+<p>In the beginning, we went through how we can import a variety of files and read it as a Pandas object. Similarly, we can make use of writer functions that enable us to save a Pandas object to your computer. For saving DataFrames, a few of the methods that we can use are <code class="docutils literal notranslate"><span class="pre">.to_csv()</span></code> (comma-separated file format), <code class="docutils literal notranslate"><span class="pre">.to_excel()</span></code> (MS Excel format) and <code class="docutils literal notranslate"><span class="pre">to_pickle()</span></code> (Python pickle format). All these methods take the file path as the first argument.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;brower.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">web_views</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;web_views.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will save the traffic stops dataframe as a Python pickle format. One benefit of doing this is that it preserves the format and types of the DataFrame that can be imported to our next script. However, it is not human-readable as a csv format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;stops.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
+<section id="advanced-topics">
+<h2>Advanced Topics<a class="headerlink" href="#advanced-topics" title="Permalink to this headline">#</a></h2>
 <section id="groupby">
-<h2>Groupby<a class="headerlink" href="#groupby" title="Permalink to this headline">#</a></h2>
+<h3>Groupby<a class="headerlink" href="#groupby" title="Permalink to this headline">#</a></h3>
 <p>Groupby is certainly amongst the most useful set of methods in pandas. To make this concept intuitive, we will break it down into its 3 major steps: split-apply-combine.</p>
 <p>In the <em>split</em> step, the data is divided into groups by a criteria. For eg. we will group our datasets into race groups (6 in this DataFrame). The format for this step is shown below where the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method takes the column name to group over as an argument.</p>
 <div class="cell docutils container">
@@ -2937,21 +3187,11 @@ Name: Weekday, dtype: int64
     <tr style="text-align: right;">
       <th></th>
       <th>Duration</th>
-      <th>BeatCode</th>
+      <th>ReasonStop</th>
       <th>SearchConducted</th>
-      <th>ContraFound</th>
-      <th>DrugsFound</th>
-      <th>WeaponFound</th>
-      <th>Month</th>
-      <th>Weekday</th>
     </tr>
     <tr>
       <th>DriverRace</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -2961,68 +3201,38 @@ Name: Weekday, dtype: int64
     <tr>
       <th>White</th>
       <td>7.501639</td>
-      <td>1472.421225</td>
+      <td>1.967482</td>
       <td>1.995715</td>
-      <td>0.007310</td>
-      <td>0.007562</td>
-      <td>0.008571</td>
-      <td>1.444795</td>
-      <td>3.098437</td>
     </tr>
     <tr>
       <th>Black or African American</th>
       <td>7.777141</td>
-      <td>931.528335</td>
+      <td>2.003106</td>
       <td>1.982218</td>
-      <td>0.031661</td>
-      <td>0.032955</td>
-      <td>0.034966</td>
-      <td>1.437555</td>
-      <td>3.107487</td>
     </tr>
     <tr>
       <th>American Indian or Alaska Native</th>
       <td>6.758278</td>
-      <td>1316.754967</td>
+      <td>1.930464</td>
       <td>1.996689</td>
-      <td>0.006623</td>
-      <td>0.006623</td>
-      <td>0.006623</td>
-      <td>1.476821</td>
-      <td>3.235099</td>
     </tr>
     <tr>
       <th>Hispanic or Latino</th>
       <td>7.168813</td>
-      <td>1312.990674</td>
+      <td>1.897164</td>
       <td>1.987629</td>
-      <td>0.021252</td>
-      <td>0.022204</td>
-      <td>0.024678</td>
-      <td>1.445537</td>
-      <td>3.153651</td>
     </tr>
     <tr>
       <th>Asian</th>
       <td>6.271658</td>
-      <td>1445.236364</td>
+      <td>1.830481</td>
       <td>1.998930</td>
-      <td>0.002139</td>
-      <td>0.002139</td>
-      <td>0.002139</td>
-      <td>1.435829</td>
-      <td>3.094118</td>
     </tr>
     <tr>
       <th>Native Hawaiian or Other Pacific Islander</th>
       <td>7.015957</td>
-      <td>1291.494681</td>
+      <td>1.824468</td>
       <td>2.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>1.462766</td>
-      <td>3.026596</td>
     </tr>
   </tbody>
 </table>
@@ -3136,8 +3346,15 @@ dtype: int64
 <p>We can also groupby multiple columns and chain all these steps in a single line.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">,</span>
-                  <span class="s1">&#39;DriverRace&#39;</span><span class="p">])[</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multi_level_group</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;DriverRace&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multi_level_group</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3160,239 +3377,503 @@ dtype: int64
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th></th>
+      <th>Duration</th>
+      <th>ReasonStop</th>
+      <th>SearchConducted</th>
+    </tr>
+    <tr>
       <th>TypeOfMovingViolation</th>
       <th>DriverRace</th>
-      <th>Duration</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>Follow too close</td>
-      <td>White</td>
-      <td>4.600000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Follow too close</td>
-      <td>Black or African American</td>
-      <td>15.000000</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Follow too close</td>
-      <td>American Indian or Alaska Native</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Follow too close</td>
-      <td>Hispanic or Latino</td>
-      <td>7.333333</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Follow too close</td>
-      <td>Asian</td>
-      <td>5.000000</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Follow too close</td>
-      <td>Native Hawaiian or Other Pacific Islander</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Lane Violation</td>
-      <td>White</td>
-      <td>8.907216</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Lane Violation</td>
-      <td>Black or African American</td>
-      <td>7.950725</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Lane Violation</td>
-      <td>American Indian or Alaska Native</td>
-      <td>6.100000</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Lane Violation</td>
-      <td>Hispanic or Latino</td>
-      <td>7.844322</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>Lane Violation</td>
-      <td>Asian</td>
-      <td>11.231707</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>Lane Violation</td>
-      <td>Native Hawaiian or Other Pacific Islander</td>
-      <td>6.363636</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>Other</td>
-      <td>White</td>
-      <td>8.245262</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>Other</td>
-      <td>Black or African American</td>
-      <td>8.885165</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Other</td>
-      <td>American Indian or Alaska Native</td>
-      <td>5.928571</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>Other</td>
-      <td>Hispanic or Latino</td>
-      <td>10.408136</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Other</td>
-      <td>Asian</td>
-      <td>6.734940</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>Other</td>
-      <td>Native Hawaiian or Other Pacific Islander</td>
-      <td>5.090909</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>Seat Belt</td>
-      <td>White</td>
-      <td>7.747748</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>Seat Belt</td>
-      <td>Black or African American</td>
-      <td>5.981643</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>Seat Belt</td>
-      <td>American Indian or Alaska Native</td>
-      <td>5.666667</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>Seat Belt</td>
-      <td>Hispanic or Latino</td>
-      <td>5.567123</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>Seat Belt</td>
-      <td>Asian</td>
-      <td>4.444444</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>Seat Belt</td>
-      <td>Native Hawaiian or Other Pacific Islander</td>
-      <td>67.000000</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>Speed</td>
-      <td>White</td>
+      <th rowspan="6" valign="top">Speed</th>
+      <th>White</th>
       <td>8.500000</td>
+      <td>1.0</td>
+      <td>2.000000</td>
     </tr>
     <tr>
-      <th>25</th>
-      <td>Speed</td>
-      <td>Black or African American</td>
+      <th>Black or African American</th>
       <td>18.070496</td>
+      <td>1.0</td>
+      <td>1.984334</td>
     </tr>
     <tr>
-      <th>26</th>
-      <td>Speed</td>
-      <td>American Indian or Alaska Native</td>
+      <th>American Indian or Alaska Native</th>
       <td>5.000000</td>
+      <td>1.0</td>
+      <td>2.000000</td>
     </tr>
     <tr>
-      <th>27</th>
-      <td>Speed</td>
-      <td>Hispanic or Latino</td>
+      <th>Hispanic or Latino</th>
       <td>13.543307</td>
+      <td>1.0</td>
+      <td>1.992126</td>
     </tr>
     <tr>
-      <th>28</th>
-      <td>Speed</td>
-      <td>Asian</td>
+      <th>Asian</th>
       <td>9.900000</td>
+      <td>1.0</td>
+      <td>2.000000</td>
     </tr>
     <tr>
-      <th>29</th>
-      <td>Speed</td>
-      <td>Native Hawaiian or Other Pacific Islander</td>
+      <th>Native Hawaiian or Other Pacific Islander</th>
       <td>15.000000</td>
+      <td>1.0</td>
+      <td>2.000000</td>
     </tr>
     <tr>
-      <th>30</th>
-      <td>Traffic Sign or Signal</td>
-      <td>White</td>
-      <td>9.378069</td>
+      <th rowspan="4" valign="top">Lane Violation</th>
+      <th>White</th>
+      <td>8.907216</td>
+      <td>1.0</td>
+      <td>1.986254</td>
     </tr>
     <tr>
-      <th>31</th>
-      <td>Traffic Sign or Signal</td>
-      <td>Black or African American</td>
-      <td>10.094833</td>
+      <th>Black or African American</th>
+      <td>7.950725</td>
+      <td>1.0</td>
+      <td>1.969855</td>
     </tr>
     <tr>
-      <th>32</th>
-      <td>Traffic Sign or Signal</td>
-      <td>American Indian or Alaska Native</td>
-      <td>8.384615</td>
+      <th>American Indian or Alaska Native</th>
+      <td>6.100000</td>
+      <td>1.0</td>
+      <td>2.000000</td>
     </tr>
     <tr>
-      <th>33</th>
-      <td>Traffic Sign or Signal</td>
-      <td>Hispanic or Latino</td>
-      <td>8.120463</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>Traffic Sign or Signal</td>
-      <td>Asian</td>
-      <td>6.781362</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>Traffic Sign or Signal</td>
-      <td>Native Hawaiian or Other Pacific Islander</td>
-      <td>7.000000</td>
+      <th>Hispanic or Latino</th>
+      <td>7.844322</td>
+      <td>1.0</td>
+      <td>1.972527</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 </section>
+<section id="multi-level-indexing">
+<h3>Multi-level Indexing<a class="headerlink" href="#multi-level-indexing" title="Permalink to this headline">#</a></h3>
+<p>In the cell above, we just created a multi-level indexed Series. As the name suggests, multi-level indexing gives us the power to use a hierarchy of indexes to label values in a Pandas DataFrame. This in turn enables us to work with even higher dimensional data and store and manipulate the data in higher dimensions.</p>
+<p>Fortunately, we can use similar indexing techniques as we introduced above to view and manipulate multi-level indexed DataFrame. Instead of using a single label, we would use a tuple of labels to index a subset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">multi_level_group</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.indexes.multi.MultiIndex
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multi_level_group</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="s1">&#39;Lane Violation&#39;</span><span class="p">,</span><span class="s1">&#39;White&#39;</span><span class="p">),</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.907216494845361
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="merge">
+<h3>Merge<a class="headerlink" href="#merge" title="Permalink to this headline">#</a></h3>
+<p>In data manipulation operations, there are situations where we need to combine multiple Series or DataFrames together. It could either be the case of stacking similar DataFrames on top of another or combining a supplementary data with some matching columns to the original DataFrame.</p>
+<p>To illustrate this, we are going to perform 2 kinds of operations. The first one involves concatenation where we will stack a DataFrame vertically below the stops DataFrame. This additional DataFrame will be a portion of the DataFrame that we will break off from the stops DataFrame to demonstrate how it can be re-combined.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_jan</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;DateStop&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="s1">&#39;2021-02-01&#39;</span><span class="p">,:]</span>
+<span class="n">stops_feb</span> <span class="o">=</span> <span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">stops_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;DateStop&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="s1">&#39;2021-01-31&#39;</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">stops_jan</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stops_feb</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(42705, 14)
+(33572, 14)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will use the <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> function to combine. By specifying <code class="docutils literal notranslate"><span class="pre">axis</span> <span class="pre">=</span> <span class="pre">0</span></code>, we are ensuring that it concatenates vertically. By printing the shape we can see the final number of rows after re-combination.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">stops_jan</span><span class="p">,</span> <span class="n">stops_feb</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stops_combined</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(76277, 14)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The stops DataFrame contains the race of every driver for every stop in a particular police beat. To see if there is involvement of police bias in the traffic stops, we might want to know the proportion of each race group that was stopped relative to their population that beat. For that, we need to know the population of each race group in every beat. Fortunately, we will make use of the Chicago Police beat demographics dataset. In order to find out the proportions of stops per race, we would need to combine both the datasets (the Traffics Stops data and the Beat demographics data) to calculate the proportions.</p>
+<p>We will use merge for this purpose. Merge enables us to use SQL-like commands to combine DataFrames. It’s fine if you are not familiar with SQL. The image illustration can offer a good intuition of what each SQL join refers too.</p>
+<p><img alt="" src="https://www.dofactory.com/img/sql/sql-joins.png" /></p>
+<p>We will first import the Beat demographics dataset ‘beat_race.pkl’ and then perform an <strong>inner join</strong>. This is also the simple join as shown in the illustration above where only intersecting indexes will be merged. In this example, we will join Beat Code from both the dataset and inner join will ensure that Beat Code existing in both will merge.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beatrace</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;beat_race.pkl&#39;</span><span class="p">)</span>
+<span class="n">beatrace</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BeatCode</th>
+      <th>White</th>
+      <th>Hispanic or Latino</th>
+      <th>Black or African American</th>
+      <th>Asian</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0111</td>
+      <td>1272</td>
+      <td>190</td>
+      <td>85</td>
+      <td>413</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0112</td>
+      <td>668</td>
+      <td>56</td>
+      <td>116</td>
+      <td>204</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0113</td>
+      <td>614</td>
+      <td>76</td>
+      <td>140</td>
+      <td>211</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0114</td>
+      <td>10783</td>
+      <td>1058</td>
+      <td>1246</td>
+      <td>2736</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0121</td>
+      <td>3114</td>
+      <td>427</td>
+      <td>297</td>
+      <td>2401</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In the code below we will create a grouped DataFrame conisisting of Beat Code as index and sum of each Driver’s Race in that beat. We have introduced new notations in the code below but we are going to cover it up in the sections ahead. Right now, you can see the DataFrame we produce.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_race_dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">stops_df</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">])</span>
+<span class="n">stops_race_dummies</span><span class="p">[</span><span class="s1">&#39;BeatCode&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_race_dummies</span><span class="p">[</span><span class="s1">&#39;BeatCode&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">Beat_Race_group</span> <span class="o">=</span> <span class="n">stops_race_dummies</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;BeatCode&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="n">stops_race_dummies</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">11</span><span class="p">:]]</span>
+<span class="n">Beat_Race_group</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">Input In [88],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">stops_race_dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">stops_df</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">stops_race_dummies</span><span class="p">[</span><span class="s1">&#39;BeatCode&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stops_race_dummies</span><span class="p">[</span><span class="s1">&#39;BeatCode&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">Beat_Race_group</span> <span class="o">=</span> <span class="n">stops_race_dummies</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;BeatCode&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="n">stops_race_dummies</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">11</span><span class="p">:]]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">Beat_Race_group</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py:3511,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3509</span>     <span class="k">if</span> <span class="n">is_iterator</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3510</span>         <span class="n">key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3511</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">_get_indexer_strict</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">&quot;columns&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">3513</span> <span class="c1"># take() does not accept boolean indexers</span>
+<span class="g g-Whitespace">   </span><span class="mi">3514</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py:5782,</span> in <span class="ni">Index._get_indexer_strict</span><span class="nt">(self, key, axis_name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5779</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">5780</span>     <span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">new_indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reindex_non_unique</span><span class="p">(</span><span class="n">keyarr</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">5782</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raise_if_missing</span><span class="p">(</span><span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">axis_name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5784</span> <span class="n">keyarr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">indexer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5785</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">Index</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">5786</span>     <span class="c1"># GH 42790 - Preserve name from an Index</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py:5845,</span> in <span class="ni">Index._raise_if_missing</span><span class="nt">(self, key, indexer, axis_name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5842</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;None of [</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">] are in the [</span><span class="si">{</span><span class="n">axis_name</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5844</span> <span class="n">not_found</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ensure_index</span><span class="p">(</span><span class="n">key</span><span class="p">)[</span><span class="n">missing_mask</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="ne">-&gt; </span><span class="mi">5845</span> <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">not_found</span><span class="si">}</span><span class="s2"> not in index&quot;</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: &quot;[&#39;Time&#39;, &#39;Hour&#39;] not in index&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Beat_Race_group</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BeatCode</th>
+      <th>DriverRace_White</th>
+      <th>DriverRace_Black or African American</th>
+      <th>DriverRace_American Indian or Alaska Native</th>
+      <th>DriverRace_Hispanic or Latino</th>
+      <th>DriverRace_Asian</th>
+      <th>DriverRace_Native Hawaiian or Other Pacific Islander</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0111</td>
+      <td>64.0</td>
+      <td>119.0</td>
+      <td>3.0</td>
+      <td>59.0</td>
+      <td>13.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0112</td>
+      <td>43.0</td>
+      <td>102.0</td>
+      <td>3.0</td>
+      <td>30.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0113</td>
+      <td>71.0</td>
+      <td>93.0</td>
+      <td>2.0</td>
+      <td>49.0</td>
+      <td>13.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0114</td>
+      <td>89.0</td>
+      <td>152.0</td>
+      <td>5.0</td>
+      <td>75.0</td>
+      <td>21.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0121</td>
+      <td>22.0</td>
+      <td>42.0</td>
+      <td>3.0</td>
+      <td>14.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We will then use the merge method to do an inner join. The format for a merge function is as follows:</p>
+<p><code class="docutils literal notranslate"><span class="pre">pandas.merge(left,</span> <span class="pre">right,</span> <span class="pre">how='inner',</span> <span class="pre">on=None,</span> <span class="pre">...)</span></code></p>
+<p>Here <code class="docutils literal notranslate"><span class="pre">left</span></code> and <code class="docutils literal notranslate"><span class="pre">right</span></code> are the DataFrames that have to be merged.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beat_merged</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">Beat_Race_group</span><span class="p">,</span> <span class="n">beatrace</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;BeatCode&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can now see the merged DataFrame where columns in both DataFrame now share a single index ‘BeatCode’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beat_merged</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BeatCode</th>
+      <th>DriverRace_White</th>
+      <th>DriverRace_Black or African American</th>
+      <th>DriverRace_American Indian or Alaska Native</th>
+      <th>DriverRace_Hispanic or Latino</th>
+      <th>DriverRace_Asian</th>
+      <th>DriverRace_Native Hawaiian or Other Pacific Islander</th>
+      <th>White</th>
+      <th>Hispanic or Latino</th>
+      <th>Black or African American</th>
+      <th>Asian</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0111</td>
+      <td>64.0</td>
+      <td>119.0</td>
+      <td>3.0</td>
+      <td>59.0</td>
+      <td>13.0</td>
+      <td>2.0</td>
+      <td>1272</td>
+      <td>190</td>
+      <td>85</td>
+      <td>413</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0112</td>
+      <td>43.0</td>
+      <td>102.0</td>
+      <td>3.0</td>
+      <td>30.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>668</td>
+      <td>56</td>
+      <td>116</td>
+      <td>204</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0113</td>
+      <td>71.0</td>
+      <td>93.0</td>
+      <td>2.0</td>
+      <td>49.0</td>
+      <td>13.0</td>
+      <td>4.0</td>
+      <td>614</td>
+      <td>76</td>
+      <td>140</td>
+      <td>211</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0114</td>
+      <td>89.0</td>
+      <td>152.0</td>
+      <td>5.0</td>
+      <td>75.0</td>
+      <td>21.0</td>
+      <td>2.0</td>
+      <td>10783</td>
+      <td>1058</td>
+      <td>1246</td>
+      <td>2736</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0121</td>
+      <td>22.0</td>
+      <td>42.0</td>
+      <td>3.0</td>
+      <td>14.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>3114</td>
+      <td>427</td>
+      <td>297</td>
+      <td>2401</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
 <section id="additional-concepts">
 <h2>Additional Concepts<a class="headerlink" href="#additional-concepts" title="Permalink to this headline">#</a></h2>
 <section id="method-chaining">
 <h3>Method Chaining<a class="headerlink" href="#method-chaining" title="Permalink to this headline">#</a></h3>
 <p>As the name suggests, method chaining enables us to use a series of methods in a single command. This is possible because every method that we use on a pandas object gets returned as a pandas object itself, allowing us to apply another method on it. Method chaining simplies are code and makes it more readable.</p>
-<p>We will repeat the method chaining acion we perfomed previously.</p>
+<p>Below is an example of how we performed multiple operations using method chaining.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stops_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;TypeOfMovingViolation&#39;</span><span class="p">,</span>
@@ -3427,33 +3908,33 @@ dtype: int64
   <tbody>
     <tr>
       <th>0</th>
-      <td>Follow too close</td>
+      <td>Speed</td>
       <td>White</td>
-      <td>4.600000</td>
+      <td>8.500000</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Follow too close</td>
+      <td>Speed</td>
       <td>Black or African American</td>
-      <td>15.000000</td>
+      <td>18.070496</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Follow too close</td>
+      <td>Speed</td>
       <td>American Indian or Alaska Native</td>
-      <td>NaN</td>
+      <td>5.000000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Follow too close</td>
+      <td>Speed</td>
       <td>Hispanic or Latino</td>
-      <td>7.333333</td>
+      <td>13.543307</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Follow too close</td>
+      <td>Speed</td>
       <td>Asian</td>
-      <td>5.000000</td>
+      <td>9.900000</td>
     </tr>
   </tbody>
 </table>
@@ -3496,6 +3977,13 @@ dtype: int64
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Data Science Course - Social Impact Track</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="DataViz.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Matplotlib and its structure</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
