@@ -52,8 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Chapter 6: Common Operations in Pandas" href="Chapter6.html" />
-    <link rel="prev" title="Chapter 4: Finding Hidden Insights" href="Chapter4.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -104,52 +102,20 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../Introduction.html">
-                    Data Science Course - Social Impact Track
+                    Intended audience
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="Section1.html">
-   Section 1: - Dealing with Data
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../revamped/IntroPandas.html">
+   Introduction to Pandas
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter1.html">
-     Chapter 1: Defining the problem
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter2.html">
-     Chapter 2: Gathering and Collecting Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter3.html">
-     Chapter 3: Cleaning Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter4.html">
-     Chapter 4: Finding Hidden Insights
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Chapter 5: Wrangling and Feature Engineering
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter6.html">
-     Chapter 6: Common Operations in Pandas
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../revamped/DataVisualization.html">
+   Matplotlib and its structure
+  </a>
  </li>
 </ul>
 
@@ -504,61 +470,79 @@ Name: ContraORDrugs, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>94893</th>
-      <td>True</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>294813</th>
+      <th>52941</th>
       <td>True</td>
       <td>1</td>
       <td>2</td>
     </tr>
     <tr>
-      <th>94641</th>
-      <td>True</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>289549</th>
-      <td>True</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>199533</th>
+      <th>48052</th>
       <td>True</td>
       <td>1</td>
       <td>2</td>
     </tr>
     <tr>
-      <th>201</th>
+      <th>247467</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>242128</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>202119</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>107374</th>
       <td>True</td>
       <td>1</td>
       <td>2</td>
     </tr>
     <tr>
-      <th>239472</th>
+      <th>54113</th>
       <td>True</td>
       <td>1</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>424</th>
+      <th>196203</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>49997</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>341436</th>
       <td>True</td>
       <td>1</td>
       <td>2</td>
     </tr>
     <tr>
-      <th>194718</th>
+      <th>244690</th>
       <td>True</td>
       <td>1</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
-      <th>297027</th>
+      <th>285761</th>
+      <td>True</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>285040</th>
       <td>True</td>
       <td>1</td>
       <td>1</td>
@@ -570,28 +554,10 @@ Name: ContraORDrugs, dtype: int64
       <td>2</td>
     </tr>
     <tr>
-      <th>292214</th>
-      <td>True</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>239746</th>
+      <th>240099</th>
       <td>True</td>
       <td>1</td>
       <td>1</td>
-    </tr>
-    <tr>
-      <th>12021</th>
-      <td>True</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>242110</th>
-      <td>True</td>
-      <td>1</td>
-      <td>2</td>
     </tr>
   </tbody>
 </table>
@@ -757,7 +723,7 @@ Name: IsWeekend, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7fa97844cfd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f8e10621f40&gt;
 </pre></div>
 </div>
 </div>
@@ -1114,20 +1080,6 @@ Name: DURATION, dtype: float64
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Chapter4.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Chapter 4: Finding Hidden Insights</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="Chapter6.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chapter 6: Common Operations in Pandas</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
