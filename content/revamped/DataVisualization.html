@@ -1,0 +1,1073 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Matplotlib and its structure &#8212; My sample book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Introduction.html">
+                    Intended audience
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="IntroPandas.html">
+   Introduction to Pandas
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/content/revamped/DataVisualization.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontent/revamped/DataVisualization.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/content/revamped/DataVisualization.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Matplotlib and its structure
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#object-oriented-interface">
+   Object-Oriented Interface
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pyplot-interface-optional">
+   Pyplot Interface (Optional)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#understanding-basic-plots">
+   Understanding basic plots
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#line-plot">
+     Line Plot
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#barplot">
+     Barplot
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#histogram">
+     Histogram
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boxplot">
+     Boxplot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advanced-plot">
+   Advanced Plot
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#style-formatting">
+   Style Formatting
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#axis-formatting">
+   Axis Formatting
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-plots">
+   Multiple plots
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Matplotlib and its structure</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Matplotlib and its structure
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#object-oriented-interface">
+   Object-Oriented Interface
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pyplot-interface-optional">
+   Pyplot Interface (Optional)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#understanding-basic-plots">
+   Understanding basic plots
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#line-plot">
+     Line Plot
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#barplot">
+     Barplot
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#histogram">
+     Histogram
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boxplot">
+     Boxplot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advanced-plot">
+   Advanced Plot
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#style-formatting">
+   Style Formatting
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#axis-formatting">
+   Axis Formatting
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-plots">
+   Multiple plots
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p>Visualization is a key superpower of a Data Scientist. It provides the opportunity to detect hidden patterns from a set of raw and obscure data and may give clear actionable insights to act upon. Visualization offers us the ability to perform this and to see data in a way not possible otherwise. Therefore, being able to choose the appropriate way of presenting data, in order to make sure that it is intuitive for the audience, is a challenge as well as the most interesting part of data analysis.</p>
+<p>In this chapter we will cover matplotlib for creating plots and graphs for visualizations. Matplotlib is one of the most popular packages for presenting data in a visual form. Other common visualization packages also use matplotlib as its base package. Matplotlib offers a huge range of plot types and a lot of flexibility to alter them. In a nutshell, Matplotlib offers the ability to make visualizations through first principles.</p>
+<img src="https://matplotlib.org/stable/_static/images/logo2.svg" width="400"/><section id="matplotlib-and-its-structure">
+<h1>Matplotlib and its structure<a class="headerlink" href="#matplotlib-and-its-structure" title="Permalink to this headline">#</a></h1>
+<p>According to its documentation, Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.</p>
+<p>Within matplotlib, exists pyplot, which offers numerous functions and interface for plotting. We are going to import both matplotlib and pyplot and use it ahead for creating figures and plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following image explains the anatomy of a Matplotlib Figure. Understanding this is a critical step towards learning how matplotlib works and how to create an customize plots.</p>
+<p><img alt="" src="https://matplotlib.org/stable/_images/sphx_glr_anatomy_001.png" /></p>
+<p>The base of a matplotlib plot is the Figure. The Figure holds all elements of the plot. Think of it as a canvas on which you can create and place multiple plots. The Figure can hold multiple child elements such as plots, and it also tracks all these child elements within it. To relate it to the image above, the Figure is the container that holds the plot and other elements that we see. In the image above it is refered using <code class="docutils literal notranslate"><span class="pre">plt.figure</span></code> which indicates that it is a Figure object borrowed from pyplot.</p>
+<p>As mentioned, Figure holds multiple elements which are referred to as Artists. Axes (not <em>Axis</em>) is one of those Artists that forms a region of a plot which can display 2 or 3 dimensional data in form of a plot. Therefore, there can be multiple Axes (or plot regions) on a Figure. Each Axes also has a title, an x-label, and a y-label. Notice that Axes in the image above is called as <code class="docutils literal notranslate"><span class="pre">fig.subplots</span></code> (<code class="docutils literal notranslate"><span class="pre">fig</span></code> is <code class="docutils literal notranslate"><span class="pre">plt.figure</span></code>)  which means that it is an object within the <code class="docutils literal notranslate"><span class="pre">plt.figure</span></code> class.</p>
+<p>Within Axes objects there are 2 or 3 Axis (different from <em>Axes</em>). Axis is also an Artist object which is part of Axes. The Axis sets the scale and limits. It also sets ticks (tiny lines that mark scales on each axis) and tick labels. Notice the y Axis and x Axis in the image above which will be referred to as <code class="docutils literal notranslate"><span class="pre">ax.xaxis</span></code> and <code class="docutils literal notranslate"><span class="pre">ax.yaxis</span></code>, respectively (<code class="docutils literal notranslate"><span class="pre">ax</span></code> is <code class="docutils literal notranslate"><span class="pre">fig.subplots</span></code>), since both are objects of the Axes class. Also notice that the ticks and labels are part of the Axis in the image above.</p>
+<p>Every other Artist in the image above, such as the line, markers, grid, legend etc, are part of the Axes class. To simplify it further, think of all of these elements as a heirarchy of objects where a Figure object is the outermost container for a matplotlib graphic. Within this are nested objects such as Axes. Each Axes may further have its own set of objects such as plot lines, titles, axis and grids.</p>
+</section>
+<section id="object-oriented-interface">
+<h1>Object-Oriented Interface<a class="headerlink" href="#object-oriented-interface" title="Permalink to this headline">#</a></h1>
+<p>Matplotlib has 2 different styles for plotting. We will cover the Object-oriented interface, also called the Axes interface. The other plotting style is called the pyplot interface. The Object-oriented is an explicit interface and is the one that we highly recommend you to primarily work on in order to avoid errors and confusion.</p>
+<p>The object-oriented interface builds visuals in a step-by-step stuctured manner. As described above, it requires us to define the Figure, the set of Axes from that Figure and other Artists object on those Axes and Figure objects. Since we are explicitly defining each Artist object including Figure and Axes, it enables us to customize these objects.</p>
+<p>We are going to work on an example of using this technique to create a few visualizations below.</p>
+<p>In the the first interface below, we create an instance of the Figure class called <code class="docutils literal notranslate"><span class="pre">fig</span></code> and then we use the <code class="docutils literal notranslate"><span class="pre">.subplots()</span></code> on fig to create Axes within the Figure. The Axes that <code class="docutils literal notranslate"><span class="pre">fig.subplots()</span></code> creates is then assigned to variable <code class="docutils literal notranslate"><span class="pre">ax</span></code>. We then use Axes’ <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method to create the line plot over it. We do this by calling <code class="docutils literal notranslate"><span class="pre">ax.plot()</span></code>. As you can notice below, the plot takes a list of x-axis values and the corresponding y-axis values to create a line plot with the following format: <code class="docutils literal notranslate"><span class="pre">ax.plot(x,</span> <span class="pre">y)</span></code> where <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are lists of integers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/DataVisualization_7_0.png" src="../../_images/DataVisualization_7_0.png" />
+</div>
+</div>
+<p>We will create another Figure with 2 Axes now, displaying a line plot and scatter plot (with markers). The <code class="docutils literal notranslate"><span class="pre">subplot()</span></code> method takes the number of rows and columns to display on the figure, respectively (In this example it has 1 row with 2 columns). This creates 2 Axes objects within <code class="docutils literal notranslate"><span class="pre">ax</span></code>, where each object can be referred using integer index as shown below i.e. <code class="docutils literal notranslate"><span class="pre">ax[0]</span></code> for 1st and <code class="docutils literal notranslate"><span class="pre">ax[1]</span></code> for the 2nd plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/DataVisualization_9_0.png" src="../../_images/DataVisualization_9_0.png" />
+</div>
+</div>
+<p>We can add more Artists object to each Axes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;distance (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/DataVisualization_11_0.png" src="../../_images/DataVisualization_11_0.png" />
+</div>
+</div>
+</section>
+<section id="pyplot-interface-optional">
+<h1>Pyplot Interface (Optional)<a class="headerlink" href="#pyplot-interface-optional" title="Permalink to this headline">#</a></h1>
+<p>The Pyplot interface is another style that matplotlib uses apart from the Axes interface we used above. It is a state-based interface. State-based means that it creates a Figure and its Axes, tracks the state of these objecs and modifies them with various function calls on that state.</p>
+<p>This can be convenient, particularly when doing interactive work or simple scripts. However, since it only tracks the state of the last Figure and Axes, it becomes confusing to modify a specific Axes when required. Therefore, it is preferred to use the object-oriented approach. The reason to introduce and understand this concept is to familiarise you with the difference and get an idea when you review snippets of code using this style of plotting. Therefore, we will just peak into this style below. Throughout this tutorial, we are going to use the Axes interface for visualizations.</p>
+<p>The command below creates the same plot that we developed above, but it also creates the Figure and Axes along.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/DataVisualization_14_0.png" src="../../_images/DataVisualization_14_0.png" />
+</div>
+</div>
+<p>We will modify the plot we create by applying methods on the current state.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Distance&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Distance&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/DataVisualization_16_1.png" src="../../_images/DataVisualization_16_1.png" />
+</div>
+</div>
+</section>
+<section id="understanding-basic-plots">
+<h1>Understanding basic plots<a class="headerlink" href="#understanding-basic-plots" title="Permalink to this headline">#</a></h1>
+<p>We will go though a few simple examples of common plots that we can create using matplotlib’s pyplot. In each of these examples, we will first create a Figure, followed by an Axes on that Figure and then specify the plot on that Axes. We will then move to using these basic plots for creating visualizations to understand the traffic stops dataset.</p>
+<section id="line-plot">
+<h2>Line Plot<a class="headerlink" href="#line-plot" title="Permalink to this headline">#</a></h2>
+<p>In the first example below, we will use the <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method on the Axes to create a simple line plot. We will provide a list of x and y coordinates in a list. The format is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ax.plot(x,</span> <span class="pre">y,</span> <span class="pre">...)</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/DataVisualization_18_0.png" src="../../_images/DataVisualization_18_0.png" />
+</div>
+</div>
+<p>Such a line plot can be useful to see distribution of a continuous variable over a sorted sequence. One wxample of this includes plotting the distribution of a quantity over time.</p>
+<p>Let us now switch to the Traffic Stops data and use a line plot to plot the number of stops on each date. Every traffic stop has a Datatime value. We can use this to discover a trend with respect to time in the traffic stops. This is also known as a time-series plot since timestamp is on one of the axis. However, we have to group our data for each day in order to know the count of stops made each day.</p>
+<p>We will import the data and then begin with visualization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">stops</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s2">&quot;stops.pkl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date_group</span> <span class="o">=</span> <span class="n">stops</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;DateStop&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">date_group</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DateStop
+2021-01-01    1092
+2021-01-02    1635
+2021-01-03    1498
+2021-01-04    1446
+2021-01-05    1567
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>date_group</strong> is a Series with date (timestamp type) as index and the number of stops as value of the Series. We will make a line plot below. The plot function, when given a Series, uses the index for the x-axis and the values for the y-axis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">date_group</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/DataVisualization_23_0.png" src="../../_images/DataVisualization_23_0.png" />
+</div>
+</div>
+</section>
+<section id="barplot">
+<h2>Barplot<a class="headerlink" href="#barplot" title="Permalink to this headline">#</a></h2>
+<p>We can notice a weekly pattern from the plot above, therefore, we would want to know if there exists a correlation between the day of the week and the stops made on that day. We will use a simple barplot to view this relation. A barplot enables us to view numeric values related to a set of categorical values. In this case, we are viewing a numerical value (number of stops) for a set of categorical values (days of the week).</p>
+<p>We will first create the grouped data using Pandas group method and then use <code class="docutils literal notranslate"><span class="pre">.bar()</span></code> to create a bar plot. In this case, the <code class="docutils literal notranslate"><span class="pre">.bar()</span></code> function takes the Series index as the x axis value for each bar, whereas, the value of each row is the height of each bar. The general format is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ax.bar(x,</span> <span class="pre">height,</span> <span class="pre">...)</span></code></p>
+<p>Note: Monday = 0, Tuesday = 1, Wednesday = 2, Thursday = 3, Friday = 4, Saturday = 5, Sunday = 6</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">day_group</span> <span class="o">=</span> <span class="n">stops</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Weekday&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">day_group</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Weekday
+0     9356
+1    10405
+2    10695
+3    10899
+4    12198
+5    11944
+6    10780
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the last line, we are replacing the interger categories with each day of the week using the <code class="docutils literal notranslate"><span class="pre">set_xticks</span></code> method on Axes. We will cover it more in the sections ahead.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">day_group</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">day_group</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Mon&#39;</span><span class="p">,</span><span class="s1">&#39;Tues&#39;</span><span class="p">,</span><span class="s1">&#39;Wed&#39;</span><span class="p">,</span><span class="s1">&#39;Thur&#39;</span><span class="p">,</span><span class="s1">&#39;Fri&#39;</span><span class="p">,</span><span class="s1">&#39;Sat&#39;</span><span class="p">,</span><span class="s1">&#39;Sun&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/DataVisualization_27_0.png" src="../../_images/DataVisualization_27_0.png" />
+</div>
+</div>
+</section>
+<section id="histogram">
+<h2>Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">#</a></h2>
+<p>Histograms are really useful in visualizing the distribution of data. They can assist us in seeing the distribution of a continuous variable in the dataset and check multiple aspects such as presence of skew and outliers in data. This is an important statistical tool as well.</p>
+<p>Matplotlib offers the <code class="docutils literal notranslate"><span class="pre">ax.hist()</span></code> method that allows to plot a histogram of a continuous variable. The method also creates bins (groups of numbers) from the data in x axis and calculates and places the values into those bins. It then plots the distribution.</p>
+<p>For the traffic stops data, we might be interested to know the distribution of <em>duration</em> each stop in the entire dataset. The plot below shows the result. We can see that it is a bell curve, indicating a slightly skewed normal distribution. The skewed end on the right tail show some of the extreme values where the cars were stopped for very long. However, we can see that most of the stops were between 3 to 5 minutes.</p>
+<p>To plot this below, the Axes’ histogram method will plot taking the X variable (which can be a Series or a sequence of values in an array or list). It divides the range of values into equal bins and counts the frequency of value in each bin which corresponds to the height of the bar. We also provided the bins in the function parameter and the range of bins to show as a tuple.</p>
+<p>The format is: <code class="docutils literal notranslate"><span class="pre">ax.hist(x,</span> <span class="pre">range,</span> <span class="pre">bins,</span> <span class="pre">...)</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">stops</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/DataVisualization_29_0.png" src="../../_images/DataVisualization_29_0.png" />
+</div>
+</div>
+</section>
+<section id="boxplot">
+<h2>Boxplot<a class="headerlink" href="#boxplot" title="Permalink to this headline">#</a></h2>
+<p>The box and whisker plot is another way to visualize the distribution of a continuous variable. It primarily allows us to view the main statistical characteristics (median and quartiles), distribution of data and outliers.</p>
+<p>The end of the tails (called the whiskers) indicate the maximum and minimum value, excluding the outliers. The en 2 ends of the boxplot are the 25th and the 75th percentile of the data. Whereas, the line inside the box indicates the median value.</p>
+<p>To plot this, the Axes’ boxplot method will need the name of the continuous varibale, or a list of variables to show multiple plot at once. One of the function parameters we can give is the showfliers parameter. With this we can hide the outliers in the output to prevent it from impacting the original distribution. This can be seen by comparing the 2 plots below where the fliers on the right plot hide the distribution.</p>
+<p>The format is: <code class="docutils literal notranslate"><span class="pre">ax.boxplot(x,</span> <span class="pre">showfliers,</span> <span class="pre">...)</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">stops</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Duration&#39;</span><span class="p">],</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">stops</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Duration&#39;</span><span class="p">],</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/DataVisualization_31_0.png" src="../../_images/DataVisualization_31_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="advanced-plot">
+<h1>Advanced Plot<a class="headerlink" href="#advanced-plot" title="Permalink to this headline">#</a></h1>
+<p>Going beyond the basic plots we created above, data analysis work will often require comparing some complex analysis such as distributions of groups within a variable or relation between multiple variables. After understanding the fundamentals of using matplotlib and basics of plotting, one can easily construct advanced plots or stylize them to make some complex analysis more intuitive. We will cover some ways to do this.</p>
+<p>We start below with a creating a boxplot which analyzes the distribution of duration for each race among the driver’s who were stopped. This can be a useful way of getting statistical estimates to help with the analysis of finding the existence of bias in Police stops in Chicago.</p>
+<p>To break down the plot below, we are using a boxplot in a similar way we did above. However, the instead of providing a single Series, we are breaking down the same Series into a list of Series, where each includes Duration for each driver of that particular race. The <code class="docutils literal notranslate"><span class="pre">data</span></code> variable below is the list where the code <code class="docutils literal notranslate"><span class="pre">stops.loc[:,'Duration'][stops.loc[:,'DriverRace']==race]</span></code> filters all the Drivers that belong to the race in the variable <code class="docutils literal notranslate"><span class="pre">race</span></code>. Since in the code following it <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">race</span> <span class="pre">in</span> <span class="pre">stops['DriverRace'].unique()</span></code> we are looping through each unique race in the DriveRace column, we ultimately create a list of duration Series for each race.</p>
+<p>The Axes’ <code class="docutils literal notranslate"><span class="pre">set_xticks()</span></code> method enables us to replace the default x-axis, which included an integer for each boxplot, to the race that the boxplot represents. We are going to cover this method in detail ahead.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">stops</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Duration&#39;</span><span class="p">][</span><span class="n">stops</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">race</span><span class="p">]</span> <span class="k">for</span> <span class="n">race</span> <span class="ow">in</span> <span class="n">stops</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()]</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="n">stops</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/DataVisualization_33_0.png" src="../../_images/DataVisualization_33_0.png" />
+</div>
+</div>
+<p>Another form of plot that we will create is the stacked bar plot. This again builds over the fundamentals we used in the previous section with some slight tweaks to build a stack bar plot. The stacked plot is a great tool to segment a variable into another group and see the proportion each segment occupies.</p>
+<p>In the example below we are making a simple bar plot for all Drivers who were stopped and searched for contraband (If search did not take place, those values are null - NaNs). We then create 2 of segments of stops where contraband was found and the stops where it wasn’t. This is grouped by driver’s race to see the rate of successful contraband seaches (called hit rate) in each race and assist in analyzing if some races were searched due to racism even with a low hit rate.</p>
+<p>To plot this, we first create 2 Series called <code class="docutils literal notranslate"><span class="pre">data_y</span></code> and <code class="docutils literal notranslate"><span class="pre">data_n</span></code> to indicate searches where contraband was found and searhces where it wasn’t found, respectively. While creating this, the data is grouped by race and the filtered by the contraband column. We then use the <code class="docutils literal notranslate"><span class="pre">bar()</span></code> method to create bar plot for both segments; however, by setting <code class="docutils literal notranslate"><span class="pre">bottom</span> <span class="pre">=</span> <span class="pre">data_y</span></code> in the second plot, we stack the first plot below it to create the visual below. The <code class="docutils literal notranslate"><span class="pre">ax.legend()</span></code> function enables us to display the legend on the top-right corner (this will be discussed further ahead). We are also wrapping the axis labels in order to prevent them from overlapping. These wrapped labels are then give to the <code class="docutils literal notranslate"><span class="pre">bar()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">stops</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;ContraFound&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># will remove this line when published</span>
+
+<span class="n">data_y</span> <span class="o">=</span> <span class="n">stops</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">)[</span><span class="s1">&#39;ContraFound&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Yes&#39;</span><span class="p">]</span>
+<span class="n">data_n</span> <span class="o">=</span> <span class="n">stops</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;DriverRace&#39;</span><span class="p">)[</span><span class="s1">&#39;ContraFound&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;No&#39;</span><span class="p">]</span>
+<span class="n">x_labels</span> <span class="o">=</span> <span class="n">data_y</span><span class="o">.</span><span class="n">index</span>
+<span class="c1"># wrapping the labels on x-axis </span>
+<span class="n">wrapped_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">label</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">x_labels</span><span class="p">]</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">wrapped_labels</span><span class="p">,</span> <span class="n">data_y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Yes&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">wrapped_labels</span><span class="p">,</span> <span class="n">data_n</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="n">data_y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;No&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe50906b490&gt;
+</pre></div>
+</div>
+<img alt="../../_images/DataVisualization_35_1.png" src="../../_images/DataVisualization_35_1.png" />
+</div>
+</div>
+</section>
+<section id="style-formatting">
+<h1>Style Formatting<a class="headerlink" href="#style-formatting" title="Permalink to this headline">#</a></h1>
+<p>The structure of matplotlib we discussed above, allows us to create plots and add further styling to the barebones structure.We will see somce common formatting options that are going to be very valueable for our analysis.</p>
+<p>To change the size of the figure, we can give a tuple to the <code class="docutils literal notranslate"><span class="pre">figsize</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">figure</span></code> method. The tuple includes width and height in inches of the entire figure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;distance (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fe4fa9ebb80&gt;
+</pre></div>
+</div>
+<img alt="../../_images/DataVisualization_38_1.png" src="../../_images/DataVisualization_38_1.png" />
+</div>
+</div>
+<p>While displaying multiple plots on the same Axes, it can be useful to plot different lines with a distinct line style in order to distinguish. the <code class="docutils literal notranslate"><span class="pre">linestyle</span></code> parameter in the Axes plot function can take a string indicating style of line as an argument. The available styles can and their respective string codes can be found on this <a class="reference external" href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html">link</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;distance (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;time&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/DataVisualization_40_1.png" src="../../_images/DataVisualization_40_1.png" />
+</div>
+</div>
+<p>Another interesting element that can make plots easy to interpret is the addition of grids. Each grid line corresponds to the ticks on either x-axis or y-axis.</p>
+<p>The Axes’s <code class="docutils literal notranslate"><span class="pre">.grid()</span></code> method will add grid lines to the background. By default, this method adds grid lines for both x and y axis; however, we can provide an <code class="docutils literal notranslate"><span class="pre">axis</span></code> parameter and set it to either x or y axis to only diplay lines that are perpendicular to that axis. See the difference below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;distance (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;distance (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;time&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/DataVisualization_42_1.png" src="../../_images/DataVisualization_42_1.png" />
+</div>
+</div>
+<p>Matplotlib offers a good range of style sheets (<a class="reference external" href="https://matplotlib.org/stable/gallery/style_sheets/index.html">found on this link</a>) that can be used to set the background of a plot. The style can be set by listing the particular style as part an argument in the method <code class="docutils literal notranslate"><span class="pre">plt.style.use('default')</span></code>. The ‘default’ is the one that we have been using since the beginning. This can be replace with any other style. However, do note that since this is a method of pyplot object (as it is referencing plt.style) this applies to every figure that comes ahead, unless we set it back to default or any other relevant style.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;Solarize_Light2&#39;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;distance (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;time&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/DataVisualization_44_1.png" src="../../_images/DataVisualization_44_1.png" />
+</div>
+</div>
+<p>A major formatting element is the ability to format colors of various elements of the plot. We will just focus on changing the color of the line plots for now for the purpose of demonstration. Maplotlib recognizes various color formats incliding RGB, hex RGB, or just a single character representation for a color. You can effectively learn more about this on the <a class="reference external" href="https://matplotlib.org/stable/gallery/color/color_demo.html">documentation</a>.</p>
+<p>From this documentation, a single letter string, i.e. one of {‘b’, ‘g’, ‘r’, ‘c’, ‘m’, ‘y’, ‘k’, ‘w’}, are short-hand notations for shades of blue, green, red, cyan, magenta, yellow, black, and white. We use this representation in the plot below by specifying the string in the color argument of the plot method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;distance (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;time&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/DataVisualization_46_1.png" src="../../_images/DataVisualization_46_1.png" />
+</div>
+</div>
+<p>Lastly, another significant component, one that we already introduced above, is the legend. The legend maps the lines or markers on a plot. The <code class="docutils literal notranslate"><span class="pre">.legend()</span></code> method can automatically detect if the elements in the Axes to be shown in the legend. For this we need to define labels for each plot as shown below. Therefore, we do not need to pass any extra arguments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;first&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;second&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe509fd7070&gt;
+</pre></div>
+</div>
+<img alt="../../_images/DataVisualization_48_1.png" src="../../_images/DataVisualization_48_1.png" />
+</div>
+</div>
+</section>
+<section id="axis-formatting">
+<h1>Axis Formatting<a class="headerlink" href="#axis-formatting" title="Permalink to this headline">#</a></h1>
+<p>Formatting both the axis and its label is essential to familiarize the audience with the what the plot refers to. To set both x and y labels, we use Axes’ <code class="docutils literal notranslate"><span class="pre">.set_xlabel()</span></code> and <code class="docutils literal notranslate"><span class="pre">.set_ylabel</span></code>, respectively. We have to procide the string to show as label as an arguments to these methods. This is showi n the code below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;distance (m)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/DataVisualization_51_0.png" src="../../_images/DataVisualization_51_0.png" />
+</div>
+</div>
+<p>While creating multiple plots, we can also assign the same x and y axis labels to the entire figure if required. This is done by using the figure’s <code class="docutils literal notranslate"><span class="pre">supxlabel()</span></code> and <code class="docutils literal notranslate"><span class="pre">supylabel()</span></code> and providing the label as an argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">supxlabel</span><span class="p">(</span><span class="s1">&#39;common x label&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">supylabel</span><span class="p">(</span><span class="s1">&#39;common x label&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.02, 0.5, &#39;common x label&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/DataVisualization_53_1.png" src="../../_images/DataVisualization_53_1.png" />
+</div>
+</div>
+</section>
+<section id="multiple-plots">
+<h1>Multiple plots<a class="headerlink" href="#multiple-plots" title="Permalink to this headline">#</a></h1>
+<p>In some figures above, we created multiple plots on the same figure. This need frequently arises when displaying similar plots together with different data. The figure’s subplot method adds a grid of plots on the figure. The default argument returns a single Axes tht we mostly created above. In order to create multiple axes on the same figure, we need to provide the number of rows and columns to the <code class="docutils literal notranslate"><span class="pre">.subplots()</span></code> method in the format:</p>
+<p><code class="docutils literal notranslate"><span class="pre">fig.subplots(number</span> <span class="pre">of</span> <span class="pre">rows,</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">columns)</span></code></p>
+<p>When we specify subplots of (2,2) as shown below, we create a grid of 2x2 axes. The Axes object (that we referred to as <code class="docutils literal notranslate"><span class="pre">ax</span></code> becomes a 2x2 array) To access each Axes on the grid, we use index the <code class="docutils literal notranslate"><span class="pre">ax</span></code> array by specifying the row and column number in square brackets as shown below:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ax[1][0]</span></code> gets the Axes in 2nd row and 1st column (Note index in arrays start from 0).</p>
+<p>The example below demonstrates this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe50a994340&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/DataVisualization_56_1.png" src="../../_images/DataVisualization_56_1.png" />
+</div>
+</div>
+<p>Below we create 3 Axes in a figure that where each Axes is placed on a single row. We also make a small tweak here. We can enable all the Axes to share a single x-axis. This is done by setting the <code class="docutils literal notranslate"><span class="pre">sharex</span></code> parameter in the <code class="docutils literal notranslate"><span class="pre">subplot()</span></code> function to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/DataVisualization_58_0.png" src="../../_images/DataVisualization_58_0.png" />
+</div>
+</div>
+<p>We might find requirements to display Axes in a non-uniform format as shown below. To acheive this, we use a different way of creating subplot objects. We create multiple Axes and for each Axes we call the pyplot’s subplot object and enter the integers in a specified format. The three integers are in the following format: (nrows, ncols, index). Therefore, the first Axes <code class="docutils literal notranslate"><span class="pre">ax1</span></code> is created in the second row of the figure, with one column (as it takes the entire row).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe509b07d30&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/DataVisualization_60_1.png" src="../../_images/DataVisualization_60_1.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/revamped"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
